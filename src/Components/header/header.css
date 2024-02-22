@@ -1,0 +1,104 @@
+.headerwrap{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    font-family: "poppins";
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid silver;
+    position: relative;
+    background-color: white;
+}
+.header{
+    width: 97%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: white; */
+}
+.menudrop{
+    width: 25%;
+    height: 500px;
+    background-color: black;
+    position: absolute;
+    position: fixed;
+    left: 75%;
+    border-radius: 5px;
+    top: 5%;
+}
+.loggo{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    padding-left: 2%;
+    background-color: white;
+}
+.loggoinf{
+    width: 30%;
+    height: 100%;
+    /* background-color: yellow; */
+}
+.loggoinf img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.loggowrite{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 2%;
+    /* line-height: 0px; */
+    /* background-color: green; */
+}
+.loggowrite h1{
+    color: rgba(0, 152, 225, 1);
+    font-size: 30px;
+    height: 50%;
+    /* padding: 0px; */
+    /* background-color: green; */
+}
+.loggowrite p{
+    color: rgba(226, 185, 2, 1);
+    /* background-color: red; */
+}
+.iomenu{
+    display: none;
+}
+.navic{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: yellow; */
+}
+.navic p{
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.1s ease-in;
+}
+.navic p:hover{
+    transform: scale(1.1);
+    font-weight: 700;
+    color: rgba(0, 152, 225, 1);
+}
+
+@media screen and (width < 800px ){
+    .navic{
+        display: none;
+    }
+    .iomenu{
+        display: flex;
+        font-size: 30px;
+    }
+    .header{
+        justify-content: space-between;
+    }
+    .loggo{
+        width: 30%;
+    }
+}

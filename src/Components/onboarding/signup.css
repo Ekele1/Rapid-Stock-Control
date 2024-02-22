@@ -1,0 +1,241 @@
+.SignUpContain{
+    width: 100%;
+    height: 100vh;
+    /* background-color: aqua; */
+    font-family: "poppins";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* .left{
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(blue,purple);
+  } */
+  
+  .right{
+    width: 30%;
+    height: 80%;
+    background-color:white;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    padding-top: 2%;
+    /* gap: 10px; */
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* border: 1px solid #8C8C8C ; */
+  }
+  .containForInput2{
+    width: 100%;
+    height: 100%;
+    /* margin: 15px; */
+    gap: 10px;
+    /* background-color: aqua; */
+   display: flex;
+   flex-direction: column;
+   align-items: center; 
+  }
+  
+  .forInput{
+    width: 82%;
+    height: 65px ;
+    /* background-color: purple; */
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+  }
+  .forInput input{
+    width: 92%;
+    height: 25px;
+    border: 1px solid #DCCCFC;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 1%;
+  }
+  
+  .forInput2{
+    width: 82%;
+    height: 65px;
+    /* background-color: blue; */
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+  }
+  .forInput2 input{
+    width: 92%;
+    height: 25px;
+    border: 1px solid #DCCCFC;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 1%;
+  }
+
+ 
+  .forInput3{
+    width: 82%;
+    height: 65px;
+    /* background-color: blue; */
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+  }
+  .forInput3 input{
+    width: 92%;
+    height: 25px;
+    border: 1px solid #DCCCFC;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 1%;
+  }
+
+   
+  .forInput4{
+    width: 82%;
+    height: 65px;
+    /* background-color: blue; */
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+  }
+  .forInput4 input{
+    width: 92%;
+    height: 25px;
+    border: 1px solid #DCCCFC;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 1%;
+  }
+
+   
+  .forInput5{
+    width: 82%;
+    height: 65px;
+    /* background-color: blue; */
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+  }
+  .forInput5 input{
+    width: 92%;
+    height: 25px;
+    border: 1px solid #DCCCFC;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 1%;
+  }
+
+  label{
+    font-size: 11px;
+  }
+ .Tx{
+  color: blue;
+  cursor: pointer;
+ }
+  
+  .forButton{
+    width: 82%;
+    height: 65px;
+    display: flex;
+    /* background-color: brown; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    font-size: 10px;
+    gap: 10px;
+    flex-direction: column;
+  }
+  .forButton button{
+    width: 92%;
+    height: 25px;
+    border: none;
+    border-radius: 3px;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+  }
+  .words{
+    width: 82%;
+    height: 65px;
+    /* background-color: green; */
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+    font-size: 10px;
+  }
+
+  @media screen and (width < 1500px) {
+    .right{
+        width: 50%;
+        height: 80%;
+    }
+    .forInput{
+        height: 12%;
+        /* background-color: yellow; */
+    }
+    .forInput input{
+        height: 70px;
+    }
+    .forButton{
+        height: 12%;
+        /* background-color: yellow; */
+    }
+    .forButton button{
+        height: 90%;
+        font-size: 12px;
+    }
+    .forButton h6{
+        font-size: 12px;
+    }
+  }
+
+  @media screen and (width < 1000px) {
+   
+    .contain {
+      width: 100%;
+    }
+    .right{
+      width: 60%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      
+    }
+    .words{
+      width: 100%;
+      font-size: 6px;
+      /* background-color:red; */
+      display: flex;
+      align-items: center;
+    
+    }
+    .words h3{
+        font-size: 10px;
+    }
+    .forInput{
+        height: 10%;
+        /* background-color: green; */
+    }
+    .forInput label{
+        font-size: 15px;
+    }
+    .forInput input{
+        height: 50%;
+    }
+    .forButton button{
+        height: 70px;
+    }
+    .forButton h6{
+        font-size: 14px;
+    }
+  }
+  @media screen and (width < 650px){
+    .right{
+        width: 80%;
+    }
+    .forInput label{
+        font-size: 10px;
+    }
+    .forButton h6{
+        font-size: 10px;
+    }
+  }

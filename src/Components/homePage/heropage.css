@@ -1,0 +1,337 @@
+main{
+    width: 100%;
+    height: max-content;
+    /* position: relative; */
+    background-color: #EFECFF;
+    font-family: "poppins";
+
+}
+.headwrap{
+    width: 100%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    /* background-color: white; */
+    /* border: 1px solid black; */
+}
+.dropmenu{
+    width: 35%;
+    height: 350px;
+    position: absolute;
+    position: fixed;
+    top: 6%;
+    left: 63%;
+    z-index: 20;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    /* font-size: 5px; */
+    /* font-weight: bold; */
+    border-radius: 5px;
+    background-color: black;
+}
+/* .dropmenu p{
+    font-size: 20px;
+} */
+#spy{
+    font-size: 15px;
+}
+header{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    position: fixed;
+    top: 0%;
+    z-index: 10;
+    justify-content: space-between;
+    background-image: linear-gradient(
+        130deg,
+        hsl(0deg 0% 100%) 0%,
+        hsl(222deg 100% 94%) 0%,
+        hsl(221deg 100% 88%) 0%,
+        hsl(219deg 100% 80%) 0%,
+        hsl(218deg 100% 77%) 0%,
+        hsl(218deg 100% 77%) 1%,
+        hsl(218deg 100% 77%) 2%,
+        hsl(219deg 100% 82%) 4%,
+        hsl(221deg 100% 89%) 8%,
+        hsl(222deg 100% 96%) 13%,
+        hsl(0deg 0% 100%) 25%,
+        hsl(0deg 0% 100%) 51%,
+        hsl(0deg 0% 100%) 79%,
+        hsl(0deg 0% 100%) 100%
+      );
+    /* background-color: #EFECFF; */
+}
+.linkscroll{
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+}
+.linkscroll:hover{
+    color: #6e9ceb;
+}
+
+.spacexr{
+    width: 100%;
+    height: 80px;
+    /* background-color: white; */
+}
+.logo{
+    width: 10%;
+    height: 50%;
+    /* padding-left: 2%; */
+    background-color: white;
+}
+.logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.navhero{
+    width: 50%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: white; */
+}
+.navhero p{
+    cursor: pointer;
+    /* background-color: yellow; */
+}
+.navhero p:hover{
+    font-weight: bold;
+}
+.menu {
+    display: none;
+}
+.herosection{
+    width: 95%;
+    /* height: max-content; */
+    height: 620px;
+    /* height: max-content; */
+    position: relative;
+    /* background-color: brown; */
+}
+.platformwrap{
+    width: 100%;
+    height: 850px;
+    /* height: 100%; */
+    display: flex;
+
+    /* background-color: white; */
+}
+.hero{
+    width: 95%;
+    height: max-content;
+    /* position: relative; */
+    padding-left: 1%;
+    background-image: linear-gradient(
+        130deg,
+        hsl(0deg 0% 100%) 0%,
+        hsl(222deg 100% 94%) 0%,
+        hsl(221deg 100% 88%) 0%,
+        hsl(219deg 100% 80%) 0%,
+        hsl(218deg 100% 77%) 0%,
+        hsl(218deg 100% 77%) 1%,
+        hsl(218deg 100% 77%) 2%,
+        hsl(219deg 100% 82%) 4%,
+        hsl(221deg 100% 89%) 8%,
+        hsl(222deg 100% 96%) 13%,
+        hsl(0deg 0% 100%) 25%,
+        hsl(0deg 0% 100%) 51%,
+        hsl(0deg 0% 100%) 79%,
+        hsl(0deg 0% 100%) 100%
+      );
+}
+.platform{
+    width: 50%;
+    height: 80%;
+}
+.platform h1{
+    font-weight: 500;
+    font-size: 50px;
+    line-height: normal;
+}
+.getstart{
+    width: 30%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: large;
+    cursor: pointer;
+    margin-top: 25px;
+    background-color: #93bAFF;
+}
+.getstart:hover{
+    background-color: rgb(83, 83, 240);
+}
+.getstart:active{
+    background-color: rgb(50, 50, 245);
+}
+.framepic{
+    display: none;
+}
+.bigpicture{
+    width: 50%;
+    height: 50%;
+    /* border: 1px solid black; */
+}
+.bigpicture img{
+    width: 100%;
+    height: 100%;
+    object-fit: inherit;
+}
+.frame{
+    width: 70%;
+    height: 600px;
+    position: absolute;
+    /* background-color: green; */
+    top: 700px;
+    right: 15%;
+}
+.frame img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@media screen and (width > 1000px) {
+    .frame{
+        width: 70%;
+        height: 600px;
+        position: absolute;
+        top: 600px;
+        right: 15%;
+        z-index: 3;
+    }
+    .frame img{
+        width: 100%;
+        height: 100%;
+        object-fit: inherit;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+}
+
+/* @media screen and (width < 1000px) {
+    .platform h1{
+        font-size: 50px;
+        line-height: normal;
+    }
+    .bigpicture{
+        height: 70%;
+    }
+    .frame{
+        bottom: 0%;
+    }
+    .frame img{
+        object-fit: contain;
+    }
+} */
+
+
+@media screen and (width < 1000px) {
+    header{
+        padding-right: 7%;
+    }
+    .navhero{
+        display: none;
+    }
+    .menu{
+        display: flex;
+        font-size: 40px;
+        /* margin-left: 2%; */
+    }
+    .platformwrap{
+        flex-direction: column;
+        height: 700px;
+
+        gap: 20px;
+    }
+    .herosection{
+        height: max-content;
+    }
+    .platform{
+        width: 100%;
+        height: max-content;
+    }
+    .platform h1{
+        /* width: 100%; */
+        font-size: 30px;
+        line-height: normal;
+    }
+    .bigpicture{
+        width: 100%;
+    }
+    .frame{
+        height: 400px;
+        /* bottom: 8%; */
+    }
+    .frame img{
+        object-fit: inherit;
+    }
+}
+
+@media screen and (width < 650px) {
+    .hero header{
+        height: 50px;
+        width: 100%;
+        padding-left: 0px;
+    }
+    .navhero{
+        justify-content: space-between;
+    }
+    .logo{
+        width: 40%;
+        height: 100%;
+        padding-left: 0px;
+        justify-content: flex-start;
+    }
+    .frame{
+        display: none;
+    }
+    .retailphoto{
+        display: none;
+    }
+    .framepic{
+        display: block;
+    }
+    .platformwrap{
+        height: max-content;
+        padding-bottom: 20px;
+        /* background-color: blue; */
+    }
+    .getstart{
+        width: 40%;
+        height: 35px;
+        font-size: 15px;
+        /* padding: 5%; */
+    }
+    .headwrap{
+        height: max-content;
+        /* background-color: blue; */
+    }
+    .platform h1{
+        font-size: 20px;
+    }
+    .platform span{
+        font-size: 15px;
+    }
+    .dropmenu{
+        height: 250px;
+        top: 8%;
+        font-size: 15px;
+    }
+}

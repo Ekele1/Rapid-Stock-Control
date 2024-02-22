@@ -1,0 +1,179 @@
+.purchasewrapp{
+    width: 100%;
+    min-height: 100vh;
+    font-family: "poppins";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    background-color: rgba(239, 236, 255, 1);
+    position: relative;
+    /* background-color: rgba(226, 185, 2, 1); */
+}
+.purchasespace{
+    width: 100%;
+    height: 30px;
+}
+.purchasewrapperdiv{
+    width: 90%;
+    min-height: 80%;
+    background-color: white;
+}
+
+.purchaseadd{
+    width: 100%;
+    height: 500px;
+    background-color: #efecff;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.close{
+    width: 80%;
+    height: 7%;
+    display: flex;
+    justify-content: flex-end;
+    /* background-color: gray; */
+}
+.cancel{
+    font-size: 30px;
+    cursor: pointer;
+}
+.cancel:hover{
+    color: red;
+}
+.purchaseinputwrap{
+    width: 60%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2%;
+    gap: 20px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.errormess{
+    font-size: 12px;
+    color: red;
+}
+.purchaseinput{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: gray; */
+}
+.purchaseinput div{
+    width: 30%;
+    height: 80%;
+    /* background-color: yellow; */
+}
+.purchaseinput input{
+    width: 100%;
+    height: 50%;
+    border: 1px solid black;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 2%;
+}
+.savebutton{
+    width: 97%;
+    height: 10%;
+    /* margin-right: 2%; */
+    background-color: blue;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.savebutton:hover{
+    background-color: rgb(42, 42, 245);
+}
+.savebutton:active{
+    background-color: blue;
+}
+.purchasedot{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    /* background-color: yellow; */
+}
+.purchasedot h1{
+    font-size: 15px;
+}
+.purchasedot button{
+    width: 10%;
+    height: 40%;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: green;
+    cursor: pointer;
+}
+.purchasedot button:hover{
+    background-color: rgb(17, 166, 17);
+}
+.purchasedot button:active{
+    background-color: green;
+}
+.purchasehead{
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    background-color: rgb(255, 226, 97);
+    /* border: 1px solid black; */
+}
+.purchasehead div{
+    width: 10%;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid silver; */
+}
+.purchasehead p{
+    font-size: 12px;
+    font-weight: 500;
+}
+.purchasemap{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    /* background-color: blue; */
+}
+.purchasemap div{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid silver;
+}
+.purchasemap p{
+    font-size: 12px;
+}
+#others{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.delete2{
+    font-size: 17px;
+}
+.edit{
+    font-size: 17px;
+}

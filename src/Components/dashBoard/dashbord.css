@@ -1,0 +1,200 @@
+.dashboardwrapper{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    font-family: "poppins";
+    justify-content: center;
+    /* padding-: 10%; */
+    /* border-radius: 5%; */
+    /* background-color: aqua; */
+}
+.dashboard{
+    width: 95%;
+    height: 90%;
+    /* border-radius: 5%; */
+    background-color: white;
+}
+.head{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+.head h1{
+    font-size: 15px;
+}
+.available{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    /* background-color: yellow; */
+}
+.naira{
+    font-size: 12px;
+    font-weight: 200;
+}
+.avail{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    /* background-color: brown; */
+}
+.x1{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+}
+.xx{
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: blue; */
+}
+.xx h3{
+    font-size: 12px;
+    font-weight: 500;
+}
+.g{
+    background-color: green;
+}
+.p{
+    background-color: #EC7D17;
+}
+.b{
+    background-color: blue;
+}
+.board2{
+    width: 100%;
+    height: 48%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: yellow; */
+}
+#view{
+    width: 20%;
+    outline: none;
+}
+.bar{
+    width: 45%;
+    height: 90%;
+    padding: 1%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    /* background-color: blue; */
+}
+.pie{
+    width: 45%;
+    height: 90%;
+    padding: 1%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    /* background-color: blueviolet; */
+}
+.total{
+    width: 100%;
+    height: 28%;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    /* border: 1px solid black; */
+    /* background-color: yellow; */
+}
+.recent{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* background-color: blue; */
+}
+.total2{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+    /* border: 1px solid black; */
+}
+.box{
+    width: 25%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+    border: 1px solid black;
+}
+.box h3{
+    font-size: 15px;
+}
+
+@media screen and (width < 800px) {
+    .dashboardwrapper{
+        height: max-content;
+    }
+    .dashboard{
+        height: max-content;
+    }
+    .head{
+        height: 100px;
+        /* background-color: yellow; */
+    }
+    .available{
+        height: 100px;
+        /* background-color: yellow; */
+    }
+    .x1{
+        display: none;
+        /* background-color: red; */
+    }
+    .board2{
+        height: 1000px;
+        flex-direction: column;
+        gap: 4%;
+        /* background-color: yellow; */
+    }
+    .bar{
+        width: 100%;
+        height: 48%;
+    }
+    .pie{
+        width: 100%;
+        height: 48%;
+    }
+    .total{
+        height: 250px;
+        /* background-color: yellow; */
+    }
+    .recent{
+        align-items: center;
+    }
+    .box{
+        width: 35%;
+    }
+    
+}
+@media screen and (width < 350px) {
+    .xx h3{
+        font-size: 12px;
+        font-weight: 500;
+    }
+    .xx p{
+        font-size: 10px;
+    }
+    .box{
+        width: 40%;
+    }
+    .box h3{
+        font-size: 12px;
+    }
+}

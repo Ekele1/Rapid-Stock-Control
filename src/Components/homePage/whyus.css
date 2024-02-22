@@ -1,0 +1,153 @@
+.why-us-wrapper{
+    width: 100%;
+    height: max-content;
+    font-family: "poppins";
+    background-color: #EFECFF;
+}
+.space{
+    width: 100%;
+    height: 500px;
+    /* background-color: yellow; */
+}
+.why-us{
+    width: 100%;
+    height: max-content;
+    background-color: #EFECFF;
+    /* padding-top: 37%; */
+}
+.why{
+    width: 100%;
+    height: 100px;
+    /* background-color: green; */
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    font-size: 30px;
+    padding-bottom: 20px;
+    font-weight: 400;
+}
+.reason{
+    width: 100%;
+    height: 220px;
+    display: flex;
+    /* background-color: green; */
+}
+.reason2{
+    width: 100%;
+    height: 220px;
+    display: flex;
+    /* background-color: green; */
+}
+.leftx1{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    /* border: 1px solid black; */
+    /* background-color: white; */
+}
+.rightx1{
+    width: 50%;
+    height: 100%;
+    background-color: white;
+}
+.icon{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    /* background-color: yellow; */
+}
+.iconhold{
+    width: 40%;
+    height: 40%;
+    /* background-color: blue; */
+}
+.iconhold img{
+    width: 100%;
+    height: 100%;
+    object-fit: inherit;
+}
+.write-up{
+    width: 70%;
+    height: 100%;
+    padding-top: 4%;
+    /* background-color: white; */
+}
+.write-up h1{
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 2%;
+}
+.write-up p{
+    width: 60%;
+    font-size: 15px;
+}
+
+@media screen  and (width < 1000px){
+    .space{
+        height: 400px;
+    }
+    .reason2{
+        margin-top: 120px;
+    }
+    .iconhold{
+        height: 20%;
+    }
+    /* .why-us{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    } */
+    /* .reason{
+        padding-bottom: 20px;
+    } */
+}
+
+@media screen and (width < 650px) {
+    .space{
+        display: none;
+    }
+    .why{
+        /* flex-wrap: wrap; */
+        align-items: flex-start;
+        justify-content: center;
+        /* font-size: 15px; */
+        /* background-color: yellow; */
+    }
+    .why p{
+        width: 70%;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .reason{
+        height: max-content;
+        flex-direction: column;
+        gap: 10px;
+        /* background-color: yellow; */
+    }
+    .reason2{
+        height: max-content;
+        flex-direction: column;
+        gap: 10px;
+        /* background-color: yellow; */
+    }
+    .reason2{
+        margin-top: 0px;
+    }
+    .leftx1{
+        width: 100%;
+    }
+    .icon{
+        width: 20%;
+    }
+    .write-up h1{
+        font-size: 15px;
+    }
+    .write-up p{
+        font-size: 12px;
+    }
+    .why-us{
+        padding-top: 20px;
+        /* background-color: yellow; */
+    }
+}

@@ -1,0 +1,251 @@
+.productmanagmentwrap{
+    width: 100%;
+    /* height: max-content; */
+    min-height: 100vh;
+    background-color: #F5F5F5;
+    font-family: "poppins";
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.productmanagementwrapdiv{
+    width: 90%;
+    min-height: 90vh;
+    background-color: white;
+}
+.productmanage{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: green; */
+}
+.productmanage h3{
+    font-size: 15px;
+}
+.hell{
+    width: 11%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid black; */
+}
+.hell p{
+    font-size: 12px;
+    font-weight: 500;
+}
+.spacexx{
+    width: 25%;
+    height: 100%;
+}
+.eleven{
+    width: 11%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow-y: scroll; */
+    border: 1px solid silver;
+}
+.eleventt{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.delete2{
+    font-size: 25px;
+    cursor: pointer;
+}
+.delete2:hover{
+    color: rgb(246, 100, 100);
+}
+.edit{
+    font-size: 25px;
+    cursor: pointer;
+}
+.edit:hover{
+    color: rgb(179, 154, 12);
+}
+.additems{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    /* background-color: green; */
+    backdrop-filter: blur(10px);
+    /* background-color: yellow; */
+}
+.remove{
+    width: 80%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* background-color: white; */
+}
+.remove div{
+    width: 40px;
+    height: 40px;
+    /* background-color: red; */
+    color: red;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.allproductdetails{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5%;
+    padding-top: 3%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    
+    background-color: white;
+    /* background-color: blue; */
+}
+#errorm{
+    color: red;
+    font-size: 10px;
+}
+.svg{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+}
+.svg div{
+    width: 40%;
+    height: 100%;
+    /* background-color: green; */
+}
+.svg p{
+    color: rgb(22, 22, 58);
+}
+.ttt{
+    width: 100%;
+    height: 60%;
+    border: 1px solid black;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 2px;
+}
+.adding{
+    width: 90%;
+    height: 60%;
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: blue;
+    border: none;
+}
+.adding:hover{
+    background-color: rgb(57, 57, 241);
+}
+.adding:active{
+    background-color: blue;
+}
+.kjv{
+    width: 10%;
+    height: 40%;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.kjv h3{
+    font-size: 10px;
+}
+.cate{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    /* background-color: white; */
+}
+.tpro{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: yellow; */
+}
+.tpro span{
+    font-size: 12px;
+}
+.mainx{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+.tpro div{
+    width: 50%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+@media screen and (width < 900px) {
+    .spacexx{
+        display: none;
+    }
+    .productmanage{
+        max-width: 100vw;
+        height: 50px;
+        justify-content: space-evenly;
+        margin-bottom: 20px;
+        /* gap: 30px; */
+        /* background-color: yellow; */
+    }
+    .productmanage h3{
+        font-size: 15px;
+        width: 50px;
+    }
+    .cate{
+        width: 30%;
+    }
+    .tpro span{
+        font-size: 10px;
+    }
+    .mainx{
+        display: flex;
+    }
+    
+}
+
+@media screen and (width < 400px) {
+    .productmanage{
+        height: 80px;
+    }
+    .cate{
+        width: 50%;
+    }
+    .titlexc{
+        width: 150px;
+    }
+    .headersxc{
+        height: 100px;
+    }
+    .realxc{
+        height: 100px;
+    }
+}
