@@ -18,11 +18,12 @@ const Header=()=>{
         <main>
             <div className="headwrap" id='hero'>
                 {
-                    show?<div className="dropmenu">
-                    <Link to='hero' spy={true} smooth={true} offset={50} duration={500}>HOME</Link>
-                    <Link to='why' spy={true} smooth={true} offset={50} duration={500}>FEATURES</Link>
-                    <Link to='aboutus' spy={true} smooth={true} offset={50} duration={500}>ABOUT US</Link>
-                    <Link to='question' spy={true} smooth={true} offset={50} duration={500}>CONTACT US</Link>
+                    show?
+                <div id="dropmenu">
+                    <Link to='hero' id='hyk' spy={true} smooth={true} offset={50} duration={500} style={{color: "white"}}><p>HOME</p></Link>
+                    <Link to='why' id='hyk'  spy={true} smooth={true} offset={50} duration={500} style={{color: "white"}}>FEATURES</Link>
+                    <Link to='aboutus' id='hyk'  spy={true} smooth={true} offset={50} duration={500} style={{color: "white"}}>ABOUT US</Link>
+                    <Link to='question' id='hyk'  spy={true} smooth={true} offset={50} duration={500} style={{color: "white"}}>CONTACT US</Link>
                 </div>:null
                 }
                 <div className='hero'>
