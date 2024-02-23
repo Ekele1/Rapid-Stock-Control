@@ -46,7 +46,7 @@ const handleNavigate =()=>{
             <div className='forInput'>
               <label>Password</label>
               <aside className="pass">
-                <input type={showpassword? "text" : "password"} id="password"/>
+                <input type={showpassword? "text" : "password"} id="passwordwr"/>
                 {
                   showpassword?<IoMdEye onClick={()=>setShowpassword(!showpassword)}/>:<IoIosEyeOff onClick={()=>setShowpassword(!showpassword)}/>
                 }
@@ -58,7 +58,7 @@ const handleNavigate =()=>{
             <div className='forInput'>
               <label>Confirm Password</label>
               <aside className="pass">
-                <input type={showpassword2? "text" : "password"} id="password"/>
+                <input type={showpassword2? "text" : "password"} id="passwordwr"/>
                 {
                   showpassword2?<IoMdEye onClick={()=>setShowpassword2(!showpassword2)}/>:<IoIosEyeOff onClick={()=>setShowpassword2(!showpassword2)}/>
                 }
