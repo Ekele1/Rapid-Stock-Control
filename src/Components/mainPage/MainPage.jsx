@@ -1,4 +1,4 @@
-import './mainPage.css'
+import './main.css'
 import { MdOutlineDashboard } from "react-icons/md";
 import { BiSolidCoinStack } from "react-icons/bi";
 import { IoMdCart } from "react-icons/io";
