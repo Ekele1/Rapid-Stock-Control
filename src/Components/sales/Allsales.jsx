@@ -1,4 +1,4 @@
-import './Sales.css'
+import './Saless.css'
 import { TbCurrencyNaira } from "react-icons/tb";
 import { FaRegSquareCheck } from "react-icons/fa6";
 import { IoAddCircleOutline,IoReceiptOutline } from "react-icons/io5";

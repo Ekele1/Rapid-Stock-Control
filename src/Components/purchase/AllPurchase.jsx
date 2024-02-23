@@ -1,4 +1,4 @@
-import './Purchase.css'
+import './Purchases.css'
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { useEffect, useState } from 'react';

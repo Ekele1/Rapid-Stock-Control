@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './orderManagment.css'
+import './orderManagments.css'
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";

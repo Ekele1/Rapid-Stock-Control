@@ -1,4 +1,4 @@
-import './productmanagment.css'
+import './productmanagmentss.css'
 import { MdDeleteForever } from "react-icons/md";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { FaEdit } from "react-icons/fa";
