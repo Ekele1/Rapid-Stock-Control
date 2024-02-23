@@ -2,17 +2,17 @@ import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import './App.css'
 import HomePage from "./LandingPage";
-import Dashboard from "./Components/dashBoard/dashBoard";
-import Sales from "./Components/sales/sales";
-import Productmanagment from "./Components/productManagment/ProductManagment";
-import OrderManagment from "./Components/ordermanagment/OrderManagment";
+// import Dashboard from "./Components/dashBoard/dashBoard";
+// import Sales from "./Components/sales/sales";
+// import Productmanagment from "./Components/productManagment/ProductManagment";
+// import OrderManagment from "./Components/ordermanagment/OrderManagment";
 import MainPage from "./Components/mainPage/MainPage";
-import Header from "./Components/header/Header";
-import QrCodeScanner from "./Components/qrcode/QrCode";
-import Notification from "./Components/notification/notification";
-import Purchase from "./Components/purchase/Purchase";
-import Settings from "./Components/settings/Settings";
-import AboutUs from "./Components/homePage/aboutus";
+// import Header from "./Components/header/Header";
+// import QrCodeScanner from "./Components/qrcode/QrCode";
+// import Notification from "./Components/notification/notification";
+// import Purchase from "./Components/purchase/Purchase";
+// import Settings from "./Components/settings/Settings";
+// import AboutUs from "./Components/homePage/aboutus";
 import Login from "./Components/onboarding/Login";
 import SignUp from "./Components/onboarding/Signup";
 

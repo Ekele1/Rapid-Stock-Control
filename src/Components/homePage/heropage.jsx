@@ -3,12 +3,16 @@ import React from 'react';
 import { Link } from 'react-scroll';
 import './heropage.css'
 import { IoMenu } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
 // import AboutUs from './aboutus';
 
 const Header=()=>{
 
     const [show, setShow] = useState(false)
-
+    const navigate = useNavigate()
+    const handleGetStart =()=>{
+        navigate('/signup')
+    }
 
     return(
         <main>
@@ -42,7 +46,7 @@ const Header=()=>{
                                 <span>The most complete and easiest stock management platform ever.</span>
                                 <span>Take a trial and enjoy the features.</span>
                                 <div>
-                                    <button className='getstart'>Get Started</button>
+                                    <button className='getstart' onClick={handleGetStart}>Get Started</button>
                                 </div>
                             </div>
                             <div className="bigpicture">

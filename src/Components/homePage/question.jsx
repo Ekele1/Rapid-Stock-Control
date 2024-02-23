@@ -1,7 +1,12 @@
+import { useNavigate } from 'react-router-dom'
 import './question.css'
 
 const Question=()=>{
     const year = new Date().getFullYear()
+    const navigate = useNavigate()
+    const handleGetStart=()=>{
+        navigate('/signup')
+    }
     return(
         <div className="questionwrapper" id='question'>
             <div className="question-body"></div>
@@ -32,7 +37,7 @@ const Question=()=>{
                     </div>
                     <div className="ready">
                         <h3>Ready to get started?</h3>
-                        <button className='getstarted'>Get Started</button>
+                        <button className='getstarted' onClick={handleGetStart}>Get Started</button>
                     </div>
                 </div>
                 <div className="copyright">

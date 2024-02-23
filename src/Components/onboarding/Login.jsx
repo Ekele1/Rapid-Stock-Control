@@ -26,7 +26,7 @@ const Login = () =>{
 
             <div className='forInputLog2'>
               <label>Password</label>
-              <input type='text'/>
+              <input type='password'/>
               <span className='cLog'>Forgot Password?</span>
             </div>
 
