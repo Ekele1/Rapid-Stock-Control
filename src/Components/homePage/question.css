@@ -214,3 +214,11 @@
         width: 70%;
     }
 }
+@media screen and (width < 350px) {
+    .getstarted{
+        width: 100%;
+        padding: 2%;
+        font-size: 12px;
+        /* background-color: yellow; */
+    }
+}
