@@ -45,4 +45,4 @@ const QrCodeScanner =()=>{
     )
 }
 
-export default QrCodeScanner
+// export default QrCodeScanner

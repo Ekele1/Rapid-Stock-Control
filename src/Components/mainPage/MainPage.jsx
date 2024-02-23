@@ -10,11 +10,11 @@ import { BiLogOut } from "react-icons/bi";
 import { useState } from 'react';
 import Header from '../header/Header'
 import Dashboard from '../dashBoard/dashBoard';
-import OrderManagment from '../ordermanagment/OrderManagment';
-import Sales from '../sales/sales';
-import Productmanagment from '../productManagment/ProductManagment';
-import Notification from '../notification/notification';
-import Purchase from '../purchase/Purchase';
+import OrderManagment from '../ordermanagment/AllOrderManagment';
+import Sales from '../sales/Allsales';
+import Productmanagment from '../productManagment/AllProductManagment';
+import Notification from '../notification/AllNotification';
+import Purchase from '../purchase/AllPurchase';
 
 
 const MainPage=()=>{
