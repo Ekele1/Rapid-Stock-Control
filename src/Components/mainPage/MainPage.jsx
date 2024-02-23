@@ -1,4 +1,4 @@
-import './mainpage.css'
+import './mainPage.css'
 import { MdOutlineDashboard } from "react-icons/md";
 import { BiSolidCoinStack } from "react-icons/bi";
 import { IoMdCart } from "react-icons/io";
@@ -17,7 +17,7 @@ import Notification from '../notification/notification';
 import Purchase from '../purchase/Purchase';
 
 
-const MainPage =()=>{
+const MainPage=()=>{
 
     const [change, setChange]= useState({name: "", state: false,})
 
@@ -147,5 +147,4 @@ const MainPage =()=>{
         </div>
     )
 }
-
 export default MainPage

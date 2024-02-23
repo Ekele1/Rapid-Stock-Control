@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './ordermanagment.css'
+import './orderManagment.css'
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
@@ -198,7 +198,7 @@ const OrderManagment = ()=>{
             </div>
             <div className="contentwrap">
                 {
-                    alltheorder.map((e,id)=>(
+                    alltheorder?.map((e,id)=>(
                         <div className="content" key={id}>
                     <div className="div9">
                         <p>{e.customerName}</p>

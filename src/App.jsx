@@ -6,6 +6,7 @@ import HomePage from "./LandingPage";
 // import Sales from "./Components/sales/sales";
 // import Productmanagment from "./Components/productManagment/ProductManagment";
 // import OrderManagment from "./Components/ordermanagment/OrderManagment";
+// import MainPage from "./Components/mainpage/MainPage";
 import MainPage from "./Components/mainPage/MainPage";
 // import Header from "./Components/header/Header";
 // import QrCodeScanner from "./Components/qrcode/QrCode";
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
     path: '/signup',
     element: <SignUp />
   },
+  {
+    path: "main",
+    element: <MainPage />
+  },
   // {
   //   path: "dashboard",
   //   element: <Dashboard />
@@ -44,10 +49,7 @@ const router = createBrowserRouter([
   //   path: "order",
   //   element: <OrderManagment />
   // },
-  {
-    path: "main",
-    element: <MainPage />
-  },
+
   // {
   //   path: "head",
   //   element: <Header />
