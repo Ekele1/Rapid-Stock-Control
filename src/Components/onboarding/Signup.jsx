@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './signUp.css'
+import './signup.css'
 // import {Link} from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 import { IoMdEye, IoIosEyeOff } from "react-icons/io";
