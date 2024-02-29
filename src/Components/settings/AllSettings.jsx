@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './settingss.css'
+import './SettingssAll.css'
 import { ImCancelCircle } from "react-icons/im";
 
 
