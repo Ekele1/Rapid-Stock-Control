@@ -3,6 +3,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import { ImCancelCircle } from "react-icons/im";
+import axios from 'axios';
 
 const Purchase=()=>{
 
@@ -21,14 +22,14 @@ const Purchase=()=>{
 
     const purchaseData = {
         productName: productName,
-        suplierName: suplierName,
-        suplierNumber: suplierNumber,
-        quantityOrderd: quantityOrderd,
+        supplierName: suplierName,
+        supplierPhoneNumber: suplierNumber,
+        quantityOrder: quantityOrderd,
         quantityReceived: quantityReceived,
-        dateOrdered: dateOrdered,
-        dateReceived: dateReceived,
+        dateOrder: dateOrdered,
+        expectedDate: dateReceived,
         unitPrice: unitPrice,
-        totalAmount: totalAmount,
+        // totalAmount: totalAmount,
     }
 
     const handleSave=(e)=>{
@@ -42,36 +43,67 @@ const Purchase=()=>{
             setError({isError: true, errorType: "supliername", errorMessage: "you cant leave this field empty"})
         }else if(!quantityOrderd){
             setError({isError: true, errorType: "quantityordered", errorMessage: "you cant leave this field empty"})
-        }else if(!quantityReceived){
-            setError({isError: true, errorType: "quantityreceived", errorMessage: "you cant leave this field empty"})
-        }else if(!dateOrdered){
+        }else if(typeof quantityOrderd === "string"){
+            const number = parseInt(quantityOrderd, 10)
+            setQuantityOrdered(number)
+        }
+        else if(!dateOrdered){
             setError({isError: true, errorType: "dateordered", errorMessage: "you cant leave this field empty"})
-        }else if(!dateReceived){
-            setError({isError: true, errorType: "datereceived", errorMessage: "you cant leave this field empty"})
         }else if(!unitPrice){
             setError({isError: true, errorType: "unitprice", errorMessage: "you cant leave this field empty"})
-        }else if(!totalAmount){
-            setError({isError: true, errorType: "totalamount", errorMessage: "you cant leave this field empty"})
+        }else if(typeof unitPrice === "srting"){
+            const number = parseInt(unitPrice, 10)
+            setUnitPrice(number)
+            console.log("unitprice",typeof unitPrice)
         }else{
+            const token = localStorage.getItem("userToken")
+            const userId = JSON.parse(localStorage.getItem("userInformation"))
+            const id = userId.id
+            const url = `https://rapid-stock-controlosqb.onrender.com/purchases/addpurchase/${id}`
+            const headers = {
+                Authorization:`Bearer ${token}`
+            }
+            const dataObject = {
+                productName: productName,
+                supplierName: suplierName,
+                supplierPhoneNumber: suplierNumber,
+                quantityOrder: quantityOrderd,
+                quantityReceived: quantityReceived,
+                dateOrder: dateOrdered,
+                expectedDate: dateReceived,
+                unitPrice: unitPrice,
+                // totalAmount: totalAmount,
+            }
+
+            axios.post(url,dataObject,{headers})
+            .then((response)=>{
+                console.log(response)
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
             const olddata = JSON.parse(localStorage.getItem("purchase")) || []
             const newdata = [...olddata, purchaseData]
             localStorage.setItem("purchase",JSON.stringify(newdata))
-            setShow(false)
+            // setShow(false)
         }
     }
+    
+    // console.log(typeof unitPrice)
 
-    useEffect(()=>{
-        const purchase = JSON.parse(localStorage.getItem("purchase"))
-        setAllpurchase(purchase)
-    },[allpurchase])
+    // useEffect(()=>{
+    //     const purchase = JSON.parse(localStorage.getItem("purchase"))
+    //     setAllpurchase(purchase)
+    // },[allpurchase])
 
     return(
         <div className="purchasewrapp">
             <div className="purchasespace"></div>
             <div className="purchasewrapperdiv">
             {
-                show?<div className="purchaseadd">
-                <div className="close">
+                show?
+                <div className="purchaseadd">
+                <div className="close" id='closexx'>
                     <ImCancelCircle onClick={()=>setShow(false)} className='cancel'/>
                 </div>
                 <div className="purchaseinputwrap">
@@ -194,9 +226,10 @@ const Purchase=()=>{
                         
                     </div>
                 </div>
+                <main id='mainwrapporgy'>
                 {
                     allpurchase?.map((e, id)=>(
-                    <div className="purchasemap" key={id}>
+                <div className="purchasemap" key={id}>
                     <div><p>{e.productName}</p></div>
                     <div><p>{e.suplierNumber}</p></div>
                     <div><p>{e.suplierName}</p></div>
@@ -213,6 +246,25 @@ const Purchase=()=>{
                 </div>
                     ))
                 }
+               
+               
+                <div className="purchasemap">
+                    <div><p></p></div>
+                    <div><p></p></div>
+                    <div><p></p></div>
+                    <div><p></p></div>
+                    <div><p></p></div>
+                    <div><p></p></div>
+                    <div><p></p></div>
+                    <div><p></p></div>
+                    <div><p></p></div>
+                    <div id='others'>
+                        <MdDeleteForever className='delete2'/>
+                        <FaEdit className='edit'/>
+                    </div>
+                </div>
+                
+                </main>
             </main>
             </div>
         </div>

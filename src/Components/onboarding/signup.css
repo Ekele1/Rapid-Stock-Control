@@ -1,6 +1,7 @@
 .SignUpContain{
     width: 100%;
     height: 100vh;
+    /* padding: 30px; */
     /* background-color: aqua; */
     font-family: "poppins";
     display: flex;
@@ -14,36 +15,42 @@
     background: linear-gradient(blue,purple);
   } */
   
-  .right{
-    width: 30%;
-    height: 80%;
-    background-color:white;
-    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  .rightdivsign{
+    width: 40%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    /* background-color:green; */
     display: flex;
     justify-content: center;
     border-radius: 5px;
-    padding-top: 2%;
-    /* gap: 10px; */
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     /* border: 1px solid #8C8C8C ; */
   }
   .containForInput2{
-    width: 100%;
+    width: 80%;
     height: 100%;
-    /* margin: 15px; */
     gap: 10px;
     /* background-color: aqua; */
    display: flex;
    flex-direction: column;
-   align-items: center; 
+   align-items: center;
+   justify-content: space-evenly;
+  }
+  .errorx{
+    height: 2%;
+    font-size: 10px;
+    color: blue;
   }
   .pass{
-    width: 91%;
-    height: 25px;
+    width: 100%;
+    height: 90%;
     display: flex;
     align-items: center;
-    border: 1px solid #DCCCFC;
+    border: 1px solid black;
     justify-content: space-between;
     border-radius: 3px;
     /* background-color: yellow; */
@@ -56,95 +63,29 @@
   }
   
   .forInput{
-    width: 82%;
-    height: 65px ;
+    width: 70%;
+    height: 16%;
     /* background-color: purple; */
     display: flex;
     gap: 3px;
     flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  #reduce{
+    height: 12%;
   }
   .forInput input{
-    width: 92%;
-    height: 25px;
-    border: 1px solid #DCCCFC;
+    width: 100%;
+    height: 80%;
+    border: 1px solid black;
     border-radius: 3px;
     outline: none;
     padding-left: 1%;
+    /* background-color: yellow; */
   }
-  
-  .forInput2{
-    width: 82%;
-    height: 65px;
-    /* background-color: blue; */
-    display: flex;
-    gap: 3px;
-    flex-direction: column;
-  }
-  .forInput2 input{
-    width: 92%;
-    height: 25px;
-    border: 1px solid #DCCCFC;
-    border-radius: 3px;
-    outline: none;
-    padding-left: 1%;
-  }
-
- 
-  .forInput3{
-    width: 82%;
-    height: 65px;
-    /* background-color: blue; */
-    display: flex;
-    gap: 3px;
-    flex-direction: column;
-  }
-  .forInput3 input{
-    width: 92%;
-    height: 25px;
-    border: 1px solid #DCCCFC;
-    border-radius: 3px;
-    outline: none;
-    padding-left: 1%;
-  }
-
-   
-  .forInput4{
-    width: 82%;
-    height: 65px;
-    /* background-color: blue; */
-    display: flex;
-    gap: 3px;
-    flex-direction: column;
-  }
-  .forInput4 input{
-    width: 92%;
-    height: 25px;
-    border: 1px solid #DCCCFC;
-    border-radius: 3px;
-    outline: none;
-    padding-left: 1%;
-  }
-
-   
-  .forInput5{
-    width: 82%;
-    height: 65px;
-    /* background-color: blue; */
-    display: flex;
-    gap: 3px;
-    flex-direction: column;
-  }
-  .forInput5 input{
-    width: 92%;
-    height: 25px;
-    border: 1px solid #DCCCFC;
-    border-radius: 3px;
-    outline: none;
-    padding-left: 1%;
-  }
-
-  label{
-    font-size: 11px;
+  .forInput p{
+    font-size: 15px;
   }
  .Tx{
   color: blue;
@@ -152,7 +93,7 @@
  }
   
   .forButton{
-    width: 82%;
+    width: 70%;
     height: 65px;
     display: flex;
     /* background-color: brown; */
@@ -163,22 +104,28 @@
     flex-direction: column;
   }
   .forButton button{
-    width: 92%;
-    height: 25px;
+    width: 100%;
+    height: 80%;
     border: none;
     border-radius: 3px;
     background-color: blue;
     color: white;
     cursor: pointer;
   }
+  .forButton button:hover{
+    background-color: rgb(58, 58, 247);
+  }
+  .forButton button:active{
+    background-color:  blue;
+  }
   .words{
-    width: 82%;
-    height: 65px;
+    width: 100%;
+    height: 5%;
     /* background-color: green; */
     display: flex;
-    gap: 3px;
-    flex-direction: column;
-    font-size: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
   }
 
   @media screen and (width < 1500px) {
@@ -186,8 +133,19 @@
         width: 50%;
         height: 80%;
     }
+    .rightdivsign{
+      /* background-color: blue; */
+      width: 50%;
+    }
+    .containForInput2{
+      width: 90%;
+      /* background-color: green; */
+    }
+    /* .words{
+      background-color: purple;
+    } */
     .forInput{
-        height: 12%;
+        height: 20%;
         /* background-color: yellow; */
     }
     .forInput input{
@@ -212,7 +170,8 @@
       width: 100%;
     }
     .right{
-      width: 60%;
+      width: 75%;
+      /* background-color: yellow; */
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       
     }
@@ -224,18 +183,22 @@
       align-items: center;
     
     }
+    .containForInput2{
+      /* background-color: pink; */
+      gap: 0px;
+    }
     .words h3{
         font-size: 10px;
     }
     .forInput{
-        height: 10%;
+        height: 15%;
         /* background-color: green; */
     }
     .forInput label{
         font-size: 15px;
     }
     .forInput input{
-        height: 50%;
+        height: 55%;
     }
     .forButton button{
         height: 70px;
@@ -244,19 +207,69 @@
         font-size: 14px;
     }
   }
-  @media screen and (width < 650px){
+  @media screen and (width < 850px){
+    .rightdivsign{
+      width: 80%;
+    }
     .right{
         width: 80%;
         /* box-shadow: ; */
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     }
     .forInput label{
-        font-size: 10px;
+        font-size: 15px;
     }
     .forButton button{
       height: 30px;
     }
     .forButton h6{
         font-size: 10px;
+    }
+  }
+  @media screen and (width < 550px) {
+    .pass{
+      height: 45px;
+    }
+    .forInput{
+      width: 100%;
+    }
+    .forButton {
+      width: 100%;
+    }
+    .forButton button{
+      height: 80%;
+    }
+  }
+  @media screen and (width < 450px) {
+    .SignUpContain{
+      background-color: #efecff;
+    }
+    .words h3{
+      font-size: 20px;
+    }
+    .containForInput2{
+      width: 100%;
+      height: 80%;
+      padding: 0px;
+      gap: 2px;
+      /* background-color: yellow; */
+    }
+    .rightdivsign{
+      padding: 0px;
+      box-shadow: none;
+    }
+    .pass{
+      height: 55%;
+      background-color: white;
+    }
+    .forButton button{
+      height: 70%;
+      font-size: 20px;
+    }
+    .forButton h6{
+      font-size: 15px;
+    }
+    .forButton span{
+      font-size: 20px;
     }
   }

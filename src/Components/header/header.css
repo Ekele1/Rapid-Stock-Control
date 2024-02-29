@@ -18,11 +18,18 @@
 }
 .menudrop{
     width: 25%;
-    height: 500px;
+    height: 300px;
     background-color: black;
+    color: white;
     position: absolute;
     position: fixed;
-    left: 75%;
+    left: 74%;
+    font-size: 17px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
     border-radius: 5px;
     top: 5%;
 }
@@ -100,5 +107,52 @@
     }
     .loggo{
         width: 30%;
+    }
+}
+
+@media screen and (width < 550px) {
+    .loggoinf{
+        width: 20%;
+        /* height: 20%; */
+        /* background-color: red; */
+    }
+    .loggowrite{
+        width: 60%;
+        height: 100%;
+        /* align-items: center; */
+        gap: 0%;
+        /* background-color: yellow; */
+    }
+    .loggowrite h1{
+        font-size: 15px;
+        height: 30%;
+        /* background-color: blue; */
+    }
+    .loggowrite p{
+        font-size: 12px;
+        /* background-color: yellow; */
+    }
+    .loggo{
+        width: 40%;
+        /* background-color: aqua; */
+    }
+}
+@media screen and (width < 370px) {
+    .loggo{
+        width: 40%;
+    }
+    .loggowrite h1{
+        font-size: 10px;
+        height: 20%;
+        /* background-color: yellow; */
+    }
+    .loggowrite p{
+        font-size: 10px;
+        /* background-color: red; */
+    }
+}
+@media screen and (width < 300px) {
+    .loggo{
+        width: 45%;
     }
 }

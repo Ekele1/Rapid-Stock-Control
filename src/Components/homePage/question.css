@@ -162,6 +162,10 @@
 }
 
 @media screen and (width < 650px) {
+    /* .questionwrapper{
+        background-size:cover;
+        background-repeat: no-repeat;
+    } */
     .question-body2{
         height: 60%;
         width: 90%;

@@ -2,36 +2,123 @@ import './Saless.css'
 import { TbCurrencyNaira } from "react-icons/tb";
 import { FaRegSquareCheck } from "react-icons/fa6";
 import { IoAddCircleOutline,IoReceiptOutline } from "react-icons/io5";
+import { ImCancelCircle } from "react-icons/im";
 // import { FaCheckSquare } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { RxDropdownMenu } from "react-icons/rx";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Sales=()=>{
-    const [color, setColor]= useState("")
     const [item, setItem]= useState([])
+    const [show, setShow] = useState(false)
     const [itemay, setItemay]= useState([])
-    // const [newArray, SetNewArray] = useState(false)
+
+    const [itemName, setItemName] = useState("")
+    const [itemDescription, setItemDescription] = useState("")
+    const [brand, setBrand] = useState("")
+    const [price, setPrice] = useState("")
+    const [quantity, setQuantity] = useState("")
+    const [Amount, setAmount] = useState("")
+    const [tax, setTax] = useState("")
+    const [total, setTotal] = useState("")
+    
+    const products ={
+        itemName,
+        itemDescription,
+        brand,
+        price,
+        quantity,
+        Amount,
+        tax,
+        total,
+    }
+
+    const handleAddMore=()=>{
+            const olddata = JSON.parse(localStorage.getItem("presentSalesItem")) || []
+            const newdata = [...olddata, products]
+            localStorage.setItem("presentSalesItem",JSON.stringify(newdata))
+            setItemName("")
+            setItemDescription("")
+            setPrice("")
+            setQuantity("")
+            setAmount("")
+            setTax("")
+            setTotal("")
+    }
+
+    const mapItems = JSON.parse(localStorage.getItem("presentSalesItem"))
+        // console.log("mapitems",mapItems)
+    useEffect(()=>{
+        setItemay(mapItems)
+    },[])
+
+    // console.log("itemmay",itemay)
 
     const handleAddItem=()=>{
-        // SetNewArray(true)
         const newItem = [...item, []]
         setItem(newItem)
-    }
-    const handleChange=(unchangeValue,i)=>{
-        const inputData = [...item ]
-        inputData [i]= unchangeValue.target.value
-        setItem(inputData)
-        console.log(inputData)
-    }
-    const handleDelete=()=>{
-
     }
     return(
         <div className="saleswrapper">
             <div className="saleswrapperdiv">
+                
+                {
+                    show?
+                    <div className="salesinputshow">
+                <div className="salesinputcancel"><ImCancelCircle onClick={()=>setShow(false)} className='cancel'/></div>
+                <div className="salesinputholdwrapper">
+                <div className="salesinputcollection">
+                    <div className="salesinputhold">
+                        <div>
+                            <p>Item Name</p>
+                            <input type="text" value={itemName} onChange={(e)=>setItemName(e.target.value)}/>
+                        </div>
+                        <div>
+                            <p>Item Description</p>
+                            <input type="text" value={itemDescription} onChange={(e)=>setItemDescription(e.target.value)}/>
+                        </div>
+                        <div>
+                            <p>Brand</p>
+                            <input type="text" value={brand} onChange={(e)=>setBrand(e.target.value)}/>
+                        </div>
+                    </div>
+                    <div className="salesinputhold">
+                        <div>
+                            <p>Price</p>
+                            <input type="text" value={price} onChange={(e)=>setPrice(e.target.value)}/>
+                        </div>
+                        <div>
+                            <p>Quantity</p>
+                            <input type="text" value={quantity} onChange={(e)=>setQuantity(e.target.value)}/>
+                        </div>
+                        <div>
+                            <p>Amount</p>
+                            <input type="text" value={Amount} onChange={(e)=>setAmount(e.target.value)}/>
+                        </div>
+                    </div>
+                    <div className="salesinputhold">
+                        <div id='voidpatnes'>
+                            <p>Tax</p>
+                            <input type="text" value={tax} onChange={(e)=>setTax(e.target.value)}/>
+                        </div>
+                        <div id='voidpatnes'>
+                            <p>Total</p>
+                            <input type="text" value={total} onChange={(e)=>setTotal(e.target.value)}/>
+                        </div>
+                        <div id='void'>
+                        </div>
+                    </div>
+                    <div className="selesbuttondiv">
+                        {/* <button className='addmore' onClick={handleAddMore}>Add More</button> */}
+                        <button className='addmore'>Done</button>
+                    </div>
+                </div>
+                </div>
+            </div>:null
+                }
+            
                 <div className="sales">
-                    <button className='addbutton' onClick={handleAddItem}>ADD ITEM</button>
+                    <button className='addbutton' onClick={()=>setShow(true)}>ADD ITEM</button>
                     <div className="person">
                         <h5>Sales Person</h5>
                         <div className="namex">
@@ -47,39 +134,35 @@ const Sales=()=>{
                             <p>10/2/2024</p>
                         </div>
                     </div>
-                    {/* <div className="person" id='got'>
-                        <h5>Total Sales</h5>
-                        <div className="namex">
-                            <TbCurrencyNaira className='naira'/><p>188000</p>
-                        </div>
-                    </div> */}
                     <div className="divup"><RxDropdownMenu /></div>
                 </div>
                 <main className='mainxp'>
                 <div className="title">
                     <div className="headers">
-                        <p>ITEM NAME</p>
+                        <p>Item Name</p>
                     </div>
                     <div className="headers">
-                        <p>ITEM DESC</p>
+                        <p>Item Description</p>
                     </div>
                     <div className="headers">
-                        <p>PRICE</p>
+                        <p>Brand</p>
                     </div>
                     <div className="headers">
-                        <p>QUANTITY</p>
+                        <p>Price</p>
                     </div>
                     <div className="headers">
-                        <p>AMOUNT</p>
+                        <p>Quantity</p>
                     </div>
                     <div className="headers">
-                        <p>TAX</p>
+                        <p>Amount</p>
                     </div>
                     <div className="headers">
-                        <p>TOTAL</p>
+                        <p>Tax</p>
                     </div>
                     <div className="headers">
-                        <p>ACTIONS</p>
+                        <p>Total</p>
+                    </div>
+                    <div className="headers">
                     </div>
                 </div>
             
@@ -87,42 +170,40 @@ const Sales=()=>{
                     {
                         
                         item.map((e,id)=>(
-                            <div className='adhd' key={id}>
-                        <div className="itema">
+                        <div className="itema"  key={id}>
                         
                         <div className="real">
-                            <input type="text" />
+                            
                         </div>
                         <div className="real">
-                            <input type="text" />
+                            
                         </div>
                         <div className="real">
-                            <input type="number" />
+                            
                         </div>
                         <div className="real">
-                            <input type="number" />
+                            
                         </div>
                         <div className="real">
-                            <input type="number" />
+                            
                         </div>
                         <div className="real">
-                            <input type="number" />
+                            
                         </div>
                         <div className="real">
-                            <input type="number" />
+                            
+                        </div>
+                        <div className="real">
+                            
                         </div>
                         <div className="real real2">
                             <div><MdDeleteForever className='delete'/></div>
                             <div><IoAddCircleOutline className='check' onClick={handleAddItem}/></div>
                         </div>
-                    </div>
-                    </div>
+                        </div>
                         ))
                         
                     }
-                    <div className="confirm">
-                        <div><FaRegSquareCheck className='check2'/></div>
-                    </div>
                 </div>
                 </main>
             </div>

@@ -177,3 +177,83 @@
 .edit{
     font-size: 17px;
 }
+@media screen and (width < 900px) {
+    .mainp{
+        display: flex;
+        /* min-width: 200px; */
+        overflow-x: scroll;
+        /* background-color: red; */
+    }
+    .purchasehead{
+        width: 20%;
+        flex-direction: column;
+        height: 80vh;
+    }
+    #mainwrapporgy{
+        min-width: 75%;
+        height: 80vh;
+        display: flex;
+        overflow-y: scroll;
+        /* background-color: red; */
+    }
+    .purchasehead div{
+        width: 100%;
+        height: 10%;
+    }
+    .purchasemap{
+        flex-direction: column;
+        /* min-width: 120px; */
+        width: 25%;
+        height: 80vh;
+        /* background-color: wheat; */
+    }
+    .purchasemap div{
+        width: 100%;
+    }
+    .purchasedot button{
+        width: 30%;
+        height: 60%;
+        /* background-color: yellow; */
+    }
+    .purchaseadd{
+        width: 90%;
+        /* background-color: yellow; */
+        height: max-content;
+    }
+    #closexx{
+        height: 50px;
+        /* width: 100%; */
+        /* background-color: green; */
+    }
+    .purchaseinputwrap{
+        height: max-content;
+        width: 70%;
+        /* justify-content: flex-start; */
+        gap: 0px;
+        /* background-color: red; */
+        padding-bottom: 20px;
+        /* width: 10%; */
+    }
+    .purchaseinput{
+        height: 300px;
+        width: 100%;
+        /* background-color: gold; */
+        flex-direction: column;
+    }
+    .purchaseinput div{
+        width: 80%;
+        height: 25%;
+        /* background-color: palevioletred; */
+    }
+    .purchaseinput input{
+        height: 65%;
+    }
+    .purchaseinput p{
+        font-size: 20px;
+    }
+    .savebutton{
+        height: 55px;
+        width: 80%;
+        margin-top: 10px;
+    }
+}

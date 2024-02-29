@@ -21,26 +21,25 @@
     
 }
 .cancelink{
-    width: 100%;
-    height: 50px;
-    color: red;
+    width: 70%;
+    height: 15%;
+    /* color: red; */
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding-right: 10px;
     /* background-color: white; */
 }
-.cancelink h1{
-    cursor: pointer;
-}
+
 .orderinputcont{
     width: 60%;
-    height: 90%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding-top: 20px;
-    padding-right: 20px;
+    /* padding-right: 20px; */
     gap: 20px;
     border-radius: 5px;
     background-color: white;
@@ -55,14 +54,14 @@
     height: 15%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     /* background-color: gold; */
     
 }
 .orderinputwrap div{
     width: 45%;
     height: 90%;
-    padding-left: 2%;
+    /* padding-left: 2%; */
     /* background-color: blue; */
 }
 .orderinputwrap p{
@@ -77,9 +76,16 @@
     border: 1px solid black;
     padding-left: 2%;
 }
+.orderbuttonwrap{
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: green; */
+}
 .enterbutton{
-    width: 97%;
-    height: 50%;
+    width: 100%;
+    height: 60%;
     background-color: blue;
     color: white;
     border: none;
@@ -153,6 +159,11 @@
     height: 100%;
     /* background-color: green; */
     border: 1px solid black;
+}
+.mediawrap{
+    width: 100%;
+    height: 50%;
+    /* background-color: yellow; */
 }
 .orderwrap{
     width: 100%;
@@ -242,4 +253,81 @@
     border: 1px solid black;
     outline: none;
     /* background-color: yellow; */
+}
+
+@media screen and (width < 1300px) {
+    .orderinputcont{
+        width: 80%;
+    }
+}
+
+@media screen and (width < 900px) {
+    .orderwrap{
+        width: 20%;
+        height: 80vh;
+    }
+    .order{
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+    .div8{
+        width: 100%;
+    }
+    .boxes{
+        width: 30%;
+        /* background-color: yellow; */
+    }
+    .Add{
+        width: 90%;
+        height: 80%;
+    }
+    .contentwrap{
+        display: flex;
+        /* background-color: yellow; */
+    }
+    .mediawrap{
+        display: flex;
+    }
+    .content{
+        flex-direction: column;
+        width: 20%;
+        height: 100%;
+        /* background-color: red; */
+    }
+    .div9{
+        width: 100%;
+    }
+    .orderinputcont{
+        width: 90%;
+        height: 90%;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .orderinputwrap{
+        flex-direction: column;
+        height: 20%;
+        /* background-color: yellow; */
+    }
+    .orderinputwrap div{
+        width: 80%;
+        height: 50%;
+    }
+    #buttunsettle{
+        height: 15%;
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .orderinputwrap input{
+        height: 60%;
+    }
+    .enterbutton{
+        width: 80%;
+        height: 50%;
+    }
+    .cancelink{
+        height: 6%;
+        width: 100%;
+        /* background-color: green; */
+    }
 }

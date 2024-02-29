@@ -2,15 +2,23 @@ import { useState } from 'react';
 import './header.css'
 import { IoMenu } from "react-icons/io5";
 import { RxDropdownMenu } from "react-icons/rx";
+import { useNavigate } from 'react-router-dom';
 
 
 const Header =()=>{
     const [show, setShow]=useState(false)
+    const navigate = useNavigate()
 
     return(
         <div className="headerwrap">
             {
-                show?<div className="menudrop"></div>:null
+                show?
+                <div className="menudrop">
+                    <p>HOME</p>
+                    <p>FEATURES</p>
+                    <p>ABOUT US</p>
+                    <p>CONTACT US</p>
+                </div>:null
             }
             <div className="header">
                 <div className="loggo">

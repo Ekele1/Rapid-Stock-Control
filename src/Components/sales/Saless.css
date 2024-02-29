@@ -9,6 +9,7 @@
     width: 100%;
     height: 100%;
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -30,6 +31,7 @@
     color: white;
     border-radius: 5px;
     font-size: 10px;
+    cursor: pointer;
 }
 .person{
     width: 10%;
@@ -42,6 +44,119 @@
 .divup{
     display: none;
 }
+/* .mainxp{
+    position: relative;
+} */
+.salesinputshow{
+    width: 100%;
+    height: 100vh;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    position: absolute;
+    background-color: white;
+}
+.salesinputcancel{
+    width: 100%;
+    height: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* background-color: yellow; */
+}
+.salesinputholdwrapper{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    /* background-color: gray; */
+}
+.salesinputcollection{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    /* background-color: blue; */
+}
+.salesinputhold{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: #fccf05; */
+}
+.salesinputhold div{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: green; */
+}
+.salesinputhold input{
+    width: 100%;
+    height: 50%;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding-left: 1%;
+    outline: none;
+}
+.selesbuttondiv{
+    width: 100%;
+    height: 20%;
+    padding-left: 3%;
+    padding-right: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: yellow; */
+}
+.addmore{
+    width: 40%;
+    height: 40%;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.addmore:hover{
+    background-color: rgb(64, 64, 244);
+}
+.addmore:active{
+    background-color: blue;
+}
+.sellingitemscollection{
+    width: 20%;
+    height: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    /* background-color: pink; */
+}
+.itemnameholdxx{
+    width: 100%;
+    height: 100%;
+    /* background-color: yellow; */
+}
+.itemnameholdxx div{
+    width: 100%;
+    height: 7%;
+    display: flex;
+    padding-left: 5%;
+    align-items: center;
+    gap: 2%;
+    /* background-color: blue; */
+}
+.itemnameholdxx p{
+    font-size: 15px;
+    font-weight: 500;
+}
+
 .per{
     justify-content: center;
 }
@@ -66,7 +181,7 @@
     background-color: #F1E092;
 }
 .headers{
-    width: 12.5%;
+    width: 11.1%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -90,7 +205,7 @@
     background-color: #85B6FF;
 }
 .real{
-    width: 12.5%;
+    width: 11.1%;
     height: 100%;
     /* background-color: green; */
 }
@@ -207,6 +322,9 @@
         font-size: 10px;
         font-weight: 500;
     }
+    .salesinputcollection{
+        width: 100%;
+    }
 }
 
 @media screen and (width < 900px) {
@@ -226,16 +344,11 @@
         border: 1px solid silver;
         background-color: transparent;
     }
-    .mainxp{
-        width: max-content;
-        min-height: 100vh;
+    .adhd{
         display: flex;
     }
-    .title{
-        flex-direction: column;
-        width: 100px;
-        height: max-content;
-        margin-top: 0px;
+    .real{
+        height: 50px;
     }
     .headers{
         width: 100%;
@@ -244,18 +357,6 @@
     .headers p{
         font-size: 10px;
         font-weight: bold;
-    }
-    .items{
-        display: flex;
-    }
-    .adhd{
-        display: flex;
-        width: max-content;
-    }
-    .itema{
-        flex-direction: column;
-        width: 70px;
-        height: max-content;
     }
     .real{
         width: 100%;
@@ -266,13 +367,120 @@
         width: 70px;
         height: max-content;
     }
+    .salesinputcancel{
+        height: 35px;
+        /* background-color: palevioletred; */
+    }
+    .selesbuttondiv{
+        align-items: center;
+        justify-content: center;
+    }
+    .addmore{
+        width: 75%;
+    }
+    .salesinputcollection{
+        /* background-color: red; */
+        box-shadow: none;
+    }
+    #void{
+        display: none;
+    }
+    #voidpatnes{
+        height: 35%;
+    }
+    .salesinputholdwrapper{
+        height: 90%;
+        /* background-color: yellow; */
+        /* height: ; */
+        box-shadow: none;
+    }
+    .salesinputhold{
+        /* height: 80%; */
+        flex-direction: column;
+        height: 40%;
+        /* background-color: green; */
+        align-items: center;
+    }
+    .salesinputhold div{
+        width: 70%;
+        height: 100%;
+    }
+    .salesinputhold input{
+        height: 100%;
+    }
+    .salesinputshow{
+        top: 0%;
+    }
+/* }
+@media screen and (width < 650px) { */
+    .mainxp{
+        display: flex;
+    }
+    .title{
+        flex-direction: column;
+        height: 80vh;
+        width: 20%;
+    }
+    .items{
+        display: flex;
+        /* flex-direction: column; */
+        height: 80vh;
+        width: max-content;
+        /* background-color: yellow; */
+    }
+    .itema{
+        /* display: flex; */
+        flex-direction: column;
+        height: 100%;
+        width: 30%;
+    }
 }
 
-@media screen and (width < 300px) {
+@media screen and (width < 550px) {
     .sales{
         height: 50px;
     }
     .person{
         display: none;
+    }
+    .addbutton{
+        font-size: 12px;
+        width: 30%;
+        height: 70%;
+    }
+    .headers{
+        height: 50px;
+
+    }
+    .headers p{
+        font-size: 10px;
+        font-weight: normal;
+    }
+    .title{
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        /* background-color: yellow; */
+    }
+    .adhd{
+        display: flex;
+    }
+    .delete{
+        font-size: 15px;
+    }
+    .check{
+        font-size: 15px;
+    }
+    .real{
+        height: 50px;
+    }
+    .confirm {
+        width: 50px;
+        height: 100%;
+        font-size: 100px;
+        background-color: green;
+    }
+    .salesinputshow{
+        top: -3%;
     }
 }

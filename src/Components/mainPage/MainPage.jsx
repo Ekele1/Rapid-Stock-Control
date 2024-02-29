@@ -15,9 +15,13 @@ import Sales from '../sales/Allsales';
 import Productmanagment from '../productManagment/AllProductManagment';
 import Notification from '../notification/AllNotification';
 import Purchase from '../purchase/AllPurchase';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const MainPage=()=>{
+    const navigate = useNavigate()
+    const [dropmenu, setDropMenu]=useState(false)
 
     const [change, setChange]= useState({name: "", state: false,})
 
@@ -45,6 +49,29 @@ const MainPage=()=>{
     }
     const handlsettings=()=>{
         setChange({name: "settings", state: true,})
+    }
+
+    
+    // console.log(token)
+    
+    // console.log(token)
+
+    const handleSignOut=()=>{
+        
+        const token = localStorage.getItem("userToken")
+        const headers = {
+            Authorization:`Bearer ${token}`
+        }
+
+        const url = "https://rapid-stock-control-osqb.onrender.com/api/signout"
+
+        axios.post(url,{headers})
+        .then((response)=>{
+            console.log(response)
+            navigate("/")
+        }).catch((error)=>{
+            console.log(error)
+        })
     }
     
     return(
@@ -133,12 +160,28 @@ const MainPage=()=>{
                             <BiLogOut />
                         </div>
                         <div className="log2">
-                            <p>Log out</p>
+                            <p onClick={handleSignOut}>Log out</p>
                         </div>
                     </div>
                 </div>
                 <div className="mainspace"></div>
                 <div className="rightside">
+                    <div className="rightdropmenu">
+                        <img src="./dropdown.png" alt="" onClick={()=>setDropMenu(!dropmenu)}/>
+                    </div>
+                    {
+                        dropmenu?
+                        <div className="rightmenudivitem">
+                        <p onClick={handleDashboard} className={`ay ${change.name === "dashboard"? "ax": null}`}>Dashboard</p>
+                        <p onClick={handleSales} className={`ay ${change.name === "sales"? "ax": null}`}>Sales</p>
+                        <p onClick={handlePurchase} className={`ay ${change.name === "purchase"? "ax": null}`}>Purchases</p>
+                        <p onClick={handleProduct} className={`ay ${change.name === "product"? "ax": null}`}>Product Mgt</p>
+                        <p onClick={handleOrder} className={`ay ${change.name === "order"? "ax": null}`}>Order Mgt</p>
+                        <p onClick={handleNotification} className={`ay ${change.name === "notification"? "ax": null}`}>Notifications</p>
+                        <p onClick={handleReport} className={`ay ${change.name === "report"? "ax": null}`}>Reports</p>
+                        <p onClick={handlsettings} className={`ay ${change.name === "settings"? "ax": null}`}>Settings</p>
+                    </div>:null
+                    }
                     {
                         change.name === "dashboard"? <Dashboard />: change.name === "sales"? <Sales />: change.name === "product"? <Productmanagment />: change.name=== "order"? <OrderManagment />: change.name=== "notification"? <Notification />: change.name === "purchase"? <Purchase />: <Dashboard />
                     }

@@ -1,0 +1,81 @@
+/* .herobodywrapper{
+    width: 100%;
+    height: 200vh;
+    background-color: yellow;
+}
+.heropagewrapper{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: green;
+}
+.contenthold{
+    width: 50%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.featureswrapper{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blue;
+}
+.featurescontenthold{
+    width: 90%;
+    height: 90%;
+    background-color: white;
+}
+.featuresname{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+}
+.cardholder{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card{
+    width: 23%;
+    height: 80%;
+    background-color: aqua;
+}
+.imghold{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: brown;
+}
+.img{
+    width: 60%;
+    height: 60%;
+    background-color: white;
+}
+.name{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: yellow;
+}
+.writings{
+    width: 100%;
+    height: 30%;
+    background-color: bisque;
+} */

@@ -2,20 +2,13 @@ import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import './App.css'
 import HomePage from "./LandingPage";
-// import Dashboard from "./Components/dashBoard/dashBoard";
-// import Sales from "./Components/sales/sales";
-// import Productmanagment from "./Components/productManagment/ProductManagment";
-// import OrderManagment from "./Components/ordermanagment/OrderManagment";
-// import MainPage from "./Components/mainpage/MainPage";
+import VerifyOtp from "./Components/onboarding/OtpVerification";
 import MainPage from "./Components/mainPage/MainPage";
-// import Header from "./Components/header/Header";
-// import QrCodeScanner from "./Components/qrcode/QrCode";
-// import Notification from "./Components/notification/notification";
-// import Purchase from "./Components/purchase/Purchase";
-// import Settings from "./Components/settings/Settings";
-// import AboutUs from "./Components/homePage/aboutus";
-import Login from "./Components/onboarding/Login";
+import Settings from "./Components/settings/AllSettings";
+import PasswordForget from "./Components/onboarding/ForgotYourPassword";
+import Login from "./Components/onboarding/Loginyou";
 import SignUp from "./Components/onboarding/Signup";
+import ResetPassword from "./Components/onboarding/ResetYourPassword";
 
 const router = createBrowserRouter([
   {
@@ -27,53 +20,30 @@ const router = createBrowserRouter([
     element: <Login />
   },
   {
+    path: "forget",
+    element : <PasswordForget />
+  },
+  {
     path: '/signup',
     element: <SignUp />
+  },
+  {
+    path: "verify",
+    element: <VerifyOtp />
+  },
+  {
+    path: "reset",
+    element: <ResetPassword />
   },
   {
     path: "main",
     element: <MainPage />
   },
-  // {
-  //   path: "dashboard",
-  //   element: <Dashboard />
-  // },
-  // {
-  //   path: "sales",
-  //   element: <Sales />
-  // },
-  // {
-  //   path: "productmanage",
-  //   element: <Productmanagment />
-  // },{
-  //   path: "order",
-  //   element: <OrderManagment />
-  // },
 
-  // {
-  //   path: "head",
-  //   element: <Header />
-  // },
-  // {
-  //   path: 'qr',
-  //   element: <QrCodeScanner />
-  // },
-  // {
-  //   path: 'notification',
-  //   element: <Notification />
-  // },
-  // {
-  //   path: "purchase",
-  //   element: <Purchase />
-  // },
-  // {
-  //   path: "set",
-  //   element: <Settings />
-  // },
-  // {
-  //   path: "aboutus",
-  //   element: <AboutUs />
-  // }
+  {
+    path: "set",
+    element: <Settings />
+  },
 ])
 
 function App() {

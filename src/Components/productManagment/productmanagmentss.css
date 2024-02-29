@@ -26,8 +26,14 @@
 .productmanage h3{
     font-size: 15px;
 }
+#productmtitle{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    background-color: #fccf05;
+}
 .hell{
-    width: 11%;
+    width: 10%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -42,9 +48,10 @@
 .spacexx{
     width: 25%;
     height: 100%;
+    /* background-color: red; */
 }
 .eleven{
-    width: 11%;
+    width: 10%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -85,7 +92,7 @@
     /* background-color: yellow; */
 }
 .remove{
-    width: 80%;
+    width: 100%;
     height: 50px;
     display: flex;
     align-items: center;
@@ -100,21 +107,30 @@
     cursor: pointer;
     border-radius: 50%;
 }
+.allproductdetailswrap{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-around;
+    /* background-color: green; */
+}
 .allproductdetails{
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 5%;
-    padding-top: 3%;
+    /* gap: 3%; */
+    /* padding-top: 3%; */
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     
     background-color: white;
-    /* background-color: blue; */
+    /* background-color: yellow; */
 }
+
 #errorm{
     color: red;
     font-size: 10px;
@@ -123,6 +139,7 @@
     width: 100%;
     height: 15%;
     display: flex;
+    /* flex-direction: column; */
     align-items: center;
     justify-content: space-around;
     /* border: 1px solid black; */
@@ -135,16 +152,23 @@
 .svg p{
     color: rgb(22, 22, 58);
 }
+.svgbutt{
+    /* width: 100%; */
+    /* background-color: yellow; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .ttt{
     width: 100%;
-    height: 60%;
+    height: 50%;
     border: 1px solid black;
     border-radius: 3px;
     outline: none;
     padding-left: 2px;
 }
 .adding{
-    width: 90%;
+    width: 100%;
     height: 60%;
     color: white;
     border-radius: 5px;
@@ -158,6 +182,40 @@
 }
 .adding:active{
     background-color: blue;
+}
+.addinginfo{
+    width: 20%;
+    height: 90%;
+     border-radius: 3px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.addinginfotitle{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    padding-left: 2%;
+    padding-right: 2%;
+    align-items: center;
+    color: blue;
+    justify-content: space-between;
+    font-size: 15px;
+    /* background-color: red; */
+}
+.addinginfoitemswrap{
+    width: 100%;
+    height: 10%;
+}
+.addinginfoitems{
+    width: 100%;
+    height: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    /* background-color: red; */
 }
 .kjv{
     width: 10%;
@@ -189,12 +247,13 @@
 .tpro span{
     font-size: 12px;
 }
-.mainx{
+/* .mainx{
     width: 100%;
     height: max-content;
     display: flex;
     flex-direction: column;
-}
+    background-color: red;
+} */
 .tpro div{
     width: 50%;
     height: 40%;
@@ -204,48 +263,147 @@
     border: 1px solid black;
 }
 
-@media screen and (width < 900px) {
+@media screen and (width < 1300px){
+    .productmanagementwrapdiv{
+        width: 100%;
+        /* background-color: yellow; */
+    }
     .spacexx{
         display: none;
     }
     .productmanage{
-        max-width: 100vw;
-        height: 50px;
-        justify-content: space-evenly;
-        margin-bottom: 20px;
-        /* gap: 30px; */
+        justify-content: space-around;
+    }
+    .allproductdetails{
+        width: 90%;
+    }
+    #buttsvg{
+        width: 100%;
+        /* background-color: red; */
+    }
+    .adding{
+        width: 90%;
+    }
+}
+@media screen and (width < 900px) {
+    #xrtmain{
+        display: flex;
         /* background-color: yellow; */
     }
-    .productmanage h3{
+    #productmtitle{
+        flex-direction: column;
+        width: 20%;
+        height: 85vh;
+        /* background-color: gray; */
+    }
+    .hell{
+        width: 100%;
+        height: 10%;
+    }
+    .items{
+        width: 80%;
+        height: 85vh;
+        overflow-x: auto;
+        /* background-color: green; */
+    }
+    .itema{
+        width: 100px;
+        height: 100%;
+        /* background-color: green; */
+    }
+    .eleven{
+        width: 100%;
+    }
+    .hell p{
         font-size: 15px;
-        width: 50px;
+        font-weight: 600;
     }
-    .cate{
-        width: 30%;
+    /* .additems{
+        background-color: yellow;
+    } */
+    .allproductdetailswrap{
+        height: max-content;
+        /* background-color: yellow; */
+        padding-top: 30px;
     }
-    .tpro span{
-        font-size: 10px;
+    .allproductdetails{
+        height: max-content;
+        /* background-color: aqua; */
+        box-shadow: none;
+        padding-top: 20px;
+        /* gap: 10px; */
     }
-    .mainx{
-        display: flex;
+    .svg{
+        height: 200px;
+        flex-direction: column;
+        justify-content: space-between;
+        /* background-color: red; */
+        /* padding-top: 30px; */
     }
-    
-}
-
-@media screen and (width < 400px) {
-    .productmanage{
+    .svg div{
+        width: 60%;
+        height: 50%;
+        /* background-color: green; */
+    }
+    .ttt{
+        height: 60%;
+    }
+    #nondivbutt{
+        height: 130px;
+        /* background-color: #fccf05; */
+    }
+    .adding{
+        width: 60%;
+        height: 90%;
+    }
+    #notneed{
+        display: none;
+        /* background-color: red; */
+    }
+    #changepath{
+        /* background-color: blue; */
         height: 80px;
     }
+    /* #buttsvg{
+        height: 100%;
+        background-color: yellow;
+    } */
+    #changepath div{
+        height: 100%;
+        /* background-color: yellow; */
+    }
+    .kjv{
+        width: 20%;
+        height: 50%;
+    }
+    /* .changeid{
+        height: ;
+    } */
+}
+@media screen and (width < 550px) {
     .cate{
-        width: 50%;
+        display: none;
     }
-    .titlexc{
-        width: 150px;
+    .kjv{
+        width: 25%;
+        height: 35px;
     }
-    .headersxc{
-        height: 100px;
+    #productmtitle{
+        width: 25%;
     }
-    .realxc{
-        height: 100px;
+}
+
+@media screen and (width < 450px) {
+    #productmtitle{
+        width: 30%;
+    }
+    .hell p{
+        font-size: 12px;
+    }
+    .allproductdetails{
+        /* background-color: yellow; */
+        justify-content: center;
+        align-items: center;
+        padding-top: 8%;
     }
 }

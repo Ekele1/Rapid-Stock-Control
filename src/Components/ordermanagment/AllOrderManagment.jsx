@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './orderManagments.css'
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { ImCancelCircle } from "react-icons/im";
 import { IoAddCircleOutline } from "react-icons/io5";
 
 const OrderManagment = ()=>{
@@ -71,9 +72,10 @@ const OrderManagment = ()=>{
     return(
         <div className="ordermanagmentwrap">
             {
-                show?<div className="orderstatus">
+                show?
+                <div className="orderstatus">
                 <div className="cancelink">
-                    <h1>X</h1>
+                    <ImCancelCircle className='cancel' onClick={()=>setShow(false)}/>
                 </div>
                 <div className="orderinputcont">
                     <div className="orderinputwrap">
@@ -150,13 +152,8 @@ const OrderManagment = ()=>{
                             }
                         </div>
                     </div>
-                    <div className="orderinputwrap">
-                        <div>
-                            <button className='enterbutton' onClick={()=>setShow(false)}>CANCEL</button>
-                        </div>
-                        <div>
-                            <button className='enterbutton' onClick={handleEnter}>SAVE</button>
-                        </div>
+                    <div className="orderinputwrap orderbuttonwrap" id='buttunsettle'>
+                        <button className='enterbutton' onClick={handleEnter}>SAVE</button>
                     </div>
                     
                 </div>
@@ -168,17 +165,8 @@ const OrderManagment = ()=>{
                     <button className='Add' onClick={()=>setShow(true)}>Add</button>
                 </div>
                 <div className="boxes"><h4>Order Managment</h4></div>
-                {/* <div className="boxes boxes2">
-                    <div className="div">
-                        <p>Total Products</p>
-                        <aside className="pro2"></aside>
-                    </div>
-                    <div className="div">
-                        <p>Total Category</p>
-                        <aside className="pro2"></aside>
-                    </div>
-                </div> */}
             </div>
+            <div className='mediawrap'>
 
             <div className="orderwrap">
                 <div className='order'>
@@ -199,7 +187,7 @@ const OrderManagment = ()=>{
             <div className="contentwrap">
                 {
                     alltheorder?.map((e,id)=>(
-                        <div className="content" key={id}>
+                <div className="content" key={id}>
                     <div className="div9">
                         <p>{e.customerName}</p>
                     </div>
@@ -231,6 +219,37 @@ const OrderManagment = ()=>{
                 </div>
                     ))
                 }
+                <div className="content" >
+                    <div className="div9">
+                        <p></p>
+                    </div>
+                    <div className="div9">
+                        <p></p>
+                    </div>
+                    <div className="div9">
+                        <p></p>
+                    </div>
+                    <div className="div9">
+                        <p></p>
+                    </div>
+                    <div className="div9">
+                        <p></p>
+                    </div>
+                    <div className="div9">
+                        <p></p>
+                    </div>
+                    <div className="div9">
+                        <p></p>
+                    </div>
+                    <div className="div9">
+                        <p></p>
+                    </div>
+                    <div className="div9 div10">
+                        <MdDeleteForever className='delete2' onClick={()=>handleDelete(id)}/>
+                        <FaEdit className='edit'/>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     )
