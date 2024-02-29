@@ -116,6 +116,9 @@
         /* height: 20%; */
         /* background-color: red; */
     }
+    .menudrop{
+        font-size: 13px;
+    }
     .loggowrite{
         width: 60%;
         height: 100%;
