@@ -31,12 +31,12 @@ const Sales=()=>{
     const [selectedData, setSelectedData]=useState()
     const [error, setError]= useState({isError: true, errorType: "", mssg: ""})
     
-    const products ={
+    const sales = [{
         itemName:selectedData?.itemName,
         itemDescription:selectedData?.itemDescription,
         quantity:quantity,
         VAT:selectedData?.VAT
-    }
+    }]
     const [allProduct, setAllProduct] = useState()
 
     useEffect(()=>{
@@ -94,7 +94,7 @@ const Sales=()=>{
             const headers = {
                 Authorization:`Bearer ${token}`
             }
-            const dataObject = products
+            const dataObject = sales
     
             axios.post(url,dataObject,{headers})
             .then((response)=>{

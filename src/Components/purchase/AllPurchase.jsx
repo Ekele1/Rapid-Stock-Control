@@ -27,7 +27,7 @@ const Purchase=()=>{
         supplierName: suplierName,
         supplierPhoneNumber: suplierNumber,
         quantityOrder: quantityOrderd,
-        quantityReceived: quantityReceived,
+        // quantityReceived: quantityReceived,
         dateOrder: dateOrdered,
         expectedDate: dateReceived,
         unitPrice: unitPrice,
@@ -59,9 +59,8 @@ const Purchase=()=>{
             setUnitPrice(number)
             console.log("unitprice",typeof unitPrice)
         }else{
-            const token = localStorage.getItem("userToken")
             const userId = JSON.parse(localStorage.getItem("userInformation"))
-            const id = userId.id
+            const id = userId.userId
             const url = `https://rapid-stock-control-osqb.onrender.com/purchases/addpurchase/${id}`
             const headers = {
                 Authorization:`Bearer ${token}`
