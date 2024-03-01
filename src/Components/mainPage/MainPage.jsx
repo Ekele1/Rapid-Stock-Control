@@ -61,7 +61,7 @@ const MainPage=()=>{
          
         const tokenid = JSON.parse(localStorage.getItem("userInformation"))
         const token =tokenid.token
-        console.log("token",token)
+        // console.log("token",token)
         const headers = {
             Authorization:`Bearer ${token}`
         }
@@ -131,7 +131,7 @@ const MainPage=()=>{
                                 <p>Order MGT</p>
                             </aside>
                         </div>
-                        <div onClick={handleNotification}>
+                        {/* <div onClick={handleNotification}>
                             <aside className={`a1 ${change.name === "notification"? "xxx": null}`}>
                                 <IoMdNotificationsOutline />
                             </aside>
@@ -154,7 +154,7 @@ const MainPage=()=>{
                             <aside className={`a2 ${change.name === "settings"? "xxx": null}`}>
                                 <p>Settings</p>
                             </aside>
-                        </div>
+                        </div> */}
                         
                         {/* <div></div> */}
                     </div>

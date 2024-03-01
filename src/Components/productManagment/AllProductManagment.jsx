@@ -32,7 +32,6 @@ const Productmanagment = () => {
     const [stockQty, setstockQty]= useState("")
     const [editMode, setEditMode] = useState(true);
 
-
     const toggleEditMode = () => {
         setEditMode(false);
     };
@@ -44,7 +43,6 @@ const Productmanagment = () => {
         }
         url = "hdhdhdh"
     };
-
     
     // console.log("me", me)
 
@@ -254,7 +252,7 @@ const Productmanagment = () => {
                                             <div className='svgbutt' id='buttsvg'>
                                                 <button className='adding'>
                                                     {
-                                                        loading ? <BeatLoader /> : "DONE"
+                                                        loading ? <BeatLoader color='white'/> : "DONE"
                                                     }
                                                 </button>
                                             </div>

@@ -96,7 +96,7 @@ const { register,
               <div className='forButtonLog'>
               <button>
                 {
-                  loading?<BeatLoader />: "Login"
+                  loading?<BeatLoader color='white'/>: "Login"
                 }
               </button>
               </div>

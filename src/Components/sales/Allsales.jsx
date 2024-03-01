@@ -8,6 +8,8 @@ import { MdDeleteForever } from "react-icons/md";
 import { RxDropdownMenu } from "react-icons/rx";
 import { useEffect, useState } from 'react';
 import { IoSearchSharp } from "react-icons/io5";
+import axios from 'axios';
+import { BeatLoader } from "react-spinners";
 
 const Sales=()=>{
     const [item, setItem]= useState([])
@@ -25,17 +27,15 @@ const Sales=()=>{
     const [searchValue, setSearchValue]= useState("")
     const [filteredData, setFilteredData]= useState([])
     const [inputFocus, setInputFocus]= useState(false)
+    const [loading, setLoading]= useState(false)
     const [selectedData, setSelectedData]=useState()
+    const [error, setError]= useState({isError: true, errorType: "", mssg: ""})
     
     const products ={
-        itemName,
-        itemDescription,
-        brand,
-        price,
-        quantity,
-        Amount,
-        tax,
-        total,
+        itemName:selectedData?.itemName,
+        itemDescription:selectedData?.itemDescription,
+        quantity:quantity,
+        VAT:selectedData?.VAT
     }
     const [allProduct, setAllProduct] = useState()
 
@@ -53,7 +53,7 @@ const Sales=()=>{
     fetch(url,{headers})
     .then((Response)=> Response.json())
     .then((data)=> {
-        console.log(data)
+        // console.log(data)
         setAllProduct(data.data)
         // setSavedProduct(data.data)
         // console.log(data.data)
@@ -70,6 +70,47 @@ const Sales=()=>{
         setFilteredData(filteredItems)
     },[searchValue,allProduct])
 
+    const handleAddSale=()=>{
+        setLoading(true)
+
+        if(typeof quantity === 'string'){
+            const number = parseInt(quantity, 10)
+            setQuantity(number)
+        }else if(!itemName){
+            setLoading(false)
+            setError({isError: true, errorType: "itemName", mssg: "you cant leave here empty"})
+        }else if(!itemDescription){
+            setLoading(false)
+            setError({isError: true, errorType: "itemDescription", mssg: "you cant leave here empty"})
+        }else if(!quantity){
+            setLoading(false)
+            setError({isError: true, errorType: "quantity", mssg: "you cant leave here empty"})
+        }
+        else{
+            const userId = JSON.parse(localStorage.getItem("userInformation"))
+            const token = userId.token
+            const id = userId.userId
+            const url = `https://rapid-stock-control-osqb.onrender.com/sales/record/${selectedData._id}/${id}`
+            const headers = {
+                Authorization:`Bearer ${token}`
+            }
+            const dataObject = products
+    
+            axios.post(url,dataObject,{headers})
+            .then((response)=>{
+                console.log(response)
+                setLoading(false)
+            })
+            .catch((error)=>{
+                console.log(error)
+                setLoading(false)
+                console.log("quantity", typeof quantity)
+            })
+        }
+
+
+    }
+
 
 
     const handleAddItem=()=>{
@@ -77,7 +118,7 @@ const Sales=()=>{
         setItem(newItem)
     }
 
-    console.log(selectedData)
+    // console.log(selectedData)
     return(
         <div className="saleswrapper">
             <div className="saleswrapperdiv">
@@ -113,46 +154,50 @@ const Sales=()=>{
                             <div className="salesinputhold">
                                 <div>
                                     <p>Item Name</p>
-                                    <input type="text" value={selectedData?.productName}/>
+                                    <input type="text" readOnly={true} value={selectedData?.productName}/>
                                 </div>
                                 <div>
                                     <p>Item Description</p>
-                                    <input type="text" value={selectedData?.productDescription}/>
+                                    <input type="text" readOnly={true} value={selectedData?.productDescription}/>
                                 </div>
-                        <div>
-                            <p>category</p>
-                            <input type="text" value={selectedData?.category}/>
-                        </div>
-                    </div>
-                    <div className="salesinputhold">
-                        <div>
-                            <p>Price</p>
-                            <input type="text" value={selectedData?.sellingPrice}/>
-                        </div>
                         <div>
                             <p>Quantity</p>
                             <input type="text" value={quantity} onChange={(e)=>setQuantity(e.target.value)}/>
                         </div>
+                    </div>
+                    <div className="salesinputhold" id='vaat'>
                         <div>
+                            <p>VAT</p>
+                            <input type="text" readOnly={true} value={selectedData?.VAT}/>
+                        </div>
+                        {/* <div>
+                            <p>Quantity</p>
+                            <input type="text" value={quantity} />
+                        </div> */}
+                        {/* <div>
                             <p>Amount</p>
                             <input type="text" value={Amount} onChange={(e)=>setAmount(e.target.value)}/>
-                        </div>
+                        </div> */}
                     </div>
-                    <div className="salesinputhold">
-                        <div id='voidpatnes'>
+                    {/* <div className="salesinputhold"> */}
+                        {/* <div id='voidpatnes'>
                             <p>Tax</p>
-                            <input type="text" value={tax} onChange={(e)=>setTax(e.target.value)}/>
+                            <input type="text" value={selectedData?.VAT} onChange={(e)=>setTax(e.target.value)}/>
                         </div>
                         <div id='voidpatnes'>
                             <p>Total</p>
                             <input type="text" value={total} onChange={(e)=>setTotal(e.target.value)}/>
+                        </div> */}
+                        {/* <div id='void'>
                         </div>
-                        <div id='void'>
-                        </div>
-                    </div>
+                    </div> */}
                     <div className="selesbuttondiv">
                         {/* <button className='addmore' onClick={handleAddMore}>Add More</button> */}
-                        <button className='addmore'>Done</button>
+                        <button className='addmore' onClick={handleAddSale}>
+                            {
+                                loading?<BeatLoader color='white'/>:"Done"
+                            }
+                        </button>
                     </div>
                 </div>
                 </div>
