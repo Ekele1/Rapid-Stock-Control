@@ -149,7 +149,7 @@
   
   
 
-  @media screen and (width < 1500px ) {
+  @media screen and (width > 1500px ) {
     .rightLog{
         width: 70%;
     }
@@ -213,7 +213,7 @@
       font-size: 20px;
     }
     .Contain{
-      background-color: red;
+      background-color: #efecff;
     }
     .text{
       width: 100%;

@@ -63,7 +63,7 @@ useEffect(() => {
 const resendOtp = async () => {
   
   try {
-      const userId = JSON.parse(localStorage.getItem("userInformation"))
+      const userId = JSON?.parse(localStorage.getItem("userInformation"))
       const otpId = userId.id
       // console.log(otpId)
       const url = `https://rapid-stock-control-osqb.onrender.com/api/resend-otp/${otpId}`

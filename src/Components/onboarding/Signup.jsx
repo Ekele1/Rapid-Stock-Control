@@ -49,7 +49,7 @@ const SignUp = ()=>{
         // console.log(userInformation)
           setLoading(false)
       } catch (err) {
-          // console.log("err message", err)
+          console.log("err message", err)
           const realError = err.response.data.message
           setRealerror({eror: true, message: realError })
           // console.log("real error", realError)

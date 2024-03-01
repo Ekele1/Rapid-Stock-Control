@@ -59,6 +59,17 @@
     /* overflow-y: scroll; */
     border: 1px solid silver;
 }
+.eleven p{
+    font-size: 12px;
+}
+.cunt{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .eleventt{
     display: flex;
     align-items: center;
@@ -74,6 +85,14 @@
 .edit{
     font-size: 25px;
     cursor: pointer;
+}
+.editdiv{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: yellow; */
 }
 .edit:hover{
     color: rgb(179, 154, 12);
@@ -314,6 +333,9 @@
     .eleven{
         width: 100%;
     }
+    /* .eleven p{
+        font-size: 12px;
+    } */
     .hell p{
         font-size: 15px;
         font-weight: 600;

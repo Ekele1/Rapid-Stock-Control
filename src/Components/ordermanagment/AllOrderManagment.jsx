@@ -49,9 +49,10 @@ const OrderManagment = ()=>{
         }else if(!shipmentStatus){
             setError({isError: true, errortype: "shipmentstatus", message: "you can't leave this field blank"})
         }else{
-            const olddata = JSON.parse(localStorage.getItem("order")) || []
-            const newdata = [...olddata, order]
-            localStorage.setItem("order",JSON.stringify(newdata))
+            
+            // const olddata = JSON.parse(localStorage.getItem("order")) || []
+            // const newdata = [...olddata, order]
+            // localStorage.setItem("order",JSON.stringify(newdata))
             setShow(false)
         }
         

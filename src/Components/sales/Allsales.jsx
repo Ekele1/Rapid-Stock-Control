@@ -7,6 +7,7 @@ import { ImCancelCircle } from "react-icons/im";
 import { MdDeleteForever } from "react-icons/md";
 import { RxDropdownMenu } from "react-icons/rx";
 import { useEffect, useState } from 'react';
+import { IoSearchSharp } from "react-icons/io5";
 
 const Sales=()=>{
     const [item, setItem]= useState([])
@@ -21,6 +22,10 @@ const Sales=()=>{
     const [Amount, setAmount] = useState("")
     const [tax, setTax] = useState("")
     const [total, setTotal] = useState("")
+    const [searchValue, setSearchValue]= useState("")
+    const [filteredData, setFilteredData]= useState([])
+    const [inputFocus, setInputFocus]= useState(false)
+    const [selectedData, setSelectedData]=useState()
     
     const products ={
         itemName,
@@ -32,32 +37,47 @@ const Sales=()=>{
         tax,
         total,
     }
+    const [allProduct, setAllProduct] = useState()
 
-    const handleAddMore=()=>{
-            const olddata = JSON.parse(localStorage.getItem("presentSalesItem")) || []
-            const newdata = [...olddata, products]
-            localStorage.setItem("presentSalesItem",JSON.stringify(newdata))
-            setItemName("")
-            setItemDescription("")
-            setPrice("")
-            setQuantity("")
-            setAmount("")
-            setTax("")
-            setTotal("")
-    }
-
-    const mapItems = JSON.parse(localStorage.getItem("presentSalesItem"))
-        // console.log("mapitems",mapItems)
     useEffect(()=>{
-        setItemay(mapItems)
+        const userId = JSON.parse(localStorage.getItem("userInformation"))
+        const id = userId.userId
+        const token = userId.token
+
+        const url = `https://rapid-stock-control-osqb.onrender.com/product/viewallstock/${id}`
+
+        const headers = {
+            Authorization:`Bearer ${token}`
+        }
+
+    fetch(url,{headers})
+    .then((Response)=> Response.json())
+    .then((data)=> {
+        console.log(data)
+        setAllProduct(data.data)
+        // setSavedProduct(data.data)
+        // console.log(data.data)
+    })
+    .catch((error)=> {
+        console.log("Error",error)
+    })
     },[])
 
-    // console.log("itemmay",itemay)
+    useEffect(()=>{
+        const filteredItems = allProduct?.filter((e)=>
+            e.productName.includes(searchValue)
+        )
+        setFilteredData(filteredItems)
+    },[searchValue,allProduct])
+
+
 
     const handleAddItem=()=>{
         const newItem = [...item, []]
         setItem(newItem)
     }
+
+    console.log(selectedData)
     return(
         <div className="saleswrapper">
             <div className="saleswrapperdiv">
@@ -65,27 +85,49 @@ const Sales=()=>{
                 {
                     show?
                     <div className="salesinputshow">
-                <div className="salesinputcancel"><ImCancelCircle onClick={()=>setShow(false)} className='cancel'/></div>
-                <div className="salesinputholdwrapper">
-                <div className="salesinputcollection">
-                    <div className="salesinputhold">
+                        {
+                            inputFocus?<div className="itemsearch">
+                            {
+                                filteredData?.length === 0 ? (<p>No item with this name</p>):(
+                                        filteredData?.map((e,id)=>(
+                                            <p key={id} onClick={()=> {
+                                                setSelectedData(e)
+                                                setInputFocus(false)
+                                            }}>{e.productName}</p>
+                                        ))
+                                    
+                                )
+                            }
+                            
+                        </div>:null
+                        }
+                        <div className="salesinputcancel"><ImCancelCircle onClick={()=>setShow(false)} className='cancel'/></div>
+                        <div className="salesinputholdwrapper">
+                            <div className="salesinputcollection">
+                                <div className="searchbox">
+                                    <div className="searchdiv">
+                                        <input type="search" placeholder='search for a product' onFocus={()=>setInputFocus(true)} onChange={(e)=>setSearchValue(e.target.value)}/>
+                                        <IoSearchSharp style={{cursor: "pointer"}}/>
+                                    </div>
+                                </div>
+                            <div className="salesinputhold">
+                                <div>
+                                    <p>Item Name</p>
+                                    <input type="text" value={selectedData?.productName}/>
+                                </div>
+                                <div>
+                                    <p>Item Description</p>
+                                    <input type="text" value={selectedData?.productDescription}/>
+                                </div>
                         <div>
-                            <p>Item Name</p>
-                            <input type="text" value={itemName} onChange={(e)=>setItemName(e.target.value)}/>
-                        </div>
-                        <div>
-                            <p>Item Description</p>
-                            <input type="text" value={itemDescription} onChange={(e)=>setItemDescription(e.target.value)}/>
-                        </div>
-                        <div>
-                            <p>Brand</p>
-                            <input type="text" value={brand} onChange={(e)=>setBrand(e.target.value)}/>
+                            <p>category</p>
+                            <input type="text" value={selectedData?.category}/>
                         </div>
                     </div>
                     <div className="salesinputhold">
                         <div>
                             <p>Price</p>
-                            <input type="text" value={price} onChange={(e)=>setPrice(e.target.value)}/>
+                            <input type="text" value={selectedData?.sellingPrice}/>
                         </div>
                         <div>
                             <p>Quantity</p>
@@ -118,7 +160,7 @@ const Sales=()=>{
                 }
             
                 <div className="sales">
-                    <button className='addbutton' onClick={()=>setShow(true)}>ADD ITEM</button>
+                    <button className='addbutton' onClick={()=>setShow(true)}>SELL</button>
                     <div className="person">
                         <h5>Sales Person</h5>
                         <div className="namex">

@@ -16,7 +16,7 @@ import Productmanagment from '../productManagment/AllProductManagment';
 import Notification from '../notification/AllNotification';
 import Purchase from '../purchase/AllPurchase';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 
 
 const MainPage=()=>{
@@ -58,7 +58,10 @@ const MainPage=()=>{
 
     const handleSignOut=()=>{
         
-        const token = localStorage.getItem("userToken")
+         
+        const tokenid = JSON.parse(localStorage.getItem("userInformation"))
+        const token =tokenid.token
+        console.log("token",token)
         const headers = {
             Authorization:`Bearer ${token}`
         }

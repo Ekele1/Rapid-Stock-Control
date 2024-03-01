@@ -4,6 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import { ImCancelCircle } from "react-icons/im";
 import axios from 'axios';
+import { BeatLoader } from "react-spinners";
 
 const Purchase=()=>{
 
@@ -18,6 +19,7 @@ const Purchase=()=>{
     const [unitPrice, setUnitPrice]=useState("")
     const [totalAmount, setTotalAmount]=useState("")
     const [allpurchase, setAllpurchase] = useState([])
+    const [loading, setLoading]= useState(false)
     const [eror, setError] = useState({isError: false, errorType: "", errorMessage: ""})
 
     const purchaseData = {
@@ -34,6 +36,7 @@ const Purchase=()=>{
 
     const handleSave=(e)=>{
         e.preventDefault()
+        setLoading(true)
 
         if(!productName){
             setError({isError: true, errorType: "productname", errorMessage: "you cant leave this field empty"})
@@ -59,32 +62,24 @@ const Purchase=()=>{
             const token = localStorage.getItem("userToken")
             const userId = JSON.parse(localStorage.getItem("userInformation"))
             const id = userId.id
-            const url = `https://rapid-stock-controlosqb.onrender.com/purchases/addpurchase/${id}`
+            const url = `https://rapid-stock-control-osqb.onrender.com/purchases/addpurchase/${id}`
             const headers = {
                 Authorization:`Bearer ${token}`
             }
-            const dataObject = {
-                productName: productName,
-                supplierName: suplierName,
-                supplierPhoneNumber: suplierNumber,
-                quantityOrder: quantityOrderd,
-                quantityReceived: quantityReceived,
-                dateOrder: dateOrdered,
-                expectedDate: dateReceived,
-                unitPrice: unitPrice,
-                // totalAmount: totalAmount,
-            }
+            const dataObject = purchaseData
 
             axios.post(url,dataObject,{headers})
             .then((response)=>{
                 console.log(response)
+                setLoading(false)
             })
             .catch((error)=>{
                 console.log(error)
+                setLoading(false)
             })
-            const olddata = JSON.parse(localStorage.getItem("purchase")) || []
-            const newdata = [...olddata, purchaseData]
-            localStorage.setItem("purchase",JSON.stringify(newdata))
+            // const olddata = JSON.parse(localStorage.getItem("purchase")) || []
+            // const newdata = [...olddata, purchaseData]
+            // localStorage.setItem("purchase",JSON.stringify(newdata))
             // setShow(false)
         }
     }
@@ -176,7 +171,11 @@ const Purchase=()=>{
                             }
                         </div>
                     </div>
-                    <button className='savebutton' onClick={handleSave}>SAVE</button>
+                    <button className='savebutton' onClick={handleSave}>
+                        {
+                            loading?<BeatLoader />: "SAVE"
+                        }
+                    </button>
                 </div>
             </div>:null
             }
@@ -247,22 +246,6 @@ const Purchase=()=>{
                     ))
                 }
                
-               
-                <div className="purchasemap">
-                    <div><p></p></div>
-                    <div><p></p></div>
-                    <div><p></p></div>
-                    <div><p></p></div>
-                    <div><p></p></div>
-                    <div><p></p></div>
-                    <div><p></p></div>
-                    <div><p></p></div>
-                    <div><p></p></div>
-                    <div id='others'>
-                        <MdDeleteForever className='delete2'/>
-                        <FaEdit className='edit'/>
-                    </div>
-                </div>
                 
                 </main>
             </main>

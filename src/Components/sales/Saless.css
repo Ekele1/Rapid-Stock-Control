@@ -56,7 +56,16 @@
     align-items: center;
     /* justify-content: center; */
     position: absolute;
+    position: relative;
     background-color: white;
+}
+.itemsearch{
+    width: 25%;
+    height: 50%;
+    background-color: red;
+    position: absolute;
+    top: 15%;
+    right: 15%;
 }
 .salesinputcancel{
     width: 100%;
@@ -81,6 +90,33 @@
 
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     /* background-color: blue; */
+}
+.searchbox{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+    /* border: 1px solid black; */
+}
+.searchdiv{
+    width: 70%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 3%;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.searchdiv input{
+    width: 95%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    padding-left: 1%;
 }
 .salesinputhold{
     width: 100%;
@@ -449,12 +485,12 @@
         height: 70%;
     }
     .headers{
-        height: 50px;
+        height: 12.5%;
 
     }
     .headers p{
         font-size: 10px;
-        font-weight: normal;
+        font-weight: 500;
     }
     .title{
         height: 80vh;
@@ -482,5 +518,8 @@
     }
     .salesinputshow{
         top: -3%;
+    }
+    .title{
+        height: 50vh;
     }
 }
