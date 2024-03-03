@@ -5,7 +5,7 @@ import './App.css'
 import HomePage from "./LandingPage";
 import VerifyOtp from "./Components/onboarding/OtpVerification";
 // import MainPage from "./Components/mainpage/MainPage";
-import MainPage from "./Components/mainpage/OurMain";
+import MainPage from "./Components/MainpageOur/OurMain";
 // import Sales from "./Components/productManagment/sales/Allsales";
 // import Settings from "./Components/settings/AllSettings";
 import PasswordForget from "./Components/onboarding/ForgotYourPassword";
