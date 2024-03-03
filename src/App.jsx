@@ -1,10 +1,11 @@
 import React from "react";
 import { HashRouter, Route, Routes } from 'react-router-dom'
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
+// import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import './App.css'
 import HomePage from "./LandingPage";
 import VerifyOtp from "./Components/onboarding/OtpVerification";
-import MainPage from "./Components/mainpage/MainPage";
+// import MainPage from "./Components/mainpage/MainPage";
+import MainPage from "./Components/mainpage/OurMainPage";
 // import Sales from "./Components/productManagment/sales/Allsales";
 // import Settings from "./Components/settings/AllSettings";
 import PasswordForget from "./Components/onboarding/ForgotYourPassword";
