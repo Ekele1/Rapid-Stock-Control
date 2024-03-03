@@ -11,7 +11,7 @@ import { useState } from 'react';
 import Header from '../header/Header'
 import Dashboard from '../dashBoard/dashBoard';
 import OrderManagment from '../ordermanagment/AllOrderManagment';
-import Sales from '../sales/Allsales';
+import Sales from '../productManagment/sales/Allsales';
 import Productmanagment from '../productManagment/AllProductManagment';
 import Notification from '../notification/AllNotification';
 import Purchase from '../purchase/AllPurchase';
@@ -131,32 +131,6 @@ const MainPage=()=>{
                                 <p>Order MGT</p>
                             </aside>
                         </div>
-                        {/* <div onClick={handleNotification}>
-                            <aside className={`a1 ${change.name === "notification"? "xxx": null}`}>
-                                <IoMdNotificationsOutline />
-                            </aside>
-                            <aside className={`a2 ${change.name === "notification"? "xxx": null}`}>
-                                <p>Notifications</p>
-                            </aside>
-                        </div>
-                        <div onClick={handleReport}>
-                            <aside className={`a1 ${change.name === "report"? "xxx": null}`}>
-                                <TbReportSearch />
-                            </aside>
-                            <aside className={`a2 ${change.name === "report"? "xxx": null}`}>
-                                <p>Reports</p>
-                            </aside>
-                        </div>
-                        <div onClick={handlsettings}>
-                            <aside className={`a1 ${change.name === "settings"? "xxx": null}`}>
-                                <IoSettingsOutline />
-                            </aside>
-                            <aside className={`a2 ${change.name === "settings"? "xxx": null}`}>
-                                <p>Settings</p>
-                            </aside>
-                        </div> */}
-                        
-                        {/* <div></div> */}
                     </div>
                     <div className="logout">
                         <div className="log1">
@@ -180,9 +154,9 @@ const MainPage=()=>{
                         <p onClick={handlePurchase} className={`ay ${change.name === "purchase"? "ax": null}`}>Purchases</p>
                         <p onClick={handleProduct} className={`ay ${change.name === "product"? "ax": null}`}>Product Mgt</p>
                         <p onClick={handleOrder} className={`ay ${change.name === "order"? "ax": null}`}>Order Mgt</p>
-                        <p onClick={handleNotification} className={`ay ${change.name === "notification"? "ax": null}`}>Notifications</p>
-                        <p onClick={handleReport} className={`ay ${change.name === "report"? "ax": null}`}>Reports</p>
-                        <p onClick={handlsettings} className={`ay ${change.name === "settings"? "ax": null}`}>Settings</p>
+                        <p onClick={handleNotification} className={`ay ${change.name === "notification"? "ax": null}`}>LogOut</p>
+                        {/* <p onClick={handleReport} className={`ay ${change.name === "report"? "ax": null}`}>Reports</p> */}
+                        {/* <p onClick={handlsettings} className={`ay ${change.name === "settings"? "ax": null}`}>Settings</p> */}
                     </div>:null
                     }
                     {

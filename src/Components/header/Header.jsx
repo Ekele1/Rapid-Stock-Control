@@ -8,16 +8,19 @@ import { useNavigate } from 'react-router-dom';
 const Header =()=>{
     const [show, setShow]=useState(false)
     const navigate = useNavigate()
+    const handleHome=()=>{
+        navigate("/")
+    }
 
     return(
         <div className="headerwrap">
             {
                 show?
                 <div className="menudrop">
-                    <p>HOME</p>
-                    <p>FEATURES</p>
-                    <p>ABOUT US</p>
-                    <p>CONTACT US</p>
+                    <p onClick={handleHome}>HOME</p>
+                    <p onClick={handleHome}>FEATURES</p>
+                    <p onClick={handleHome}>ABOUT US</p>
+                    <p onClick={handleHome}>CONTACT US</p>
                 </div>:null
             }
             <div className="header">
@@ -31,10 +34,10 @@ const Header =()=>{
                     </aside>
                 </div>
                 <div className="navic">
-                    <p>HOME</p>
-                    <p>FEATURES</p>
-                    <p>ABOUT US</p>
-                    <p>CONTACT US</p>
+                    <p onClick={handleHome}>HOME</p>
+                    <p onClick={handleHome}>FEATURES</p>
+                    <p onClick={handleHome}>ABOUT US</p>
+                    <p onClick={handleHome}>CONTACT US</p>
                 </div>
                 <IoMenu className='iomenu' onClick={()=>setShow(true)} onMouseLeave={()=>setShow(false)}/>
             </div>

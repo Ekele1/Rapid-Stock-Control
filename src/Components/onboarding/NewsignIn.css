@@ -1,0 +1,201 @@
+.newsiginwrapp{
+    width: 100%;
+    height: 100vh;
+    /* background-color: blue; */
+    display: flex;
+    font-family: "poppins";
+    align-items: center;
+    justify-content: center;
+}
+.newsigninsecondwrap{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    /* background-color: yellow; */
+}
+.signinleft{
+    width: 50%;
+    height: 100%;
+    /* background-color: palevioletred; */
+}
+.signinleftloggowrap{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.signinleftloggohold{
+    width: 90%;
+    height: 100%;
+    /* background-color: indianred; */
+}
+.signinloggoitself{
+    width: 20%;
+    height: 100%;
+    /* background-color: red; */
+}
+.signinloggoitself img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.signinleftothers{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: darkcyan; */
+}
+.signinleftotherscont{
+    width: 70%;
+    height: 90%;
+    /* background-color: brown; */
+}
+.logininputholder{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    padding: 5%;
+    justify-content: center;
+    /* background-color: white; */
+}
+.logininputholder h2{
+    font-size: 15px;
+}
+.wrapperwraper{
+    width: 100%;
+    height: 20%;
+    background-color: white;
+}
+.wrapperwraper input{
+    width: 90%;
+    height: 60%;
+    border: 1px solid black;
+    border-radius: 7px;
+    outline: none;
+    padding-left: 1%;
+
+}
+.wrapperwraper p{
+    font-size: 15px;
+    font-weight: bold;
+}
+#passwr{
+    width: 90%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+#passwr input{
+    width: 93%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+}
+.buttwrapp{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* background-color: red; */
+}
+.buttwrapp button{
+    width: 90%;
+    height: 80%;
+    background-color: blue;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    color: white;
+}
+.buttwrapp button:hover{
+    background-color: rgb(76, 76, 250);
+}
+.buttwrapp button:active{
+    background-color: blue;
+}
+.have{
+    width: 90%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* background-color: yellow; */
+}
+.have p{
+    font-size: 15px;
+}
+.have span{
+    cursor: pointer;
+    color: blue;
+}
+.signinright{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0e498c;
+}
+.rightloggotoo{
+    width: 70%;
+    height: 80%;
+    background-color: white;
+}
+.rightloggotoo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@media screen and (width < 1100px) {
+    .signinright{
+        display: none;
+    }
+    .newsigninsecondwrap{
+        width: 40%;
+    }
+    .signinleft{
+        width: 100%;
+    }
+    .signinleftotherscont{
+        width: 100%;
+    }
+    .wrapperwraper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .wrapperwraper p{
+        width: 90%;
+    }
+    .buttwrapp{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    @media screen and (width < 850px) {
+        .newsigninsecondwrap{
+            width: 50%;
+            /* background-color: red; */
+        }
+    }
+    @media screen and (width < 550px) {
+        .newsigninsecondwrap{
+            width: 70%;
+        }
+    }
+    @media screen and (width < 365px) {
+        .newsigninsecondwrap{
+            width: 98%;
+        }
+    }
+}

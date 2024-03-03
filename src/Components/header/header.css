@@ -84,14 +84,19 @@
     /* background-color: yellow; */
 }
 .navic p{
+    width: max-content;
+    height: 50%;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: 500;
-    transition: 0.1s ease-in;
+    transition: box-shadow 0.3s;
 }
 .navic p:hover{
-    transform: scale(1.1);
-    font-weight: 700;
-    color: rgba(0, 152, 225, 1);
+    box-shadow: 0 0 10px #007bff, 0 0 20px #007bff, 0 0 30px #007bff;
 }
 
 @media screen and (width < 800px ){

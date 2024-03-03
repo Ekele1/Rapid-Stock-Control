@@ -1,0 +1,204 @@
+.logcont{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "poppins";
+    background-color: white;
+}
+.logcontwrap{
+    width: 50%;
+    height: 100%;
+    /* background-color: blue; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.logloggo{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: white; */
+}
+.loggoimg{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+.loggoimg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+.logloggodiv{
+    width: 90%;
+    height: 90%;
+    /* background-color: black; */
+}
+.loggowrapinput{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+.allthewrapp{
+    width: 70%;
+    height: 80%;
+    display: flex;
+}
+.youraccount{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: orange; */
+}
+.logitselfwrap{
+    width: 70%;
+    height: 95%;
+    /* background-color: pink; */
+}
+.alltheinput{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: purple; */
+}
+.mighty{
+    width: 100%;
+    height: 16%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.inputthan{
+    width: 90%;
+    height: 90%;
+    /* background-color: orange; */
+}
+.inputthan input{
+    width: 100%;
+    height: 60%;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 5px;
+    border: 1px solid black;
+}
+.inputthan p{
+    font-size: 15px;
+}
+.errorx{
+    width: 100%;
+    height: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: blue; */
+    color: red;
+}
+.inputthan button{
+    width: 100%;
+    height: 60%;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: blue;
+}
+#passworddd{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    border: 1px solid black;
+    background-color: white;
+}
+#passworddd input{
+    width: 93%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+}
+.inputthan button:hover{
+    background-color: rgb(105, 105, 238);
+}
+.inputthan button:active{
+    background-color: blue;
+}
+#already{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    /* background-color: gray; */
+    font-size: 15px;
+}
+#already span{
+    color: blue;
+    cursor: pointer;
+}
+.logcontwrapright{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0e498c;
+}
+.rightloggohold{
+    width: 80%;
+    height: 70%;
+    background-color: white;
+}
+.rightloggohold img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (width < 1100px) {
+    .logcontwrapright{
+        display: none;
+    }
+    .allthewrapp{
+        align-items: center;
+        justify-content: center;
+    }
+    .logcontwrap{
+        width: 55%;
+    }
+    .logitselfwrap{
+        width: 100%;
+    }
+    
+}
+
+@media screen and (width < 800px) {
+    .logcontwrap{
+        width: 80%;
+        /* background-color: yellow; */
+    }
+}
+@media screen and (width < 500px) {
+    .allthewrapp{
+        width: 100%;
+        /* background-color: aqua; */
+    }
+    .logcontwrap{
+        width: 100%;
+    }
+}

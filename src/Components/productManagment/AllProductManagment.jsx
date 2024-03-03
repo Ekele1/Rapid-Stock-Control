@@ -15,12 +15,17 @@ const Productmanagment = () => {
 
     const [show, setShow] = useState(false)
     const [availableproduct, setAvailableProduct] = useState()
-    const [savedProduct, setSavedProduct] = useState()
+    const [savedProduct, setSavedProduct] = useState([])
+    const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState({ isError: false, errortype: "", message: "" })
     const [edit, setEdit] = useState(false)
-    const [editContent, setEditContent] = useState(false)
+    const [editedProductId, setEditedProductId]= useState(null)
+    const [editedProductInput, setEditedProductInput]= useState("")
+    // const [editContent, setEditContent] = useState(false)
     const [me,setMe]= useState("")
+    const [deleteoption, setDeleteoption]= useState(false)
+    const [deleteid, setdeleteid] =useState("")
 
     const [productName, setProductName]= useState("")
     const [category, setCategory]= useState("")
@@ -108,10 +113,11 @@ const Productmanagment = () => {
     .then((data)=> {
         // console.log(data)
         setSavedProduct(data.data)
+        setProduct(data.data)
         // console.log(data.data)
     })
     .catch((error)=> {
-        console.log("delete Error",error)
+        console.log("error",error)
     })
     }
 
@@ -138,12 +144,30 @@ const Productmanagment = () => {
         .then((data)=> console.log(data))
         .catch((error)=> console.log(error))
     }
+    useEffect(() => {
+        handleDelete()
+           
+       }, [])
 
-    const handleEdit=(id)=>{
-        const editedItem = savedProduct.map((e)=> e.id === id)
-        editedItem === "true"?setEdit(true):null
-        // setEditContent(true)
-        // setShow(true)
+    const handleEdit=(productId)=>{
+        setEditedProductId(productId)
+        const productToEdit = product.find((product) => product.id === productId)
+        setEditedProductInput(productToEdit.id.toString())
+    }
+    const handleSave=()=>{
+        const newId = parseInt(editedProductInput, 10)
+        if(!isNaN(newId) && newId > 0){
+            setProduct(prevProducts => (
+                prevProducts.map(product => (
+                    product.id === editedProductId ? {...product, id: newId} : product
+                ))
+            ))
+
+            setEditedProductId(null)
+            setEditedProductInput("")
+        } else{
+            console.log("enter the correct values")
+        }
     }
     const handleCancel=()=>{
         setEdit(false)
@@ -270,7 +294,7 @@ const Productmanagment = () => {
                     <div className="cate">
                         <div className="tpro">
                             <span>Total Product</span>
-                            <div><p>{availableproduct?.length}</p></div>
+                            <div><p>{savedProduct?.length}</p></div>
                         </div>
                         <div className="tpro">
                             <span>Total Category</span>
@@ -316,6 +340,22 @@ const Productmanagment = () => {
                     </div>
                     <div className="items">
                         {
+                            deleteoption?<div className="deletealert">
+                            <div className="deleteoption">
+                                <div className="undel">
+                                    <MdCancel className='undo' onClick={()=>setDeleteoption(false)}/>
+                                </div>
+                                <p>Are you sure you want to delete this product?</p>
+                                <div className="deletediv">
+                                    <button onClick={()=>{
+                                        handleDelete(deleteid._id)
+                                        setDeleteoption(false)
+                                    }}>DELETE</button>
+                                </div>
+                            </div>
+                        </div>:null
+                        }
+                        {
                         savedProduct?.map((e, id)=>(
                         <div className="itema" key={id}>
                                 <div className="eleven">
@@ -345,13 +385,22 @@ const Productmanagment = () => {
                                 <div className="eleven"><p className='cunt'>updatedAt</p></div>
                                 <div className="eleven eleventt">
                                     {
-                                        edit?<div className="editdiv">
+                                        editedProductId === e.id ? (<div className="editdiv">
                                         <MdCancel onClick={handleCancel}/>
                                         <IoCheckmarkDoneSharp />
-                                    </div>:<div className="editdiv">
-                                        <MdDeleteForever className='delete2' onClick={()=> handleDelete(e._id)}/>
-                                        <FaEdit className='edit' onClick={()=>handleEdit(e._id)}/>
-                                    </div>
+                                    </div>): (<div className="editdiv">
+                                        <MdDeleteForever className='delete2' onClick={()=> {
+                                            setDeleteoption(true)
+                                            // prompt("are you sure you want to delete this?")
+                                            setdeleteid(e)
+                                        }
+                                        }/>
+                                        <FaEdit className='edit' onClick={()=>{
+                                            // setEdit(true)
+                                            handleEdit(e.id)
+                                            
+                                        }}/>
+                                    </div>)
                                     }
                                 </div>
                         </div>

@@ -149,9 +149,9 @@
   
   
 
-  @media screen and (width > 1500px ) {
+  @media screen and (width < 1500px ) {
     .rightLog{
-        width: 70%;
+        width: 50%;
     }
     .Words h3{
       font-size: 30px;

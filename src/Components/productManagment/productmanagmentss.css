@@ -15,6 +15,73 @@
     min-height: 90vh;
     background-color: white;
 }
+/* .items{ */
+    /* position: relative; */
+    /* top: 0; */
+    /* z-index: 20; */
+/* } */
+.deletealert{
+    width: 100%;
+    height: 25%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    backdrop-filter: blur(2px);
+}
+.deleteoption{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.deleteoption p{
+    color: rgb(247, 85, 85);
+}
+.undel{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    /* background-color: pink; */
+}
+.undo{
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}
+.deletediv{
+    width: 70%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: blue; */
+}
+.deletediv button{
+    width: 40%;
+    height: 40%;
+    border-radius: 5px;
+    border: navy;
+    cursor: pointer;
+    background-color: navy;
+    color: white;
+}
+.deletediv button:hover{
+    background-color: red;
+}
+.deletediv button:active{
+    background-color: navy;
+}
 .productmanage{
     width: 100%;
     height: 70px;
@@ -325,6 +392,7 @@
         overflow-x: auto;
         /* background-color: green; */
     }
+
     .itema{
         width: 100px;
         height: 100%;
@@ -333,16 +401,17 @@
     .eleven{
         width: 100%;
     }
-    /* .eleven p{
-        font-size: 12px;
-    } */
+    .deleteoption{
+        height: 55%;
+        background-color: #fccf05;
+    }
+    .deletealert{
+        justify-content: flex-start;
+    }
     .hell p{
         font-size: 15px;
         font-weight: 600;
     }
-    /* .additems{
-        background-color: yellow;
-    } */
     .allproductdetailswrap{
         height: max-content;
         /* background-color: yellow; */
