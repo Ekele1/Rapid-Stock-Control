@@ -53,6 +53,9 @@ const NewSignIn =()=>{
           }
       
       };
+      const handleForget=()=>{
+        navigate("/forget")
+      }
     return(
         <form action="" onSubmit={handleSubmit(onSubmit)}>
             <div className="newsiginwrapp">
@@ -82,7 +85,7 @@ const NewSignIn =()=>{
                                     <div id="passwr">
                                         <input type={show? "text": "password"} {...register("password")}/>
                                         {
-                                            show?<IoMdEye  onClick={()=>setShow(!show)}/>:<IoIosEyeOff onClick={()=>setShow(!show)}/>
+                                            show?<IoMdEye style={{cursor: "pointer"}}  onClick={()=>setShow(!show)}/>:<IoIosEyeOff style={{cursor: "pointer"}} onClick={()=>setShow(!show)}/>
                                         }
                                     </div>
                                 </div>
@@ -92,6 +95,9 @@ const NewSignIn =()=>{
                                     {
                                      error.type?<p className='error'>{error.message}</p>: null
                                     }
+                                    <div className="forgetpassword">
+                                        <p onClick={handleForget}>ForgotYourPassword?</p>
+                                    </div>
                                 <div className="buttwrapp">
                                     <button>
                                         {
@@ -99,9 +105,11 @@ const NewSignIn =()=>{
                                         }
                                     </button>
                                 </div>
+                                
                                 <div className="have">
                                     <p>Dont have an account? <span onClick={sign}>SignUp</span></p>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>

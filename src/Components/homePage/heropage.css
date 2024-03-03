@@ -273,7 +273,12 @@
     .heropageHeader{
         justify-content: space-between;
     }
-    .freetrial{
+    .trialdiv{
+        height: 20%;
+        width: 100%;
+        /* background-color: red; */
+    }
+    #atleast{
         display: none;
     }
     .bur{
