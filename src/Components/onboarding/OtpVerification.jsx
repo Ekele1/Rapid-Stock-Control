@@ -56,20 +56,20 @@ formState: { errors },
 useEffect(() => {
         const userEmail = JSON.parse(localStorage.getItem("userInformation"))
         setEmail(userEmail?.email)
-        const userId = JSON.parse(localStorage.getItem("userInformation"))
-        const newId = userId.id
+        // const userId = JSON.parse(localStorage.getItem("userInformation"))
+        // const newId = userId.id
     }, [])
-    const userId = JSON.parse(localStorage.getItem("userInformation"))
-    const newId = userId.id
+    // const userId = JSON.parse(localStorage.getItem("userInformation"))
+    // const newId = userId.id
 
-    console.log("id",userId.data.id)
+    // console.log("id",userId.data.id)
 // const userId = JSON.parse(localStorage.getItem("userInformation"))
 
 const resendOtp = async () => {
   
   try {
       const userId = JSON?.parse(localStorage.getItem("userInformation"))
-      const otpId = userId.id
+      const otpId = userId.data.id
       // console.log(otpId)
       const url = `https://rapid-stock-control-osqb.onrender.com/api/resend-otp/${otpId}`
       const response = await axios.get(url)
