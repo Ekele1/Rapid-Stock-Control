@@ -55,15 +55,11 @@ formState: { errors },
 
 useEffect(() => {
         const userEmail = JSON.parse(localStorage.getItem("userInformation"))
-        setEmail(userEmail?.email)
+        setEmail(userEmail?.data.email)
         // const userId = JSON.parse(localStorage.getItem("userInformation"))
         // const newId = userId.id
     }, [])
-    // const userId = JSON.parse(localStorage.getItem("userInformation"))
-    // const newId = userId.id
 
-    // console.log("id",userId.data.id)
-// const userId = JSON.parse(localStorage.getItem("userInformation"))
 
 const resendOtp = async () => {
   
