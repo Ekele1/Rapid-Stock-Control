@@ -193,7 +193,7 @@
         /* background-color: yellow; */
     }
 }
-@media screen and (width < 500px) {
+@media screen and (width < 600px) {
     .allthewrapp{
         width: 100%;
         /* background-color: aqua; */
