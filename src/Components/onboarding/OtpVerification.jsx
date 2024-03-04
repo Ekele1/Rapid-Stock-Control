@@ -28,7 +28,7 @@ formState: { errors },
  const onSubmit = async (data) => {
 
   const userId = JSON.parse(localStorage.getItem("userInformation"))
-  const newId = userId.id
+  const newId = userId.data.id
 
   try {
       setLoading(true);
@@ -48,6 +48,7 @@ formState: { errors },
       setRealerror({error: true, message: realError })
       // console.log("real error", realError)
       setLoading(false)
+      
   }
 
 };
@@ -55,9 +56,13 @@ formState: { errors },
 useEffect(() => {
         const userEmail = JSON.parse(localStorage.getItem("userInformation"))
         setEmail(userEmail?.email)
+        const userId = JSON.parse(localStorage.getItem("userInformation"))
+        const newId = userId.id
     }, [])
+    const userId = JSON.parse(localStorage.getItem("userInformation"))
+    const newId = userId.id
 
-
+    console.log("id",userId.data.id)
 // const userId = JSON.parse(localStorage.getItem("userInformation"))
 
 const resendOtp = async () => {
