@@ -7,7 +7,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { TbReportSearch } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../header/Header'
 import Dashboard from '../dashBoard/dashBoard';
 import OrderManagment from '../ordermanagment/AllOrderManagment';
@@ -20,6 +20,7 @@ import { json, useNavigate } from 'react-router-dom';
 
 
 const MainPage=()=>{
+    // useEffect
     const navigate = useNavigate()
     const [dropmenu, setDropMenu]=useState(false)
 
@@ -51,6 +52,8 @@ const MainPage=()=>{
         setChange({name: "settings", state: true,})
     }
 
+
+
     
     // console.log(token)
     
@@ -59,23 +62,31 @@ const MainPage=()=>{
     const handleSignOut=()=>{
         
          
-        const tokenid = JSON.parse(localStorage.getItem("userInformation"))
-        const token =tokenid.token
-        // console.log("token",token)
+        // const tokenid = JSON.parse(localStorage.getItem("userInformation"))
+        const userId = JSON.parse(localStorage.getItem("userInformation"))
+        const id = userId.userId
+        const token = userId.token
         const headers = {
             Authorization:`Bearer ${token}`
         }
 
-        const url = "https://rapid-stock-control-osqb.onrender.com/api/signout"
+        const url =  `https://rapid-stock-control-osqb.onrender.com/api/signout/${id}`
 
         axios.post(url,{headers})
         .then((response)=>{
+            localStorage.clear("userInformation")
+        //  navigate("/")
             console.log(response)
             navigate("/")
         }).catch((error)=>{
             console.log(error)
+            // console.log(headers)
         })
+
     }
+
+    const name = JSON.parse(localStorage.getItem("userInformation"))
+    const businessName = name.businessName
     
     return(
         <div className="mainpagewrapper">
@@ -85,9 +96,9 @@ const MainPage=()=>{
             <div className="main">
                 <div className="leftside">
                     <div className="company">
-                        <div className="complogo"></div>
+                        {/* <div className="complogo"></div> */}
                         <div className="compname">
-                            <h3>Anonymous</h3>
+                            <h3>{businessName}</h3>
                         </div>
                     </div>
                     <div className="optionschose">
@@ -154,13 +165,14 @@ const MainPage=()=>{
                         <p onClick={handlePurchase} className={`ay ${change.name === "purchase"? "ax": null}`}>Purchases</p>
                         <p onClick={handleProduct} className={`ay ${change.name === "product"? "ax": null}`}>Product Mgt</p>
                         <p onClick={handleOrder} className={`ay ${change.name === "order"? "ax": null}`}>Order Mgt</p>
-                        <p onClick={handleNotification} className={`ay ${change.name === "notification"? "ax": null}`}>LogOut</p>
+                        <p>LOG OUT</p>
+                        {/* <p onClick={handleNotification} className={`ay ${change.name === "notification"? "ax": null}`}>LogOut</p> */}
                         {/* <p onClick={handleReport} className={`ay ${change.name === "report"? "ax": null}`}>Reports</p> */}
                         {/* <p onClick={handlsettings} className={`ay ${change.name === "settings"? "ax": null}`}>Settings</p> */}
                     </div>:null
                     }
                     {
-                        change.name === "dashboard"? <Dashboard />: change.name === "sales"? <Sales />: change.name === "product"? <Productmanagment />: change.name=== "order"? <OrderManagment />: change.name=== "notification"? <Notification />: change.name === "purchase"? <Purchase />: <Dashboard />
+                        change.name === "dashboard"? <Dashboard />: change.name === "sales"? <Sales />: change.name === "product"? <Productmanagment />: change.name=== "order"? <OrderManagment />: change.name === "purchase"? <Purchase />: <Dashboard />
                     }
                 </div>
             </div>

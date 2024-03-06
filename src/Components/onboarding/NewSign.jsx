@@ -17,6 +17,7 @@ const NewSignIn =()=>{
 
     const [loading, setLoading]=useState(false)
      const [error, setError]= useState({type: false, message: ""})
+     const [token, setToken] = useState("")
 
     const schema = yup.object().shape({
         email: yup.string().email().required("Your email is Required"),

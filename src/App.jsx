@@ -14,6 +14,8 @@ import PasswordForget from "./Components/onboarding/ForgotYourPassword";
 import ResetPassword from "./Components/onboarding/ResetYourPassword";
 import NewLog from "./Components/onboarding/NewLog";
 import NewSignIn from "./Components/onboarding/NewSign";
+import { Toaster } from "react-hot-toast";
+import Header from "./Components/header/Header";
 
 function App() {
 
@@ -32,8 +34,10 @@ function App() {
           <Route path='main' element={<MainPage />}/>
           <Route path='signup' element={<NewLog />}/>
           <Route path='login' element={<NewSignIn />}/>
+          <Route path='head' element={<Header />}/>
         </Route>
       </Routes>
+      <Toaster />
     </HashRouter>
     </>
   )

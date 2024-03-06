@@ -20,22 +20,23 @@ const Productmanagment = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState({ isError: false, errortype: "", message: "" })
     const [edit, setEdit] = useState(false)
-    const [editedProductId, setEditedProductId]= useState(null)
-    const [editedProductInput, setEditedProductInput]= useState("")
-    // const [editContent, setEditContent] = useState(false)
+    const [editValues, setEditValues]= useState()
+    // const [editedProductId, setEditedProductId]= useState(null)
+
     const [me,setMe]= useState("")
     const [deleteoption, setDeleteoption]= useState(false)
     const [deleteid, setdeleteid] =useState("")
+    const [totalCategory, setTotalCategory]= useState()
 
     const [productName, setProductName]= useState("")
     const [category, setCategory]= useState("")
     const [brand, setbrand]= useState("")
     const [productDescription, setproductDescription]= useState("")
-    const [VAT, setVAT]= useState("")
-    const [sellingPrice, setsellingPrice]= useState("")
-    const [costPrice, setcostPrice]= useState("")
-    const [stockQty, setstockQty]= useState("")
-    const [editMode, setEditMode] = useState(true);
+    const [reorderLevel, setReorderLevel]= useState("")
+    const [sellingPrice, setsellingPrice]= useState()
+    const [costPrice, setcostPrice]= useState()
+    const [stockQty, setstockQty]= useState()
+    // const [editMode, setEditMode] = useState(true);
 
     const toggleEditMode = () => {
         setEditMode(false);
@@ -48,8 +49,9 @@ const Productmanagment = () => {
         }
         url = "hdhdhdh"
     };
+
+    // console.log("editvalue", editValues)
     
-    // console.log("me", me)
 
     const schema = yup.object().shape({
         productName: yup.string().required("product Name is Required"),
@@ -112,6 +114,7 @@ const Productmanagment = () => {
     .then((Response)=> Response.json())
     .then((data)=> {
         // console.log(data)
+        setTotalCategory(data.totalCategory)
         setSavedProduct(data.data)
         setProduct(data.data)
         // console.log(data.data)
@@ -140,48 +143,121 @@ const Productmanagment = () => {
             method: 'DELETE',
             headers: headers
         })
-        .then((response)=> response.json())
-        .then((data)=> console.log(data))
+        .then((response)=> {response.json()})
+        // .then((data)=> console.log(data))
         .catch((error)=> console.log(error))
     }
     useEffect(() => {
-        handleDelete()
+        // handleDelete()
            
-       }, [])
+       }, ["handleDelete"])
 
-    const handleEdit=(productId)=>{
-        setEditedProductId(productId)
-        const productToEdit = product.find((product) => product.id === productId)
-        setEditedProductInput(productToEdit.id.toString())
-    }
-    const handleSave=()=>{
-        const newId = parseInt(editedProductInput, 10)
-        if(!isNaN(newId) && newId > 0){
-            setProduct(prevProducts => (
-                prevProducts.map(product => (
-                    product.id === editedProductId ? {...product, id: newId} : product
-                ))
-            ))
 
-            setEditedProductId(null)
-            setEditedProductInput("")
-        } else{
-            console.log("enter the correct values")
+    const handleUpdate =(id)=>{
+        setLoading(true)
+        const userId = JSON.parse(localStorage.getItem("userInformation"))
+        // const iduser = userId.userId
+        const token = userId.token
+        const newPrice = parseInt(sellingPrice)
+        const costpricenew = parseInt(costPrice)
+        const newstqqty = parseInt(stockQty)
+
+        const dataObject = {
+            productName: productName,
+            productDescription: productDescription,
+            category: category,
+            brand: brand,
+            sellingPrice: newPrice,
+            costPrice: costpricenew,
+            stockQty: newPrice,
         }
+        const headers = {
+            Authorization:`Bearer ${token}`
+        }
+        const url = `https://rapid-stock-control-osqb.onrender.com/product/updatestock/${id}`
+
+        axios.put(url, dataObject,{headers})
+        // .then((response)=> response.json())
+        .then((data)=> {
+            console.log(data)
+            setLoading(false)
+            setEdit(false)
+            getAllproduct()
+            console.log("dataobject",dataObject)
+            // getAllproduct()
+        })
+        .catch((error)=> {console.log(error)
+            // console.log(token)
+            setLoading(false)
+            // console.log("token", token)
+        })
     }
     const handleCancel=()=>{
         setEdit(false)
         setEditContent(false)
     }
-    const handleContentChange =(e)=>{
-        
-    }
-    // console.log("me",me)
+
 
 
     return (
         <div className="productmanagmentwrap">
             <div className="productmanagementwrapdiv">
+                {
+                    edit?<div className="editedDiv">
+                    <div className="canceldiv"><ImCancelCircle onClick={()=>setEdit(false)}/></div>
+                    <div className="inputwrapedit">
+                        <div className="inputholdedit">
+                            <div className="collectitdiv">
+                                <div className='editme'>
+                                    <p>ProductName</p>
+                                    <input type="text" placeholder={editValues.productName} value={productName} onChange={(e)=>setProductName(e.target.value)}/>
+                                </div>
+                                <div className='editme'>
+                                    <p>Category</p>
+                                    <input type="text" placeholder={editValues.category} value={category} onChange={(e)=>setCategory(e.target.value)}/>
+                                </div>
+                                <div className='editme'>
+                                    <p>Brand</p>
+                                    <input type="text" placeholder={editValues.brand} value={brand} onChange={(e)=>setbrand(e.target.value)}/>
+                                </div>
+                            </div>
+                            <div className="collectitdiv">
+                                <div className='editme'>
+                                    <p>Description</p>
+                                    <input type="text" placeholder={editValues.productDescription} value={productDescription} onChange={(e)=>setproductDescription(e.target.value)}/>
+                                </div>
+                                <div className='editme'>
+                                    <p>costPrice</p>
+                                    <input type="text" placeholder={editValues.costPrice} value={costPrice} onChange={(e)=>setcostPrice(e.target.value)}/>
+                                </div>
+                                <div className='editme'>
+                                    <p>SellingPrice</p>
+                                    <input type="text" placeholder={editValues.sellingPrice} value={sellingPrice} onChange={(e)=>setsellingPrice(e.target.value)}/>
+                                </div>
+                            </div>
+                            <div className="collectitdiv">
+                                <div className='editme'>
+                                    <p>StockQuantity</p>
+                                    <input type="text" placeholder={editValues.stockQty} value={stockQty} onChange={(e)=>setstockQty(e.target.value)}/>
+                                </div>
+                                <div className='editme'>
+                                    <p>ReorderLevel</p>
+                                    <input type="text" placeholder={editValues.reorderLevel} value={reorderLevel} onChange={(e)=>setReorderLevel(e.target.value)}/>
+                                </div>
+                                {/* <div className='editme'>
+                                    <p>ProductName</p>
+                                    <input type="text" />
+                                </div> */}
+                            </div>
+                            <button className='editdone' onClick={()=>handleUpdate(editValues._id)}>
+                                {
+                                    loading?<BeatLoader />:"DONE"
+                                }
+                            </button>
+                        </div>
+                    </div>
+                </div>:null
+                }
                 {
                     show ?
                         <form action="" onSubmit={handleSubmit(onSubmit)}>
@@ -190,6 +266,7 @@ const Productmanagment = () => {
                                     <div>
                                         <ImCancelCircle className='cancel' onClick={() => setShow(false)} />
                                     </div>
+                                   
                                 </div>
                                 <div className="allproductdetailswrap">
                                     <div className="allproductdetails">
@@ -298,7 +375,7 @@ const Productmanagment = () => {
                         </div>
                         <div className="tpro">
                             <span>Total Category</span>
-                            <div><p>20</p></div>
+                            <div><p>{totalCategory}</p></div>
                         </div>
                     </div>
                 </div>
@@ -382,13 +459,10 @@ const Productmanagment = () => {
                                 <div className="eleven">
                                     <input type="text" className='cunt' value={e.reorderLevel}/>
                                 </div>
-                                <div className="eleven"><p className='cunt'>updatedAt</p></div>
+                                <div className="eleven"><p className='cunt'>{e.lastUpdated}</p></div>
                                 <div className="eleven eleventt">
-                                    {
-                                        editedProductId === e.id ? (<div className="editdiv">
-                                        <MdCancel onClick={handleCancel}/>
-                                        <IoCheckmarkDoneSharp />
-                                    </div>): (<div className="editdiv">
+                                    
+                                    <div className="editdiv">
                                         <MdDeleteForever className='delete2' onClick={()=> {
                                             setDeleteoption(true)
                                             // prompt("are you sure you want to delete this?")
@@ -396,12 +470,11 @@ const Productmanagment = () => {
                                         }
                                         }/>
                                         <FaEdit className='edit' onClick={()=>{
-                                            // setEdit(true)
-                                            handleEdit(e.id)
-                                            
+                                            setEdit(true)
+                                            setEditValues(e)
                                         }}/>
-                                    </div>)
-                                    }
+                                    </div>
+                                    
                                 </div>
                         </div>
                         ))

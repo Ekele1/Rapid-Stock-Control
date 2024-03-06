@@ -10,11 +10,18 @@ import { useEffect, useState } from 'react';
 import { IoSearchSharp } from "react-icons/io5";
 import axios from 'axios';
 import { BeatLoader } from "react-spinners";
+import { toast } from 'react-hot-toast';
+import { FaEdit } from "react-icons/fa";
+import Purchase from '../../purchase/AllPurchase';
 
 const Sales=()=>{
     const [item, setItem]= useState([])
     const [show, setShow] = useState(false)
     const [itemay, setItemay]= useState([])
+    const [edit,setEdit] = useState(false)
+    const [editValues, setEditValues] =useState()
+    const [deleteoption,setDeleteoption] = useState(false)
+    const [deleteId, setDeleteId] = useState()
 
     const [itemName, setItemName] = useState("")
     const [itemDescription, setItemDescription] = useState("")
@@ -30,6 +37,11 @@ const Sales=()=>{
     const [loading, setLoading]= useState(false)
     const [selectedData, setSelectedData]=useState()
     const [error, setError]= useState({isError: true, errorType: "", mssg: ""})
+    const [allSales, setAllSales]=useState([])
+
+    const [itemName2, setItemName2] = useState("")
+    const [itemDescription2, setItemDescription2] = useState("")
+    const [quantity2, setQuantity2] = useState()
     
     
     const [allProduct, setAllProduct] = useState()
@@ -50,8 +62,6 @@ const Sales=()=>{
     .then((data)=> {
         // console.log(data)
         setAllProduct(data.data)
-        // setSavedProduct(data.data)
-        // console.log(data.data)
     })
     .catch((error)=> {
         console.log("Error",error)
@@ -65,6 +75,31 @@ const Sales=()=>{
         setFilteredData(filteredItems)
     },[searchValue,allProduct])
 
+    const handleGetsales=()=>{
+        // const id = JSON.parse(localStorage.getItem("salesrecord"))
+        const userId = JSON.parse(localStorage.getItem("userInformation"))
+        const id = userId.userId
+        const url = `https://rapid-stock-control-osqb.onrender.com/sales/salesrecord/${id}`
+        // const userId = JSON.parse(localStorage.getItem("userInformation"))
+        const token = userId.token
+        const headers = {
+            Authorization:`Bearer ${token}`
+        }
+        fetch(url,{headers})
+            .then((response)=>
+                response.json()).then((data)=>{
+                // console.log("data",data)
+                setAllSales(data.data)
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+    }
+
+    useEffect(()=>{
+        handleGetsales()
+    },[])
+
 
 
     const handleAddSale =()=>{
@@ -73,7 +108,7 @@ const Sales=()=>{
             const userId = JSON.parse(localStorage.getItem("userInformation"))
             const token = userId.token
             const id = userId.userId
-            const url = `https://rapid-stock-control-osqb.onrender.com/sales/record/${selectedData?._id}/${id}`
+            const url = `https://rapid-stock-control-osqb.onrender.com/sales/record/${id}/${selectedData?._id}`
             const headers = {
                 Authorization:`Bearer ${token}`
             }
@@ -88,28 +123,167 @@ const Sales=()=>{
                 setItemDescription("")
                 setQuantity()
             const dataObject = sales
+            
     
             axios.post(url,dataObject,{headers})
             .then((response)=>{
-                console.log(response)
+                // console.log(response)
+                localStorage.setItem("salesrecord", JSON.stringify(response.data.data._id))
                 setLoading(false)
+                setShow(false)
+                handleGetsales()
             })
             .catch((error)=>{
                 console.log(error)
                 setLoading(false)
-                console.log("quantity", typeof quantity)
             })
     }
 
 
 
-    const handleAddItem=()=>{
-        const newItem = [...item, []]
-        setItem(newItem)
+    const handleDelete =(id)=>{
+        const userId = JSON.parse(localStorage.getItem("userInformation"))
+        const iduser = userId.userId
+        const token = userId.token
+        const headers = {
+            Authorization:`Bearer ${token}`
+        }
+        setLoading(true)
+        const url = `https://rapid-stock-control-osqb.onrender.com/sales/deletesale/${id}/${iduser}`
+
+        fetch(url,{
+            method: 'DELETE',
+            headers: headers
+        })
+        .then((response)=> {response.json()
+            // console.log(response)
+        })
+        .then((data)=> {console.log(data)
+            setLoading(false)
+            setDeleteoption(false)
+            handleGetsales()
+            // toast.success()
+        })
+        .catch((error)=> {console.log(error)
+            setLoading(false)
+        })
     }
+
+    const handleUpdateSale =()=>{
+        setLoading(true)
+        const userId = JSON.parse(localStorage.getItem("userInformation"))
+        const iduser = userId.userId
+        const token = userId.token
+        const newstqqty = parseInt(quantity2)
+
+        const dataObject = {
+            itemName: itemName2,
+            itemDescription: itemDescription2,
+            quantity: newstqqty,
+            
+        }
+        const headers = {
+            Authorization:`Bearer ${token}`
+        }
+        const url = `https://rapid-stock-control-osqb.onrender.com/sales/updatesale/${editValues?._id}/${iduser}`
+
+        axios.put(url, dataObject,{headers})
+        // .then((response)=> response.json())
+        .then((data)=> {
+            console.log(data)
+            setLoading(false)
+            handleGetsales()
+            setEdit(false)
+            // getAllproduct()
+            // console.log("dataobject",dataObject)
+            // getAllproduct()
+        })
+        .catch((error)=> {console.log(error)
+            // console.log(token)
+            setLoading(false)
+            setLoading(false)
+            // console.log("token", token)
+        })
+    }
+    
+    // console.log(editValues.itemName)
+    // const name = editValues.itemName
+
+
+
     return(
         <div className="saleswrapper">
             <div className="saleswrapperdiv">
+                {
+                    edit?<div className="editedDiv" id='editsalediv'>
+                    <div className="canceldiv"><ImCancelCircle onClick={()=>setEdit(false)}/></div>
+                    <div className="inputwrapedit">
+                        <div className="inputholdedit">
+                            <div className="collectitdiv">
+                                <div className='editme'>
+                                    <p>Item Name</p>
+                                    <input type="text" placeholder={editValues?.itemName} value={itemName2} onChange={(e)=>setItemName2(e.target.value)}/>
+                                </div>
+                                <div className='editme'>
+                                    <p>Item Description</p>
+                                    <input type="text" placeholder={editValues?.itemDescription} value={itemDescription2} onChange={(e)=>setItemDescription2(e.target.value)}/>
+                                </div>
+                                <div className='editme'>
+                                    <p>Quantity</p>
+                                    <input type="text" placeholder={editValues?.quantity} value={quantity} onChange={(e)=>setQuantity2(e.target.value)}/>
+                                </div>
+                            </div>
+                            {/* <div className="collectitdiv">
+                                <div className='editme'>
+                                    <p>Description</p>
+                                    <input type="text" placeholder={editValues.productDescription} value={productDescription} onChange={(e)=>setproductDescription(e.target.value)}/>
+                                </div>
+                                <div className='editme'>
+                                    <p>costPrice</p>
+                                    <input type="text" placeholder={editValues.costPrice} value={costPrice} onChange={(e)=>setcostPrice(e.target.value)}/>
+                                </div>
+                                <div className='editme'>
+                                    <p>SellingPrice</p>
+                                    <input type="text" placeholder={editValues.sellingPrice} value={sellingPrice} onChange={(e)=>setsellingPrice(e.target.value)}/>
+                                </div>
+                            </div>
+                            <div className="collectitdiv">
+                                <div className='editme'>
+                                    <p>StockQuantity</p>
+                                    <input type="text" placeholder={editValues.stockQty} value={stockQty} onChange={(e)=>setstockQty(e.target.value)}/>
+                                </div>
+                                <div className='editme'>
+                                    <p>ReorderLevel</p>
+                                    <input type="text" placeholder={editValues.reorderLevel} value={reorderLevel} onChange={(e)=>setReorderLevel(e.target.value)}/>
+                                </div>
+                                {/* <div className='editme'>
+                                    <p>ProductName</p>
+                                    <input type="text" />
+                                </div> */}
+                            {/* </div>  */}
+                            <button className='editdone' onClick={()=>handleUpdateSale(editValues._id)}>
+                                {
+                                    loading?<BeatLoader color='white'/>:"DONE"
+                                }
+                            </button>
+                        </div>
+                    </div>
+                </div>:null
+                }
+                {
+                    deleteoption? <div className="editdivxz">
+                        <div className="cancelxx"><ImCancelCircle onClick={()=>setDeleteoption(false)}/></div>
+                        <div className="deletedecision">
+                            <p>Are you sure you want to permanently delete this Data?</p>
+                            <button className='salesdelete' onClick={()=>handleDelete(deleteId)}>
+                                {
+                                    loading?<BeatLoader color='white'/>:"DELETE"
+                                }
+                            </button>
+                        </div>
+                    </div>:null
+
+                }
                 
                 {
                     show?
@@ -123,6 +297,8 @@ const Sales=()=>{
                                                 setSelectedData(e)
                                                 setItemName(e.productName)
                                                 setItemDescription(e.productDescription)
+                                                setPrice(e.sellingPrice)
+                                                setTax(e.VAT)
                                                 setInputFocus(false)
                                             }}>{e.productName}</p>
                                         ))
@@ -146,35 +322,39 @@ const Sales=()=>{
                                         <div className="thesales">
                                             <div className="thesalesinput">
                                                 <p>Item Name</p>
-                                                <input type="text" />
+                                                <input type="text"value={itemName}/>
                                             </div>
                                             <div className="thesalesinput">
                                                 <p>Item Description</p>
-                                                <input type="text" />
+                                                <input type="text" value={itemDescription}/>
                                             </div>
                                         </div>
                                         <div className="thesales">
                                             <div className="thesalesinput">
                                                 <p>Unit Price</p>
-                                                <input type="text" />
+                                                <input type="text" value={price}/>
                                             </div>
                                             <div className="thesalesinput">
                                                 <p>VAT</p>
-                                                <input type="text" />
+                                                <input type="text" value={tax}/>
                                             </div>
                                         </div>
                                         <div className="thesales">
                                             <div className="thesalesinput">
                                                 <p>Quantity</p>
+                                                <input type="text" value={quantity} onChange={(e)=>setQuantity(e.target.value)}/>
+                                            </div>
+                                            <div className="thesalesinput">
+                                                <p>Total</p>
                                                 <input type="text" />
                                             </div>
-                                            {/* <div className="thesalesinput">
-                                                <p>VAT</p>
-                                                <input type="text" />
-                                            </div> */}
                                         </div>
                                         <div className="salesbuttonholddiv">
-                                            <button className='salesbuttonitself'>Done</button>
+                                            <button className='salesbuttonitself' onClick={handleAddSale}>
+                                                {
+                                                    loading?<BeatLoader color='white'/>: "Done"
+                                                }
+                                            </button>
                                         </div>
                                         </div>
                                 </div>
@@ -214,7 +394,7 @@ const Sales=()=>{
                         <p>Brand</p>
                     </div>
                     <div className="headers">
-                        <p>Price</p>
+                        <p>Unit Price</p>
                     </div>
                     <div className="headers">
                         <p>Quantity</p>
@@ -223,7 +403,7 @@ const Sales=()=>{
                         <p>Amount</p>
                     </div>
                     <div className="headers">
-                        <p>Tax</p>
+                        <p>profit</p>
                     </div>
                     <div className="headers">
                         <p>Total</p>
@@ -235,36 +415,41 @@ const Sales=()=>{
                     <div className="items">
                     {
                         
-                        item.map((e,id)=>(
+                        allSales?.map((e,id)=>(
                         <div className="itema"  key={id}>
                         
                         <div className="real">
-                            
+                            <input type="text" value={e.itemName} />
                         </div>
                         <div className="real">
-                            
+                            <input type="text" value={e.itemDescription} />
                         </div>
                         <div className="real">
-                            
+                            <input type="text" value={e.brand} />
                         </div>
                         <div className="real">
-                            
+                            <input type="text" value={e.unitPrice} />
                         </div>
                         <div className="real">
-                            
+                            <input type="text" value={e.quantity} />
                         </div>
                         <div className="real">
-                            
+                            <input type="text" value={e.amount} />
                         </div>
                         <div className="real">
-                            
+                            <input type="text" value={e.profit} />
                         </div>
                         <div className="real">
-                            
+                            <input type="text" value={e.total} />
                         </div>
                         <div className="real real2">
-                            <div><MdDeleteForever className='delete'/></div>
-                            <div><IoAddCircleOutline className='check' onClick={handleAddItem}/></div>
+                            <div><MdDeleteForever className='delete' onClick={()=>{
+                                setDeleteoption(true)
+                                setDeleteId(e._id)
+                            }}/></div>
+                            <div><FaEdit  className='check' onClick={()=>{setEdit(true)
+                                setEditValues(e)}
+                            }/></div>
                         </div>
                         </div>
                         ))

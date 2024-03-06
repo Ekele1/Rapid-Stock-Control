@@ -20,6 +20,68 @@
     /* top: 0; */
     /* z-index: 20; */
 /* } */
+.editedDiv{
+    width: 90%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+}
+.canceldiv{
+    width: 100%;
+    height: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 5%;
+    font-size: 25px;
+    /* background-color: red; */
+}
+.inputwrapedit{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    /* background-color: green; */
+}
+.inputholdedit{
+    width: 90%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+}
+.collectitdiv{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: pink; */
+}
+.editme{
+    width: 32%;
+    height: 90%;
+    /* background-color: yellow; */
+}
+.editme input{
+    width: 100%;
+    height: 60%;
+    padding-left: 2%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.editdone{
+    width: 100%;
+    height: 10%;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: blue;
+}
 .deletealert{
     width: 100%;
     height: 25%;

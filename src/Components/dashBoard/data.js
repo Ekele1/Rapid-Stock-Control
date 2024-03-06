@@ -1,42 +1,38 @@
+
+
 export const userData = [
     {
-        id:1,
         days: "Monday",
         sales: 60000,
         purchases: 4000,
     },
     {
-        id:2,
         days: "Teusday",
         sales: 45677,
         purchases: 3000,
     },
     {
-        id:3,
         days: "Wednessday",
         sales: 49777,
         purchases: 12000,
     },
     {
-        id:4,
         days: "Thursday",
         sales: 75677,
         purchases: 3900,
     },
     {
-        id:5,
         days: "Friday",
         sales: 105677,
         purchases: 55000,
     },
     {
-        id:6,
         days: "Sarturday",
         sales: 85677,
         purchases: 35000,
     },
     {
-        id:7,
+
         days: "Sunday",
         sales: 150800,
         purchases: 70000,

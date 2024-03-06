@@ -137,6 +137,55 @@
     background-color: rgb(255, 226, 97);
     /* border: 1px solid black; */
 }
+.mainp{
+    /* position: relative; */
+}
+.deleteAlert{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3%;
+    background-color: white;
+    position: absolute;
+}
+.deleteAlert p{
+    color: red;
+}
+.cancelhold{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    padding-right: 3%;
+    justify-content: flex-end;
+    /* background-color: blue; */
+}
+.agree{
+    width: 30%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+.agree button{
+    width: 70%;
+    height: 90%;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: blue;
+}
+.agree button:hover{
+    background-color: red;
+}
+.agree button:active{
+    background-color: rgb(104, 5, 5);
+}
 .purchasehead div{
     width: 10%;
     min-height: 50px;
@@ -191,7 +240,7 @@
         height: 80vh;
     }
     #mainwrapporgy{
-        min-width: 75%;
+        width: 100%;
         height: 80vh;
         display: flex;
         overflow-y: scroll;
@@ -218,8 +267,10 @@
     }
     .purchaseadd{
         width: 90%;
-        /* background-color: yellow; */
+        background-color: white;
         height: max-content;
+        /* position: relative; */
+        /* z-index: 10; */
     }
     #closexx{
         height: 50px;
