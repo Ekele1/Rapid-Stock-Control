@@ -54,11 +54,6 @@ const MainPage=()=>{
 
 
 
-    
-    // console.log(token)
-    
-    // console.log(token)
-
     const handleSignOut=()=>{
         
          

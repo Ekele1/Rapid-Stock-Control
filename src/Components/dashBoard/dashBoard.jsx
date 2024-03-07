@@ -44,6 +44,10 @@ const Dashboard =()=>{
         sellingProduct: 0,
         type: "",
     }])
+
+    const [totalPurchaseWeekly, setTotalPurchaseWeekly] = useState()
+    const [totalPurchaseMonthly, setTotalPurchaseMonthly] = useState()
+    const [totalPurchaseQuarterly, setTotalPurchaseQuarterly] = useState()
     
 
     const label = option === "weekly report"? weekly?.map((e)=> e.day): option === "monthly report"? monthly?.map((e)=>e.month): option === "quaterly report"? quarterly?.map((e)=>e.quarter): weekly?.map((e)=> e.day)
@@ -69,13 +73,34 @@ const Dashboard =()=>{
         option === "weekly report"? setTopSellingProduct({sellingProduct: topSellingProductWeekly, type: "weekly"}) : option === "monthly report"? setTopSellingProduct({sellingProduct: topSellingProductMontly, type: "monthly"}): option === "quaterly report"? setTopSellingProduct({sellingProduct: topSellingProductQuarterly, type: "quaterly"}) : setTopSellingProduct({sellingProduct: topSellingProductWeekly, type: "weekly"})
     }
 
-    console.log("total", quarterly)
+    // console.log("total", quarterly[0]?.purchases)
+
+    const handleTotalPurchase=()=>{
+        let totalPurchaseMonthly1 = 0
+        monthly?.forEach(month => {
+            totalPurchaseMonthly1 += month.purchases;
+        })
+        setTotalPurchaseMonthly(totalPurchaseMonthly1)
+
+        let totalPurchaseWeekly1 = 0
+        weekly?.forEach(day => {
+            totalPurchaseWeekly1 += day.purchases
+        })
+        setTotalPurchaseWeekly(totalPurchaseWeekly1)
+
+        let totalPurchaseQuarterly1 = 0
+        quarterly?.forEach(quarter => {
+            totalPurchaseQuarterly1 += quarter.purchases
+        })
+        setTotalPurchaseWeekly(totalPurchaseQuarterly1)
+    }
 
     useEffect(()=>{
         hadleClick
         handleTotalSales()
         handleProfit()
         handleTopSellingProducts()
+        handleTotalPurchase()
     },[option])
 
     const handleSumaryOfSalesRoute=()=>{
@@ -90,7 +115,7 @@ const Dashboard =()=>{
         fetch(url,{headers})
         .then((Response)=>Response.json())
         .then((data)=> {
-            console.log("sumary",data)
+            // console.log("sumary",data)
             setSalesSummaryMonthly(data.salesSummaryMonthly.totalSales)
             setSalesSummaryQuarterly(data.salesSummaryQuarterly.totalSales)
             setSalesSummaryWeekly(data.salesSummaryWeekly.totalSales)
@@ -100,6 +125,7 @@ const Dashboard =()=>{
             setTopSellingProductMontly(data.salesSummaryMonthly.topSellingProducts)
             setTopSellingQuarterly(data.salesSummaryQuarterly.topSellingProducts)
             setTopSellingWeekly(data.salesSummaryWeekly.topSellingProducts)
+            // setTotalPurchaseMonthly(data.salesSummaryMonthly.)
             // setSalesSummary()
             // setWeekly(data.weeklyrecord)
             // setMonthly(data.monthlyrecord)
@@ -128,7 +154,7 @@ const Dashboard =()=>{
         fetch(url,{headers})
         .then((Response)=>Response.json())
         .then((data)=> {
-            // console.log(data)
+            console.log("all sales",data)
             setWeekly(data.weeklyrecord)
             setMonthly(data.monthlyrecord)
             setQuaterly(data.quarterlyrecord)
@@ -167,6 +193,8 @@ const Dashboard =()=>{
         //     },[])
         // }
 
+        // option === "weekly report"? totalPurchaseWeekly : option ==="monthly report"? totalPurchaseMonthly === "quaterly report"? totalPurchaseQuarterly : null 
+
     return(
        <>
         <div className="dashboardwrapper">
@@ -191,7 +219,7 @@ const Dashboard =()=>{
                         <div className="xx">
                             <h3>Total Purchases</h3>
                             <div style={{display: 'flex'}}>
-                                <TbCurrencyNaira className='naira'/><p>{option === "weekly report"?60350.90: option==="monthly report"? 2805000: option === "quaterly report"? 70000000: null}</p>
+                                <TbCurrencyNaira className='naira'/><p>{option === "weekly report"? totalPurchaseWeekly: option === "monthly report"? totalPurchaseMonthly: option === "quarterly report" ? totalPurchaseQuarterly : totalPurchaseWeekly}</p>
                             </div>
                         </div>
                     </div>
