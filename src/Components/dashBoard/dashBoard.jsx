@@ -48,6 +48,8 @@ const Dashboard =()=>{
     const [totalPurchaseWeekly, setTotalPurchaseWeekly] = useState()
     const [totalPurchaseMonthly, setTotalPurchaseMonthly] = useState()
     const [totalPurchaseQuarterly, setTotalPurchaseQuarterly] = useState()
+
+    const [overallTotal, setOverAllTotal] = useState()
     
 
     const label = option === "weekly report"? weekly?.map((e)=> e.day): option === "monthly report"? monthly?.map((e)=>e.month): option === "quaterly report"? quarterly?.map((e)=>e.quarter): weekly?.map((e)=> e.day)
@@ -92,7 +94,7 @@ const Dashboard =()=>{
         quarterly?.forEach(quarter => {
             totalPurchaseQuarterly1 += quarter.purchases
         })
-        setTotalPurchaseWeekly(totalPurchaseQuarterly1)
+        setTotalPurchaseQuarterly(totalPurchaseQuarterly1)
     }
 
     useEffect(()=>{
@@ -115,7 +117,7 @@ const Dashboard =()=>{
         fetch(url,{headers})
         .then((Response)=>Response.json())
         .then((data)=> {
-            // console.log("sumary",data)
+            console.log("sumary",data.totalAmountSold)
             setSalesSummaryMonthly(data.salesSummaryMonthly.totalSales)
             setSalesSummaryQuarterly(data.salesSummaryQuarterly.totalSales)
             setSalesSummaryWeekly(data.salesSummaryWeekly.totalSales)
@@ -125,6 +127,7 @@ const Dashboard =()=>{
             setTopSellingProductMontly(data.salesSummaryMonthly.topSellingProducts)
             setTopSellingQuarterly(data.salesSummaryQuarterly.topSellingProducts)
             setTopSellingWeekly(data.salesSummaryWeekly.topSellingProducts)
+            setOverAllTotal(data.totalAmountSold)
             // setTotalPurchaseMonthly(data.salesSummaryMonthly.)
             // setSalesSummary()
             // setWeekly(data.weeklyrecord)
@@ -154,7 +157,7 @@ const Dashboard =()=>{
         fetch(url,{headers})
         .then((Response)=>Response.json())
         .then((data)=> {
-            console.log("all sales",data)
+            // console.log("all sales",data)
             setWeekly(data.weeklyrecord)
             setMonthly(data.monthlyrecord)
             setQuaterly(data.quarterlyrecord)
@@ -316,8 +319,8 @@ const Dashboard =()=>{
                     <div className="recent"><h4>Recent Stock History</h4></div>
                     <div className="total2">
                         <div className="box">
-                            <h3>Total Sales Items</h3>
-                            <p>419</p>
+                            <h3>Overall Sales Total</h3>
+                            <p>{overallTotal}</p>
                         </div>
                         <div className="box">
                             <h3>Total Purchase Items</h3>
