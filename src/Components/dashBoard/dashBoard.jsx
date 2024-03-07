@@ -50,6 +50,7 @@ const Dashboard =()=>{
     const [totalPurchaseQuarterly, setTotalPurchaseQuarterly] = useState()
 
     const [overallTotal, setOverAllTotal] = useState()
+    const [OverallTotalPurchase, setOverAllTotalPurchase] = useState()
     
 
     const label = option === "weekly report"? weekly?.map((e)=> e.day): option === "monthly report"? monthly?.map((e)=>e.month): option === "quaterly report"? quarterly?.map((e)=>e.quarter): weekly?.map((e)=> e.day)
@@ -128,17 +129,35 @@ const Dashboard =()=>{
             setTopSellingQuarterly(data.salesSummaryQuarterly.topSellingProducts)
             setTopSellingWeekly(data.salesSummaryWeekly.topSellingProducts)
             setOverAllTotal(data.totalAmountSold)
-            // setTotalPurchaseMonthly(data.salesSummaryMonthly.)
-            // setSalesSummary()
-            // setWeekly(data.weeklyrecord)
-            // setMonthly(data.monthlyrecord)
-            // setQuaterly(data.quarterlyrecord)
+        })
+        .catch((error)=> {
+            console.log("error",error)
+        })
+    }
+    const handleSumaryOfPurchaseRoute=()=>{
+        const userId = JSON.parse(localStorage.getItem("userInformation"))
+        const id = userId.userId
+        const url = `https://rapid-stock-control-osqb.onrender.com/purchases/purchase-summary/${id}`
+        const token = userId.token
+        
+        const headers = {
+            Authorization:`Bearer ${token}`
+        }
+        fetch(url,{headers})
+        .then((Response)=>Response.json())
+        .then((data)=> {
+            console.log("sumary",data)
+            setOverAllTotalPurchase(data?.totalAmountPurchased)
+            
         })
         .catch((error)=> {
             console.log("error",error)
         })
     }
 
+    useEffect(()=>{
+        handleSumaryOfPurchaseRoute()
+    },[])
     useEffect(()=>{
         handleSumaryOfSalesRoute()
     },[])
@@ -323,8 +342,8 @@ const Dashboard =()=>{
                             <p>{overallTotal}</p>
                         </div>
                         <div className="box">
-                            <h3>Total Purchase Items</h3>
-                            <p>122</p>
+                            <h3>Overall Purchase Total</h3>
+                            <p>{OverallTotalPurchase}</p>
                         </div>
                     </div>
                 </div>
