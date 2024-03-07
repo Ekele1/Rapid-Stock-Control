@@ -206,13 +206,13 @@ const Purchase=()=>{
                                 </div>
                                 <div className='editme'>
                                     <p>DateOrdered</p>
-                                    <input type="text" placeholder={dataToeditDetails.dateOrder} value={dateOrder} onChange={(e)=>setDateOrder(e.target.value)}/>
+                                    <input type="date" placeholder={dataToeditDetails.dateOrder} value={dateOrder} onChange={(e)=>setDateOrder(e.target.value)}/>
                                 </div>
                             </div>
                             <div className="collectitdiv">
                                 <div className='editme'>
                                     <p>Expected date</p>
-                                    <input type="text" placeholder={dataToeditDetails.expectedDate} value={expectedDate} onChange={(e)=>setExpectedDate(e.target.value)}/>
+                                    <input type="date" placeholder={dataToeditDetails.expectedDate} value={expectedDate} onChange={(e)=>setExpectedDate(e.target.value)}/>
                                 </div>
                                 <div className='editme'>
                                     <p>Unit Price</p>
@@ -225,7 +225,7 @@ const Purchase=()=>{
                             </div>
                             <button className='editdone' onClick={()=>handleEditPurchase(dataToeditDetails._id)}>
                                 {
-                                    loading?<BeatLoader />:"DONE"
+                                    loading?<BeatLoader color='white'/>:"DONE"
                                 }
                             </button>
                         </div>

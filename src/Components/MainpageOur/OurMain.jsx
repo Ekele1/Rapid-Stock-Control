@@ -56,27 +56,28 @@ const MainPage=()=>{
 
     const handleSignOut=()=>{
         
-         
+         localStorage.clear("userInformation")
+         navigate("/")
         // const tokenid = JSON.parse(localStorage.getItem("userInformation"))
-        const userId = JSON.parse(localStorage.getItem("userInformation"))
-        const id = userId.userId
-        const token = userId.token
-        const headers = {
-            Authorization:`Bearer ${token}`
-        }
+        // const userId = JSON.parse(localStorage.getItem("userInformation"))
+        // const id = userId.userId
+        // const token = userId.token
+        // const headers = {
+        //     Authorization:`Bearer ${token}`
+        // }
 
-        const url =  `https://rapid-stock-control-osqb.onrender.com/api/signout/${id}`
+        // const url =  `https://rapid-stock-control-osqb.onrender.com/api/signout/${id}`
 
-        axios.post(url,{headers})
-        .then((response)=>{
-            localStorage.clear("userInformation")
-        //  navigate("/")
-            console.log(response)
-            navigate("/")
-        }).catch((error)=>{
-            console.log(error)
-            // console.log(headers)
-        })
+        // axios.post(url,{headers})
+        // .then((response)=>{
+        //     localStorage.clear("userInformation")
+        // //  navigate("/")
+        //     console.log(response)
+        //     navigate("/")
+        // }).catch((error)=>{
+        //     console.log(error)
+        //     // console.log(headers)
+        // })
 
     }
 

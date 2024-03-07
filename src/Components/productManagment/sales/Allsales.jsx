@@ -345,8 +345,8 @@ const Sales=()=>{
                                                 <input type="text" value={quantity} onChange={(e)=>setQuantity(e.target.value)}/>
                                             </div>
                                             <div className="thesalesinput">
-                                                <p>Total</p>
-                                                <input type="text" />
+                                                {/* <p>Total</p>
+                                                <input type="text" /> */}
                                             </div>
                                         </div>
                                         <div className="salesbuttonholddiv">
@@ -366,18 +366,18 @@ const Sales=()=>{
                 <div className="sales">
                     <button className='addbutton' onClick={()=>setShow(true)}>SELL</button>
                     <div className="person">
-                        <h5>Sales Person</h5>
+                        {/* <h5>Sales Person</h5> */}
                         <div className="namex">
-                            <p>Sarah V</p>
+                            {/* <p>Sarah V</p> */}
                         </div>
                     </div>
                     <div className="person per">
                         <h3>SALES</h3>
                     </div>
                     <div className="person">
-                        <h5>Date</h5>
+                        {/* <h5>Date</h5> */}
                         <div className="namex">
-                            <p>10/2/2024</p>
+                            {/* <p>10/2/2024</p> */}
                         </div>
                     </div>
                     <div className="divup"><RxDropdownMenu /></div>

@@ -65,8 +65,15 @@
     justify-content: center;
     color: white;
     border-radius: 9px;
+    /* text-overflow: ellipsis; */
     border: 2px solid blue;
     /* background-color: ; */
+}
+.compname h3{
+    max-height: 100px;
+    overflow-y: hidden;
+    white-space: nowwrap;
+    text-overflow: ellipsis;
 }
 .optionschose{
     width: 95%;

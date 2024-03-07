@@ -95,6 +95,7 @@ const OrderManagment = ()=>{
             })
             .catch((error)=>{console.log(error)
                 setLoading(false)
+                setError({isError:true, errortype: "required", message: error.response.data.message})
             })
 
         }
@@ -279,10 +280,13 @@ const OrderManagment = ()=>{
                                
                         </div>
                     </div>
+                    {
+                        error.isError?<p className='error'>{error.message}</p>: null
+                    }
                     <div className="orderinputwrap orderbuttonwrap" id='buttunsettle'>
                         <button className='enterbutton' onClick={()=>handleCreateOrder()}>
                             {
-                                loading?<BeatLoader /> : "SAVE"
+                                loading?<BeatLoader color='white'/> : "SAVE"
                             }
                         </button>
                     </div>

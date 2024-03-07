@@ -97,6 +97,7 @@ const Productmanagment = () => {
             // console.log(err, "err message")
             setError({isError: true, errortype: err.response.data.message})
             setLoading(false)
+            
         }
 
     };
@@ -120,7 +121,7 @@ const Productmanagment = () => {
         // console.log(data.data)
     })
     .catch((error)=> {
-        console.log("error",error)
+        // console.log("error",error)
     })
     }
 
@@ -347,8 +348,11 @@ const Productmanagment = () => {
                                             </div>
                                         </div>
                                         {
-                                            error.isError?<p id='errorm'>{error.message}</p>:null
+                                            error.isError?<p id='errorm'>{error.errortype}</p>:null
                                         }
+                                        {/* {
+                                            error.isError?<p>{error.message}</p>:null
+                                        } */}
                                         <div className="svg" id='nondivbutt'>
                                             <div className='svgbutt' id='buttsvg'>
                                                 <button className='adding'>

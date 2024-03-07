@@ -30,7 +30,7 @@ const Header =()=>{
         // console.log(data)
     })
     .catch((error)=> {
-        console.log("error",error)
+        // console.log("error",error)
     })
     }
 
@@ -38,7 +38,7 @@ const Header =()=>{
         handleGetNotification()
     },[notification])
 
-    console.log("content",notificationContent)
+    // console.log("content",notificationContent)
 
 
 
