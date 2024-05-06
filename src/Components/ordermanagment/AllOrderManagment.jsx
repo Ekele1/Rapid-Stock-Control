@@ -4,12 +4,9 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { ImCancelCircle } from "react-icons/im";
 import { IoSearchSharp } from "react-icons/io5";
-import { IoAddCircleOutline } from "react-icons/io5";
 import { BeatLoader } from "react-spinners";
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios';
-import * as yup from 'yup'
+import toast from 'react-hot-toast';
 
 const OrderManagment = ()=>{
 
@@ -25,12 +22,18 @@ const OrderManagment = ()=>{
     const [shipmentStatus, setShipmentStatus]= useState("")
     const [orderId, setOrderId]=useState()
     const [loading, setLoading] = useState(false)
-    const [error, setError]= useState({isError: false, errortype: "", message: "" })
     const [searchshow, setSearchShow]= useState(false)
     const [deleteId, setDeleteId] = useState()
     const [deleteOption, setDeleteOption] = useState()
+    const [editOption, seteditOption] = useState()
 
-
+    const [editCustomerName, setEditCustomerName] = useState("")
+    const [editOrderDate, setEditOrderDate] = useState("")
+    const [editProductName, setEditProductName] = useState("")
+    const [editQuantity, setEditQuantity] = useState("")
+    const [editPaymentStatus, setEditPaymentStatus] = useState("")
+    const [editShipmentStatus, setEditShipmentStatus] = useState("")
+    const [editDetails, setEditDetails] = useState()
 
 
     const getAllOrders=()=>{
@@ -45,10 +48,7 @@ const OrderManagment = ()=>{
     fetch(url,{headers})
     .then((Response)=> Response.json())
     .then((data)=> {
-        // console.log(data)
         setalltheOrder(data.data)
-        // setProducts(data.data)
-        // console.log(data.data)
     })
     .catch((error)=> {
         console.log("error",error)
@@ -74,32 +74,56 @@ const OrderManagment = ()=>{
             quantity: unit,
         }
 
-        const handleCreateOrder=()=>{
-            const userId = JSON.parse(localStorage.getItem("userInformation"))
-            const id = userId.userId
-             const token = userId.token
-
-             const headers = {
-                Authorization:`Bearer ${token}`
-            }
+        const handleCreateOrder=(e)=>{
+            e.preventDefault()
             setLoading(true);
-            const url = `https://rapid-stock-control-osqb.onrender.com/orders/record-order/${id}/${orderId}`
 
-            axios.post(url, data,{headers})
-            // .then((response)=> response.json())
-            .then((data)=>{
-                // console.log(data)
+            if(!customerName){
                 setLoading(false)
-                setShow(false)
-                getAllOrders()
-            })
-            .catch((error)=>{console.log(error)
+                toast.error("customer Name field can't be left empty")
+            }else if(!productName){
                 setLoading(false)
-                setError({isError:true, errortype: "required", message: error.response.data.message})
-            })
+                toast.error("product Name field can't be left empty")
+            }else if(!paymentStatus){
+                setLoading(false)
+                toast.error("payment status field can't be left empty")
+            }else if(!orderDate){
+                setLoading(false)
+                toast.error("order date field can't be left empty")
+            }else if(!shipmentStatus){
+                setLoading(false)
+                toast.error("shipment status field can't be left empty")
+            }else if(!unitPrice){
+                setLoading(false)
+                toast.error("unit price field can't be left empty")
+            }else if(!quantity){
+                setLoading(false)
+                toast.error("quantity field can't be left empty")
+            }
+            else{
+                const userId = JSON.parse(localStorage.getItem("userInformation"))
+                const id = userId.userId
+                 const token = userId.token
+    
+                 const headers = {
+                    Authorization:`Bearer ${token}`
+                }
+                const url = `https://rapid-stock-control-osqb.onrender.com/orders/record-order/${id}/${orderId}`
+    
+                axios.post(url, data,{headers})
+                .then((data)=>{
+                    // console.log(data)
+                    setLoading(false)
+                    setShow(false)
+                    getAllOrders()
+                })
+                .catch((error)=>{console.log(error)
+                    setLoading(false)
+                })
+            }
+
 
         }
-
 
     const getAllproduct=()=>{
         const userId = JSON.parse(localStorage.getItem("userInformation"))
@@ -113,10 +137,7 @@ const OrderManagment = ()=>{
     fetch(url,{headers})
     .then((Response)=> Response.json())
     .then((data)=> {
-        // console.log(data)
-        // setSavedProduct(data.data)
         setProducts(data.data)
-        // console.log(data.data)
     })
     .catch((error)=> {
         console.log("error",error)
@@ -158,6 +179,40 @@ const OrderManagment = ()=>{
             console.log(error)
         })
     }
+    const handleEditOrder=()=>{
+        const userId = JSON.parse(localStorage.getItem("userInformation"))
+        const iduser = userId.userId
+        const token = userId.token
+        const headers = {
+            Authorization:`Bearer ${token}`
+        }
+        const myQuantity = parseInt(editQuantity)
+
+        const dataObject = {
+            customerName: editCustomerName,
+            orderDate: editOrderDate,
+            productName: editProductName,
+            quantity: myQuantity,
+            paymentStatus: editPaymentStatus,
+            shipmentStatus: editShipmentStatus,
+        }
+        
+        setLoading(true)
+        const url = `https://rapid-stock-control-osqb.onrender.com/orders/updateorder/${editDetails._id}/${editDetails.productId}`
+
+        axios.put(url,dataObject,{headers})
+        .then((data)=> {
+            console.log(data)
+            setLoading(false)
+            getAllOrders()
+            seteditOption(false)
+        })
+        .catch((error)=> {
+            setLoading(false)
+            toast.error(error.response.data.message)
+            // console.log(editDetails)
+        })
+    }
 
 
     return(
@@ -176,12 +231,67 @@ const OrderManagment = ()=>{
                     </div>
                 </div>:null
             }
+
+            {
+                editOption?
+                <div className='editfunk'>
+                    <div className="ordercancel"><ImCancelCircle onClick={()=>seteditOption(false)}/></div>
+                            <div className='funkwrap'>
+                        <div className="editfunkhold">
+                            <div>
+                                <p>Customer Name</p>
+                                <input type="text" placeholder={editDetails.customerName} value={editCustomerName} onChange={(e)=>setEditCustomerName(e.target.value)} id='funkinput'/>
+                            </div>
+                            <div>
+                                <p>Order Date</p>
+                                <input type="text" placeholder={editDetails.orderDate} value={editOrderDate} onChange={(e)=>setEditOrderDate(e.target.value)} id='funkinput'/>
+                            </div>
+                        </div>
+                        <div className="editfunkhold">
+                            <div>
+                                <p>Product Name</p>
+                                <input type="text" placeholder={editDetails.productName} value={editProductName} onChange={(e)=>setEditProductName(e.target.value)} id='funkinput'/>
+                            </div>
+                            <div>
+                                <p>Quantity</p>
+                                <input type="number" placeholder={editDetails.quantity} value={editQuantity} onChange={(e)=>setEditQuantity(e.target.value)} id='funkinput'/>
+                            </div>
+                        </div>
+                        <div className="editfunkhold">
+                            <div>
+                                <p>Payment Status</p>
+                                <select name="paymentstatus" value={editPaymentStatus} onChange={(e)=>setEditPaymentStatus(e.target.value)} id="paymentstatus">
+                                    <option value="chose-option">chose-option</option>
+                                    <option value="paid">paid</option>
+                                    <option value="not-paid">not-paid</option>
+                                    <option value="pending">pending</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p>Shipment Status</p>
+                                <select name="paymentstatus" value={editShipmentStatus} onChange={(e)=>setEditShipmentStatus(e.target.value)} id="paymentstatus">
+                                    <option value="chose-option">chose-option</option>
+                                    <option value="shipped">shipped</option>
+                                    <option value="not-shipped">not-shipped</option>
+                                    <option value="pending">pending</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="editfunkhold">
+                            <button onClick={handleEditOrder}>
+                                {
+                                    loading?<BeatLoader />: "DONE"
+                                }
+                            </button>
+                        </div>
+                    </div>
+
+                </div>: null
+            }
             
             {
                 show?
                 <div className="orderstatus">
-                    
-                    {/* <form action="" className='orderstatus' onSubmit={handleSubmit(onSubmit)}> */}
                     <div className="cancelink">
                     <ImCancelCircle className='cancel' onClick={()=>setShow(false)}/>
                 </div>
@@ -203,7 +313,7 @@ const OrderManagment = ()=>{
                 }
                 <div className="searchbox">
                     <div className="searchdiv">
-                        <input type="text" onFocus={()=>setSearchShow(true)}/>
+                        <input type="text" placeholder='search for a product' onFocus={()=>setSearchShow(true)}/>
                         <IoSearchSharp style={{cursor: "pointer"}}/>
                     </div>
                 </div>
@@ -212,48 +322,28 @@ const OrderManagment = ()=>{
                         <div>
                             <p>Customer Name</p>
                             <input type="text" value={customerName} onChange={(e)=>setCustomerName(e.target.value)}  />
-                                {/* {
-                                    errors.customerName ? <p id='errorm'>{errors.customerName.message}</p> : null
-                                } */}
                         </div>
                         <div>
                             <p>Order Date</p>
                             <input type="date" value={orderDate} onChange={(e)=>setOrderDate(e.target.value)} />
-                                {/* {
-                                    errors.orderDate ? <p id='errorm'>{errors.orderDate.message}</p> : null
-                                    }   */}
                         </div>
                     </div>
                     <div className="orderinputwrap">
                         <div>
                             <p>Product Name</p>
                             <input type="text" value={productName}/>
-                            {/* {
-                                    errors.productName ? <p id='errorm'>{errors.productName.message}</p> : null
-                                } */}
                         </div>
                         <div>
                             <p>Quantity</p>
                             <input type="text" value={quantity} onChange={(e)=>setQuantity(e.target.value)}/>
-                                {/* {
-                                    errors.quantity ? <p id='errorm'>{errors.quantity.message}</p> : null
-                                } */}
                         </div>
                     </div>
                     <div className="orderinputwrap">
                         <div>
                             <p>Unit Price</p>
                             <input type="text" value={unitPrice} />
-                            {/* {
-                                    errors.unitPrice ? <p id='errorm'>{errors.unitPrice.message}</p> : null
-                                } */}
                         </div>
                         <div>
-                            {/* <p>Total Amount</p>
-                            <input type="text" />
-                            {
-                                error.isError && error.errortype === "totalamount"?<p className='error'>{error.message}</p>:null
-                            } */}
                         </div>
                     </div>
                     <div className="orderinputwrap">
@@ -265,9 +355,6 @@ const OrderManagment = ()=>{
                                 <option value="Not-Paid">Not Paid</option>
                                 <option value="Pending">Pending</option>
                             </select>
-                                {/* {
-                                    errors.paymentStatus ? <p id='errorm'>{errors.paymentStatus.message}</p> : null
-                                } */}
                         </div>
                         <div>
                             <p>Shipment Status</p>
@@ -280,9 +367,6 @@ const OrderManagment = ()=>{
                                
                         </div>
                     </div>
-                    {
-                        error.isError?<p className='error'>{error.message}</p>: null
-                    }
                     <div className="orderinputwrap orderbuttonwrap" id='buttunsettle'>
                         <button className='enterbutton' onClick={()=>handleCreateOrder()}>
                             {
@@ -352,7 +436,10 @@ const OrderManagment = ()=>{
                             setDeleteId(e)
                             setDeleteOption(true)
                         }}/>
-                        <FaEdit className='edit'/>
+                        <FaEdit onClick={()=> {
+                            seteditOption(true)
+                            setEditDetails(e)
+                        }} className='edit'/>
                     </div>
                 </div>
                 ))

@@ -8,18 +8,19 @@ import { TbReportSearch } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from 'react';
+import { MdSettings } from "react-icons/md";
 import Header from '../header/Header'
-import Dashboard from '../dashBoard/dashBoard';
-import OrderManagment from '../ordermanagment/AllOrderManagment';
-import Sales from '../productManagment/sales/Allsales';
-import Productmanagment from '../productManagment/AllProductManagment';
-import Notification from '../notification/AllNotification';
-import Purchase from '../purchase/AllPurchase';
+// import Dashboard from '../dashBoard/dashBoard';
+// import OrderManagment from '../ordermanagment/AllOrderManagment';
+// import Sales from '../productManagment/sales/Allsales';
+// import Productmanagment from '../productManagment/AllProductManagment';
+// import Notification from '../notification/AllNotification';
+// import Purchase from '../purchase/AllPurchase';
 import axios from 'axios';
 import { json, useNavigate } from 'react-router-dom';
 
 
-const MainPage=()=>{
+const MainPage=(props)=>{
     // useEffect
     const navigate = useNavigate()
     const [dropmenu, setDropMenu]=useState(false)
@@ -27,20 +28,25 @@ const MainPage=()=>{
     const [change, setChange]= useState({name: "", state: false,})
 
     const handleDashboard=()=>{
-        setChange({name: "dashboard", state: true,})
-        console.log(change)
+        // setChange({name: "dashboard", state: true,})
+        // console.log(change)
+        navigate("/dashboard")
     }
     const handleSales=()=>{
-        setChange({name: "sales", state: true,})
+        // setChange({name: "sales", state: true,})
+        navigate("/sales")
     }
     const handlePurchase=()=>{
-        setChange({name: "purchase", state: true,})
+        // setChange({name: "purchase", state: true,})
+        navigate("/purchase")
     }
     const handleProduct=()=>{
-        setChange({name: "product", state: true,})
+        // setChange({name: "product", state: true,})
+        navigate("/productmanage")
     }
     const handleOrder=()=>{
-        setChange({name: "order", state: true,})
+        // setChange({name: "order", state: true,})
+        navigate("/order")
     }
     const handleNotification=()=>{
         setChange({name: "notification", state: true,})
@@ -49,7 +55,8 @@ const MainPage=()=>{
         setChange({name: "report", state: true,})
     }
     const handlsettings=()=>{
-        setChange({name: "settings", state: true,})
+        // setChange({name: "settings", state: true,})
+        navigate("/settings")
     }
 
 
@@ -98,44 +105,52 @@ const MainPage=()=>{
                         </div>
                     </div>
                     <div className="optionschose">
-                        <div onClick={handleDashboard} >
-                            <aside  className={`a1 ${change.name === "dashboard"? "xxx": null}`}>
+                        <div onClick={handleDashboard}>
+                            <aside  className="a1" style={{color: `${props.colora1}`}}>
                                 <MdOutlineDashboard />
                             </aside>
-                            <aside className={`a2 ${change.name === "dashboard"? "xxx": null}`}>
+                            <aside className="a2" style={{color: `${props.colora1}`}}>
                                 <p>Dashboard</p>
                             </aside>
                         </div>
                         <div onClick={handleSales}>
-                            <aside className={`a1 ${change.name === "sales"? "xxx": null}`}>
+                            <aside className="a1" style={{color: `${props.colora2}`}}>
                                 <BiSolidCoinStack />
                             </aside>
-                            <aside className={`a2 ${change.name === "sales"? "xxx": null}`}>
+                            <aside className="a2" style={{color: `${props.colora2}`}}>
                                 <p>Sales</p>
                             </aside>
                         </div>
                         <div onClick={handlePurchase}>
-                            <aside className={`a1 ${change.name === "purchase"? "xxx": null}`}>
+                            <aside className="a1" style={{color: `${props.colora3}`}}>
                                 <IoMdCart />
                             </aside>
-                            <aside className={`a2 ${change.name === "purchase"? "xxx": null}`}>
+                            <aside className="a2" style={{color: `${props.colora3}`}}>
                                 <p>Purchases</p>
                             </aside>
                         </div>
                         <div onClick={handleProduct}>
-                            <aside className={`a1 ${change.name === "product"? "xxx": null}`}>
+                            <aside className="a1" style={{color: `${props.colora4}`}}>
                                 <FaBoxOpen />
                             </aside>
-                            <aside className={`a2 ${change.name === "product"? "xxx": null}`}>
+                            <aside className="a2" style={{color: `${props.colora4}`}}>
                                 <p>Product MGT</p>
                             </aside>
                         </div>
                         <div onClick={handleOrder}>
-                            <aside className={`a1 ${change.name === "order"? "xxx": null}`}>
+                            <aside className="a1" style={{color: `${props.colora5}`}}>
                                 <img src="./salesicon.png" alt="" />
                             </aside>
-                            <aside className={`a2 ${change.name === "order"? "xxx": null}`}>
+                            <aside className="a2" style={{color: `${props.colora5}`}}>
                                 <p>Order MGT</p>
+                            </aside>
+                        </div>
+                        <div onClick={handlsettings}>
+                            <aside className="a1" style={{color: `${props.colora6}`}}>
+                                <MdSettings />
+                            </aside>
+                            <aside className="a2" style={{color: `${props.colora6}`}}>
+                                <p>Settings</p>
                             </aside>
                         </div>
                     </div>
@@ -168,7 +183,8 @@ const MainPage=()=>{
                     </div>:null
                     }
                     {
-                        change.name === "dashboard"? <Dashboard />: change.name === "sales"? <Sales />: change.name === "product"? <Productmanagment />: change.name=== "order"? <OrderManagment />: change.name === "purchase"? <Purchase />: <Dashboard />
+                        props.page
+                        // change.name === "dashboard"? <Dashboard />: change.name === "sales"? <Sales />: change.name === "product"? <Productmanagment />: change.name=== "order"? <OrderManagment />: change.name === "purchase"? <Purchase />: <Dashboard />
                     }
                 </div>
             </div>

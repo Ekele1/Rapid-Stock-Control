@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { BeatLoader } from "react-spinners";
 import {yupResolver} from '@hookform/resolvers/yup'
+// import { toast } from 'react-hot-toast';
 import axios from "axios";
 import * as yup from 'yup'
 
@@ -17,7 +18,7 @@ const NewSignIn =()=>{
 
     const [loading, setLoading]=useState(false)
      const [error, setError]= useState({type: false, message: ""})
-     const [token, setToken] = useState("")
+    //  const [token, setToken] = useState("")
 
     const schema = yup.object().shape({
         email: yup.string().email().required("Your email is Required"),
@@ -43,11 +44,12 @@ const NewSignIn =()=>{
              const userInformation =res.data.data
               localStorage.setItem("userInformation", JSON.stringify(userInformation))
             
-                  navigate("/main")
+                  navigate("/dashboard")
           //   console.log(userInformation)
               setLoading(false)
           } catch (err) {
               console.log("err message", err)
+            //   toast.error(err)
               setError({type: true, message: err.response.data.message})
               // setError(err.response.data.message, "err message")
               setLoading(false)
@@ -96,7 +98,7 @@ const NewSignIn =()=>{
                                     {
                                      error.type?<p className='error'>{error.message}</p>: null
                                     }
-                                    <div className="forgetpassword">
+                                    <div className="forgetpassword1">
                                         <p onClick={handleForget}>ForgotYourPassword?</p>
                                     </div>
                                 <div className="buttwrapp">

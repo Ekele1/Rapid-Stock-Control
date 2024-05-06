@@ -1,0 +1,72 @@
+.staffwrap{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: poppins;
+    background-color: white;
+}
+.staffhold{
+    width: 30%;
+    height: 50%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.inputstaff{
+    width: 100%;
+    height: 25%;
+    /* background-color: yellow; */
+}
+.staffemail{
+    width: 100%;
+    height: 55%;
+    border: 1px solid silver;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 2%;
+}
+.staffpassword{
+    width: 93%;
+    height: 100%;
+    border: none;
+    background-color: inherit;
+    outline: none;
+}
+.forget{
+    width: 100%;
+    height: 10%;
+    font-size: 13px;
+    display: flex;
+    justify-content: flex-end;
+    color: blue;
+    /* background-color: yellow; */
+}
+.forget p{
+    cursor: pointer;
+}
+.button{
+    width: 100%;
+    height: 60%;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+.button:hover{
+    background-color: rgb(69, 69, 246);
+}
+.button:active{
+    background-color: blue;
+}
+
+@media screen and (width < 1030px) {
+    .staffhold{
+        width: 70%;
+        gap: 1%;
+    }
+}

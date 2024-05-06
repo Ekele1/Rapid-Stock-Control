@@ -170,7 +170,7 @@ const Productmanagment = () => {
             brand: brand,
             sellingPrice: newPrice,
             costPrice: costpricenew,
-            stockQty: newPrice,
+            stockQty: newstqqty,
         }
         const headers = {
             Authorization:`Bearer ${token}`

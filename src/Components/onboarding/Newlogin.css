@@ -170,35 +170,43 @@
     object-fit: cover;
 }
 
-@media screen and (width < 1100px) {
+@media screen and (width < 1000px) {
     .logcontwrapright{
         display: none;
     }
     .allthewrapp{
+        width: 100%;
+        height: 90%;
         align-items: center;
         justify-content: center;
     }
     .logcontwrap{
-        width: 55%;
+        width: 100%;
+        /* background-color: gray; */
+        box-shadow: none;
     }
     .logitselfwrap{
         width: 100%;
     }
+    .loggowrapinput{
+        width: 100%;
+        /* background-color: yellow; */
+    }
     
 }
 
-@media screen and (width < 800px) {
+/* @media screen and (width < 800px) {
     .logcontwrap{
         width: 80%;
-        /* background-color: yellow; */
+        background-color: yellow;
     }
 }
 @media screen and (width < 600px) {
     .allthewrapp{
         width: 100%;
-        /* background-color: aqua; */
+        background-color: aqua;
     }
     .logcontwrap{
         width: 100%;
     }
-}
+} */

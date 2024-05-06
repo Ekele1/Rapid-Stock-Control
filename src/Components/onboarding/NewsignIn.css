@@ -102,7 +102,7 @@
     border: none;
     background-color: transparent;
 }
-.forgetpassword{
+.forgetpassword1{
     width: 90%;
     height: 5%;
     display: flex;
@@ -177,7 +177,8 @@
         display: none;
     }
     .newsigninsecondwrap{
-        width: 40%;
+        width: 100%;
+        box-shadow: none;
     }
     .signinleft{
         width: 100%;
@@ -198,10 +199,10 @@
         align-items: center;
         justify-content: center;
     }
-    @media screen and (width < 850px) {
+    /* @media screen and (width < 850px) {
         .newsigninsecondwrap{
             width: 50%;
-            /* background-color: red; */
+            background-color: red;
         }
     }
     @media screen and (width < 550px) {
@@ -213,5 +214,5 @@
         .newsigninsecondwrap{
             width: 98%;
         }
-    }
+    } */
 }

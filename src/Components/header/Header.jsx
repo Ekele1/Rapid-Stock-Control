@@ -4,6 +4,8 @@ import { IoMenu } from "react-icons/io5";
 import { RxDropdownMenu } from "react-icons/rx";
 import { useNavigate } from 'react-router-dom';
 import { IoMdNotifications } from "react-icons/io";
+import { MdDeleteForever } from "react-icons/md";
+import toast from 'react-hot-toast';
 
 const Header =()=>{
     const [show, setShow]=useState(false)
@@ -38,6 +40,31 @@ const Header =()=>{
         handleGetNotification()
     },[notification])
 
+    const handleDeleteNotification =(id)=>{
+        // setLoading(true)
+        const userId = JSON.parse(localStorage.getItem("userInformation"))
+        const iduser = userId.userId
+        const token = userId.token
+        const headers = {
+            Authorization:`Bearer ${token}`
+        }
+        const url = `https://rapid-stock-control-osqb.onrender.com/notifications/delete-notification/${id}/${iduser}`
+
+        fetch(url,{
+            method: 'DELETE',
+            headers: headers
+        })
+        // .then((response)=> {response.json()})
+        .then((data)=> {
+            console.log(data)
+            toast.success("Notification sucessfully deleted")
+            handleGetNotification()
+        })
+        .catch((error)=> {
+            console.log(error)
+            // setLoading(false)
+        })
+    }
     // console.log("content",notificationContent)
 
 
@@ -45,10 +72,11 @@ const Header =()=>{
     return(
         <div className="headerwrap">
             {
-                notification?<div className="notificationcontent">
+                notification?
+                <div className="notificationcontent">
                     {
                         notificationContent?.map((e,id)=>(
-                            <div className="notidate" key={id}>
+                    <div className="notidate" key={id}>
                         <div className="date">
                             <p>{e.date}</p>
                         </div>
@@ -58,6 +86,12 @@ const Header =()=>{
                                     e.message
                                 }
                             </p>
+                        </div>
+                        <div className="messagedel">
+                            <MdDeleteForever 
+                            style={{cursor: "pointer"}}
+                            onClick={()=>handleDeleteNotification(e._id)}
+                            />
                         </div>
                     </div>
                         ))

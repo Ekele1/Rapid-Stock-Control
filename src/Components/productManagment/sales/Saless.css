@@ -78,13 +78,13 @@
     /* background-color: yellow; */
 }
 .addbutton{
-    width: 10%;
-    height: 80%;
+    width: 7%;
+    height: 50%;
     border: none;
     background-color: green;
     color: white;
     border-radius: 5px;
-    font-size: 25px;
+    font-size: 12px;
     cursor: pointer;
 }
 .person{
@@ -102,21 +102,21 @@
 }
 .salesinputshow{
     width: 100%;
-    height: 120vh;
-    top: 5%;
+    height: 100%;
+    top: 3%;
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 100;
     /* justify-content: center; */
     position: absolute;
-    position: relative;
+    /* position: relative; */
     background-color: white;
 }
 .itemsearch{
     width: 25%;
-    height: max-content;
-    /* overflow-y: scroll; */
+    height: 35%;
+    overflow-y: scroll;
     padding: 2%;
     display: flex;
     flex-direction: column;
@@ -347,17 +347,18 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 20px;
+    font-size: 15px;
 }
 .real2 div{
     width: 50%;
     height: 100%;
     display: flex;
+    /* font-size: 15px; */
     align-items: center;
     justify-content: center;
 }
 .check{
-    font-size: 30px;
+    font-size: 20px;
     cursor: pointer;
 }
 .check:active{
@@ -394,7 +395,8 @@
     color: #fccf05;
 }
 .delete{
-    font-size: 30px;
+    font-size: 20px;
+    cursor: pointer;
 }
 .delete:hover{
     color: red;
@@ -554,6 +556,7 @@
     }
     .salesinputshow{
         top: 0%;
+        /* position: absolute; */
     }
     .mainxp{
         display: flex;

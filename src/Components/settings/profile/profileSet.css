@@ -22,7 +22,7 @@
     height: 70px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     border: 1px solid black;
 }
 .settingsoption div{
@@ -32,19 +32,16 @@
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    /* color: black; */
+    color: black;
     cursor: pointer;
     /* background-color: rgba(226, 185, 2, 1); */
-}
-.set{
-    color: blue;
 }
 .settingsvalue{
     width: 100%;
     height: 85%;
     background-color: blanchedalmond;
 }
-/* .profile{
+.profile{
     width: 100%;
     height: 100%;
     display: flex;
@@ -65,13 +62,13 @@
     align-items: center;
     /* background-color: yellow; */
     /* justify-content: center; */
-/* } */
-/**#close{
+}
+#close{
     width: 100%;
     height: 10%;
     font-size: 30px;
     padding-left: 1.5%;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 .profileupdateinput{
     width: 30%;
@@ -90,7 +87,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 .photo{
     width: 70px;
@@ -101,8 +98,8 @@
 .profileinput{
     width: 90%;
     height: 17%;
-    padding-left: 2%;
-    background-color: gray;
+    /* padding-left: 2%; */
+    /* background-color: gray; */
 }
 .profileinput input{
     width: 100%;
@@ -117,9 +114,9 @@
     height: 15%;
     display: flex;
     align-items: center;
-    padding-left: 2%;
+    /* padding-left: 2%; */
     justify-content: center;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 .done button{
     width: 90%;
@@ -133,9 +130,9 @@
     width: 100%;
     height: 100%;
     background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 .updatebutton{
     width: 50%;
@@ -164,30 +161,30 @@
     width: 100%;
     height: 33.3%;
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .profileinfoid{
     width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     padding-left: 5%;
     border-bottom: 1px solid silver;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 .profileinfoid2{
     width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     padding-left: 5%;
     border-left: 1px solid silver;
     border-bottom: 1px solid silver;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 .companylogo{
     width: 50%;
@@ -196,7 +193,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: palegoldenrod;
+    /* background-color: palegoldenrod; */
 }
 #logoitself{
     width: 80px;
@@ -206,11 +203,11 @@
     align-items: center;
     justify-content: center;
     border: 1px solid black;
-    background-color: aqua;
+    /* background-color: aqua; */
     border-radius: 50%;
 }
 .companyname{
     width: 80%;
     height: 30%;
     border-bottom: 1px solid black;
-} */
+}

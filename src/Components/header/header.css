@@ -110,6 +110,7 @@
     right: 0;
     overflow-y: scroll;
     top: 70%;
+    padding: 1%;
     border-radius: 10px;
 }
 .notidate{
@@ -127,20 +128,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 12px;
     background-color: white;
 }
 .mmmmessage{
-    width: 80%;
+    width: 70%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     overflow-y: scroll;
     padding-left: 4%;
+    /* font-size: 10px; */
     /* scrollbar-face-color: red; */
     /* background-color: green; */
 }
 #messagepp{
-    font-size: 15px;
+    font-size: 12px;
+}
+.messagedel{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    /* background-color: green; */
 }
 
 .notifyme{

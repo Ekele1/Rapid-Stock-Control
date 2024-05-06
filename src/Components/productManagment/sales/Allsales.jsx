@@ -1,9 +1,5 @@
 import './Saless.css'
-import { TbCurrencyNaira } from "react-icons/tb";
-import { FaRegSquareCheck } from "react-icons/fa6";
-import { IoAddCircleOutline,IoReceiptOutline } from "react-icons/io5";
 import { ImCancelCircle } from "react-icons/im";
-// import { FaCheckSquare } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { RxDropdownMenu } from "react-icons/rx";
 import { useEffect, useState } from 'react';
@@ -12,7 +8,6 @@ import axios from 'axios';
 import { BeatLoader } from "react-spinners";
 import { toast } from 'react-hot-toast';
 import { FaEdit } from "react-icons/fa";
-import Purchase from '../../purchase/AllPurchase';
 
 const Sales=()=>{
     const [item, setItem]= useState([])
@@ -36,7 +31,7 @@ const Sales=()=>{
     const [inputFocus, setInputFocus]= useState(false)
     const [loading, setLoading]= useState(false)
     const [selectedData, setSelectedData]=useState()
-    const [error, setError]= useState({isError: true, errorType: "", mssg: ""})
+    const [error, setError]= useState({isError: false, errorType: "", mssg: ""})
     const [allSales, setAllSales]=useState([])
 
     const [itemName2, setItemName2] = useState("")
@@ -118,7 +113,6 @@ const Sales=()=>{
                 itemDescription:itemDescription,
                 quantity: howMany
                 }
-                // console.log(id)
                 setItemName("")
                 setItemDescription("")
                 setQuantity()
@@ -135,6 +129,7 @@ const Sales=()=>{
             })
             .catch((error)=>{
                 console.log(error)
+                setError({isError: true, mssg: error.response.data.mesage})
                 setLoading(false)
             })
     }
@@ -205,12 +200,10 @@ const Sales=()=>{
             // console.log("token", token)
         })
     }
-    
-    // console.log(editValues.itemName)
-    // const name = editValues.itemName
 
-
-
+    const handleLogOut = () => {
+        
+    }
     return(
         <div className="saleswrapper">
             <div className="saleswrapperdiv">
@@ -233,34 +226,6 @@ const Sales=()=>{
                                     <input type="text" placeholder={editValues?.quantity} value={quantity} onChange={(e)=>setQuantity2(e.target.value)}/>
                                 </div>
                             </div>
-                            {/* <div className="collectitdiv">
-                                <div className='editme'>
-                                    <p>Description</p>
-                                    <input type="text" placeholder={editValues.productDescription} value={productDescription} onChange={(e)=>setproductDescription(e.target.value)}/>
-                                </div>
-                                <div className='editme'>
-                                    <p>costPrice</p>
-                                    <input type="text" placeholder={editValues.costPrice} value={costPrice} onChange={(e)=>setcostPrice(e.target.value)}/>
-                                </div>
-                                <div className='editme'>
-                                    <p>SellingPrice</p>
-                                    <input type="text" placeholder={editValues.sellingPrice} value={sellingPrice} onChange={(e)=>setsellingPrice(e.target.value)}/>
-                                </div>
-                            </div>
-                            <div className="collectitdiv">
-                                <div className='editme'>
-                                    <p>StockQuantity</p>
-                                    <input type="text" placeholder={editValues.stockQty} value={stockQty} onChange={(e)=>setstockQty(e.target.value)}/>
-                                </div>
-                                <div className='editme'>
-                                    <p>ReorderLevel</p>
-                                    <input type="text" placeholder={editValues.reorderLevel} value={reorderLevel} onChange={(e)=>setReorderLevel(e.target.value)}/>
-                                </div>
-                                {/* <div className='editme'>
-                                    <p>ProductName</p>
-                                    <input type="text" />
-                                </div> */}
-                            {/* </div>  */}
                             <button className='editdone' onClick={()=>handleUpdateSale(editValues._id)}>
                                 {
                                     loading?<BeatLoader color='white'/>:"DONE"
@@ -293,6 +258,7 @@ const Sales=()=>{
                             {
                                 filteredData?.length === 0 ? (<p>No item with this name</p>):(
                                         filteredData?.map((e,id)=>(
+                                            <div>
                                             <p key={id} onClick={()=> {
                                                 setSelectedData(e)
                                                 setItemName(e.productName)
@@ -301,6 +267,17 @@ const Sales=()=>{
                                                 setTax(e.VAT)
                                                 setInputFocus(false)
                                             }}>{e.productName}</p>
+                                            <p
+                                                onClick={()=> {
+                                                    setSelectedData(e)
+                                                    setItemName(e.productName)
+                                                    setItemDescription(e.productDescription)
+                                                    setPrice(e.sellingPrice)
+                                                    setTax(e.VAT)
+                                                    setInputFocus(false)
+                                                }}
+                                            >{e.productDescription}</p>
+                                            </div>
                                         ))
                                     
                                 )
@@ -349,6 +326,10 @@ const Sales=()=>{
                                                 <input type="text" /> */}
                                             </div>
                                         </div>
+                                        {/* <p>love</p> */}
+                                        {
+                                            error.isError? <p style={{color: "red"}}>{error.mssg}</p>: null
+                                        }
                                         <div className="salesbuttonholddiv">
                                             <button className='salesbuttonitself' onClick={handleAddSale}>
                                                 {
@@ -366,20 +347,20 @@ const Sales=()=>{
                 <div className="sales">
                     <button className='addbutton' onClick={()=>setShow(true)}>SELL</button>
                     <div className="person">
-                        {/* <h5>Sales Person</h5> */}
+                        <h5>Sales Person</h5>
                         <div className="namex">
-                            {/* <p>Sarah V</p> */}
+                            <p>Sarah V</p>
                         </div>
                     </div>
                     <div className="person per">
                         <h3>SALES</h3>
                     </div>
-                    <div className="person">
+                    {/* <div className="person"> */}
                         {/* <h5>Date</h5> */}
-                        <div className="namex">
-                            {/* <p>10/2/2024</p> */}
-                        </div>
-                    </div>
+                        {/* <div className="namex"> */}
+                        <button className='addbutton'>LogOut</button>
+                        {/* </div> */}
+                    {/* </div> */}
                     <div className="divup"><RxDropdownMenu /></div>
                 </div>
                 <main className='mainxp'>
